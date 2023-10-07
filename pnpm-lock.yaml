@@ -10,7 +10,7 @@ dependencies:
     version: 3.0.3(@types/react-dom@18.2.11)(@types/react@18.2.25)(react-dom@18.2.0)(react@18.2.0)(vite@4.4.10)
   '@astrojs/tailwind':
     specifier: ^5.0.1
-    version: 5.0.1(astro@3.2.2)(tailwindcss@3.3.3)
+    version: 5.0.1(astro@3.2.3)(tailwindcss@3.3.3)
   '@types/react':
     specifier: ^18.0.21
     version: 18.2.25
@@ -18,8 +18,8 @@ dependencies:
     specifier: ^18.0.6
     version: 18.2.11
   astro:
-    specifier: ^3.2.2
-    version: 3.2.2(sass@1.69.0)
+    specifier: ^3.2.3
+    version: 3.2.3(sass@1.69.0)
   react:
     specifier: ^18.0.0
     version: 18.2.0
@@ -67,6 +67,9 @@ devDependencies:
   eslint-plugin-react:
     specifier: ^7.33.2
     version: 7.33.2(eslint@8.51.0)
+  lefthook:
+    specifier: ^1.5.1
+    version: 1.5.1
   postcss:
     specifier: ^8.4.31
     version: 8.4.31
@@ -124,17 +127,17 @@ packages:
   /@astrojs/compiler@2.2.0:
     resolution: {integrity: sha512-JvmckEJgg8uXUw8Rs6VZDvN7LcweCHOdcxsCXpC+4KMDC9FaB5t9EH/NooSE+hu/rnACEhsXA3FKmf9wnhb7hA==}
 
-  /@astrojs/internal-helpers@0.2.0:
-    resolution: {integrity: sha512-NQ4ppp1CM0HNkKbJNM4saVSfmUYzGlRalF6wx7F6T/MYHYSWGuojY89/oFTy4t8VlOGUCUijlsVNNeziWaUo5g==}
+  /@astrojs/internal-helpers@0.2.1:
+    resolution: {integrity: sha512-06DD2ZnItMwUnH81LBLco3tWjcZ1lGU9rLCCBaeUCGYe9cI0wKyY2W3kDyoW1I6GmcWgt1fu+D1CTvz+FIKf8A==}
     dev: false
 
-  /@astrojs/markdown-remark@3.2.0(astro@3.2.2):
-    resolution: {integrity: sha512-jigyLfefUZPKgVmmraCkVpdUuFH1R3SrpgQO13axsgwLDBgkggaQpNR5Ag4O9PDualeBtbdt30aYSfvnBKx9Hg==}
+  /@astrojs/markdown-remark@3.2.1(astro@3.2.3):
+    resolution: {integrity: sha512-Z4YNMRtgFZeHhB29uCZl0B9MbMZddW9ZKCNucapoysbvygbDFF1gGtqpVnf+Lyv3rUBHwM/J5qWB2MSZuTuz1g==}
     peerDependencies:
-      astro: ^3.1.0
+      astro: ^3.2.3
     dependencies:
       '@astrojs/prism': 3.0.0
-      astro: 3.2.2(sass@1.69.0)
+      astro: 3.2.3(sass@1.69.0)
       github-slugger: 2.0.0
       import-meta-resolve: 3.0.0
       mdast-util-definitions: 6.0.0
@@ -179,13 +182,13 @@ packages:
       - vite
     dev: false
 
-  /@astrojs/tailwind@5.0.1(astro@3.2.2)(tailwindcss@3.3.3):
+  /@astrojs/tailwind@5.0.1(astro@3.2.3)(tailwindcss@3.3.3):
     resolution: {integrity: sha512-HzguDH+q1v8NhZIu245UtXfz5tuy4IAd/TND92z5vyftYtGdjDLdBeHhMH4Wd91/0sIPPNRz9NUfToprI636YQ==}
     peerDependencies:
       astro: ^3.2.3
       tailwindcss: ^3.0.24
     dependencies:
-      astro: 3.2.2(sass@1.69.0)
+      astro: 3.2.3(sass@1.69.0)
       autoprefixer: 10.4.16(postcss@8.4.31)
       postcss: 8.4.31
       postcss-load-config: 4.0.1(postcss@8.4.31)
@@ -194,8 +197,8 @@ packages:
       - ts-node
     dev: false
 
-  /@astrojs/telemetry@3.0.2:
-    resolution: {integrity: sha512-ef+jqCkqopCzjGfsMsr+8p56Nj6F9ZzouWcWZt+dKsqbRccI3c8K3jfkLcdq4AyfFZtKBDB6N4ZuI68g33oiOg==}
+  /@astrojs/telemetry@3.0.3:
+    resolution: {integrity: sha512-j19Cf5mfyLt9hxgJ9W/FMdAA5Lovfp7/CINNB/7V71GqvygnL7KXhRC3TzfB+PsVQcBtgWZzCXhUWRbmJ64Raw==}
     engines: {node: '>=18.14.1'}
     dependencies:
       ci-info: 3.9.0
@@ -204,7 +207,6 @@ packages:
       dset: 3.1.2
       is-docker: 3.0.0
       is-wsl: 3.1.0
-      undici: 5.25.4
       which-pm-runs: 1.1.0
     transitivePeerDependencies:
       - supports-color
@@ -928,11 +930,6 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@fastify/busboy@2.0.0:
-    resolution: {integrity: sha512-JUFJad5lv7jxj926GPgymrWQxxjPYuJNiNjNMzqT+HiuP6Vl3dk5xzG+8sTX96np0ZAluvaMzPsjhHZ5rNuNQQ==}
-    engines: {node: '>=14'}
-    dev: false
-
   /@humanwhocodes/config-array@0.11.11:
     resolution: {integrity: sha512-N2brEuAadi0CcdeMXUkhbZB84eskAc8MEX1By6qEchoVywSgXPIjou4rYsl0V3Hj0ZnuGycGCjdNgockbzeWNA==}
     engines: {node: '>=10.10.0'}
@@ -1524,15 +1521,15 @@ packages:
       - supports-color
     dev: true
 
-  /astro@3.2.2(sass@1.69.0):
-    resolution: {integrity: sha512-vLOOGyD2g1HRkCQAFHmHUrVAbMI5sgUqKignBMtXNantgEq1P17sL2cvH0Yy2ibNN9DHZ/4TknXmwHAig8PJNg==}
+  /astro@3.2.3(sass@1.69.0):
+    resolution: {integrity: sha512-1epnxQhTbfzgdmLP1yu51E8zjIOKYxZyA8hMTD4S2E+F5gMp/D81H4hekPbbq89GDxNJiHDRNZDHtS5vrU5E5w==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
       '@astrojs/compiler': 2.2.0
-      '@astrojs/internal-helpers': 0.2.0
-      '@astrojs/markdown-remark': 3.2.0(astro@3.2.2)
-      '@astrojs/telemetry': 3.0.2
+      '@astrojs/internal-helpers': 0.2.1
+      '@astrojs/markdown-remark': 3.2.1(astro@3.2.3)
+      '@astrojs/telemetry': 3.0.3
       '@babel/core': 7.23.0
       '@babel/generator': 7.23.0
       '@babel/parser': 7.23.0
@@ -1577,7 +1574,6 @@ packages:
       string-width: 6.1.0
       strip-ansi: 7.1.0
       tsconfig-resolver: 3.0.1
-      undici: 5.25.4
       unist-util-visit: 4.1.2
       vfile: 5.3.7
       vite: 4.4.10(sass@1.69.0)
@@ -3713,6 +3709,85 @@ packages:
     resolution: {integrity: sha512-qJhlO9cGXi6hBGKoxEG/sKZDAHD5Hnu9Hs4WbOY3pCWXDhw0N8x1NenNzm2EnNLkLkk7J2SdxAkDSbb6ftT+UQ==}
     dependencies:
       language-subtag-registry: 0.3.22
+    dev: true
+
+  /lefthook-darwin-arm64@1.5.1:
+    resolution: {integrity: sha512-HR7s5M+vpgw93VeD1GubERyZZQgjnEcdW2cvaEDikB2aE49GayPGiyqapQ+KjUpfmdlXRVeGrBwMyPLiNQweAw==}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /lefthook-darwin-x64@1.5.1:
+    resolution: {integrity: sha512-8AhaBTFF9zANbTIoL1QNcnnFw3XVLjsac6Ntl9vYRRiNGHKIdP68nOhUbVOR/sU6BbqVZEuxodFSs6lgBlARNQ==}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /lefthook-freebsd-arm64@1.5.1:
+    resolution: {integrity: sha512-AsoP3U27b39mzTCm9aPcEnU1bcCNhMLf8BCyLWeOq9tePAR0L0IDd/0Kr2TXa/NQj2cxb4XbxV3NazjxqQSQ5w==}
+    cpu: [arm64]
+    os: [freebsd]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /lefthook-freebsd-x64@1.5.1:
+    resolution: {integrity: sha512-Y/l3GMunytKbXBL+7SCUeWtedAvhoAJBTR+76zwOfPlJ1GRFgBfR1Dn6JmlwKSLw8foFewNangFrYh2IuxbIKA==}
+    cpu: [x64]
+    os: [freebsd]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /lefthook-linux-arm64@1.5.1:
+    resolution: {integrity: sha512-BQysUGrqmi7dRsLz6xiaD8OgkDEgzKB+8OglP/3tu2RFj6z3u5OO28vxYbiFIADN8Dv1muj+iT1XWUNzzz0MBA==}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /lefthook-linux-x64@1.5.1:
+    resolution: {integrity: sha512-CMZgHkl6WwhAnHrkyc8vq3HUXN8lwahComaUvKC46IUgwlZypd0y/2swfE+3AhQZvfExKbPyxvZev0ZIFW2ceQ==}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /lefthook-windows-arm64@1.5.1:
+    resolution: {integrity: sha512-rdvSijsJRZJ74GjpDoqtg0SRGujACWZ2UwVyJ9SANEAXyKrql922R2uJYCdyH1VuHqo4MFALgssfOmJKDP2xfg==}
+    cpu: [arm64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /lefthook-windows-x64@1.5.1:
+    resolution: {integrity: sha512-bGnRkmD+75n55O6t4CkLahNHVKh5l0s7Ugv/aT35SXYqPodyiUnPQihGhlDI8FAnLG9jRM395Ff3DIOjpUAPvA==}
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /lefthook@1.5.1:
+    resolution: {integrity: sha512-e52r1xyIAHNcpYHG2FZBBHmko9CTPJ16jSf+XKmaccM5bd92x1h8Odfz9R1AbhDYczvXxH9q6YOEKnrS2P3qPA==}
+    hasBin: true
+    requiresBuild: true
+    optionalDependencies:
+      lefthook-darwin-arm64: 1.5.1
+      lefthook-darwin-x64: 1.5.1
+      lefthook-freebsd-arm64: 1.5.1
+      lefthook-freebsd-x64: 1.5.1
+      lefthook-linux-arm64: 1.5.1
+      lefthook-linux-x64: 1.5.1
+      lefthook-windows-arm64: 1.5.1
+      lefthook-windows-x64: 1.5.1
     dev: true
 
   /levn@0.4.1:
@@ -5960,13 +6035,6 @@ packages:
       has-symbols: 1.0.3
       which-boxed-primitive: 1.0.2
     dev: true
-
-  /undici@5.25.4:
-    resolution: {integrity: sha512-450yJxT29qKMf3aoudzFpIciqpx6Pji3hEWaXqXmanbXF58LTAGCKxcJjxMXWu3iG+Mudgo3ZUfDB6YDFd/dAw==}
-    engines: {node: '>=14.0'}
-    dependencies:
-      '@fastify/busboy': 2.0.0
-    dev: false
 
   /unherit@3.0.1:
     resolution: {integrity: sha512-akOOQ/Yln8a2sgcLj4U0Jmx0R5jpIg2IUyRrWOzmEbjBtGzBdHtSeFKgoEcoH4KYIG/Pb8GQ/BwtYm0GCq1Sqg==}

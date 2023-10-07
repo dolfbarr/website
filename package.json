@@ -9,15 +9,17 @@
     "preview": "astro preview",
     "sync": "astro sync",
     "astro": "astro",
+    "lint": "pnpm run lint:eslint && pnpm run lint:stylelint",
     "lint:eslint": "eslint --ext .js,.ts,.jsx,.tsx,.astro src",
-    "lint:scss": "stylelint \"src/**/*.{astro,scss}\""
+    "lint:stylelint": "stylelint \"src/**/*.{astro,scss}\"",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@astrojs/react": "^3.0.3",
     "@astrojs/tailwind": "^5.0.1",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
-    "astro": "^3.2.2",
+    "astro": "^3.2.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "tailwindcss": "^3.3.3"
@@ -35,6 +37,7 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.33.2",
+    "lefthook": "^1.5.1",
     "postcss": "^8.4.31",
     "postcss-html": "^1.5.0",
     "postcss-import": "^15.1.0",
