@@ -5,4 +5,8 @@
     "**/*.tsx",
     "**/*.astro"
   ],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  }
 }

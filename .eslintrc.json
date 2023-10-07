@@ -1,65 +1,86 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "standard-with-typescript"
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "standard-with-typescript",
+    "plugin:astro/recommended"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "react",
+    "astro",
+    "prettier"
+  ],
+  "overrides": [
+    {
+      // Define the configuration for `.astro` file.
+      "files": [
+        "*.astro"
+      ],
+      // Allows Astro components to be parsed.
+      "parser": "astro-eslint-parser",
+      // Parse the script in `.astro` as TypeScript by adding the following configuration.
+      // It's the setting you need when using TypeScript.
+      "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "extraFileExtensions": [
+          ".astro"
+        ]
+      },
+      "rules": {
+        "prettier/prettier": "off"
+      }
+    }
+  ],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "semi": false,
+        "bracketSpacing": true,
+        "trailingComma": "all",
+        "bracketSameLine": true
+      }
     ],
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "overrides": [
-        {
-            "extends": [
-                "plugin:react/recommended"
-            ],
-            "files": [
-                "*.tsx",
-                "*.jsx"
-            ],
-            "parserOptions": {
-                "ecmaFeatures": {
-                    "jsx": true
-                }
-            }
-        },
-        {
-            "files": ["*.astro"],
-            "env": {
-                "node": true,
-                "astro/astro": true,
-                "es2020": true
-            },
-            // Allows Astro components to be parsed.
-            "parser": "astro-eslint-parser",
-            "parserOptions": {
-                "parser": "@typescript-eslint/parser",
-                "extraFileExtensions": [".astro"],
-                "sourceType": "module"
-            },
-            "rules": {
-                "astro/no-conflict-set-directives": "error",
-                "astro/no-unused-define-vars-in-style": "error"
-            }
-        },
-        {
-            "files": ["**/*.astro/*.js", "*.astro/*.js"],
-            "env": {
-                "browser": true,
-                "es2020": true
-            },
-            "parserOptions": {
-                "sourceType": "module"
-            },
-            "rules": {
-                "prettier/prettier": "off"
-            }
-        }
+    "react/prop-types": "off",
+    "comma-dangle": "off",
+    "@typescript-eslint/comma-dangle": [
+      "error",
+      {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "always-multiline",
+        "enums": "always-multiline"
+      }
     ],
-    "plugins": [
-        "react",
-        "astro"
-    ]
+    "space-before-function-paren": "off",
+    "@typescript-eslint/space-before-function-paren": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/indent": "off",
+    "multiline-ternary": "off",
+    "react/jsx-closing-bracket-location": [
+      1,
+      {
+        "selfClosing": "tag-aligned",
+        "nonEmpty": "after-props"
+      }
+    ],
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }
