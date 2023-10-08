@@ -1,35 +1,7 @@
 ---
-import 'styles/styles.scss'
-import { Test } from '@components/Test'
+import BaseLayout from '../layouts/BaseLayout.astro'
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <h1 class="flex font-bold text-red-900 text-3xl">Dolf Barr</h1>
-    <Test />
-    <article class="prose lg:prose-xl">
-      <h2>Garlic bread with cheese: What the science tells us</h2>
-      <p>
-        For years parents have espoused the health benefits of eating garlic bread with cheese to their
-        children, with the food earning such an iconic status in our culture that kids will often dress
-        up as warm, cheesy loaf for Halloween.
-      </p>
-      <p>
-        But a recent study shows that the celebrated appetizer may be linked to a series of rabies cases
-        springing up around the country.
-      </p>
-      <!-- ... -->
-    </article>
-  </body>
-</html>
-
-<style lang="scss">
-  @import 'styles/variables.scss';
-</style>
+<BaseLayout>
+  <h1 class="">Dolf Barr</h1>
+</BaseLayout>

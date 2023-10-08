@@ -1,0 +1,39 @@
+---
+import { META } from '../utils/constants'
+
+export interface Props {
+  url: string
+  title?: string
+  description?: string
+}
+
+const { title: customTitle, description, url = '/' } = Astro.props
+const title = customTitle ?? META.title
+---
+
+<head>
+  <title>{title}</title>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content={description ?? META.shortDescription} />
+  <meta property="og:type" content={'website'} />
+  <meta property="og:title" content={title} />
+  <meta property="og:url" content={`${META.siteUrl}${url}`} />
+  <meta property="og:site_name" content={title} />
+  <meta property="og:description" content={description ?? META.description} />
+  <meta name="twitter:creator" content={META.twitterUsername} />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossOrigin="true"
+  />
+
+  <!--  Image?  -->
+  <!--  RSS Feed  -->
+  <!--  Sitemap  -->
+  <!--  GoatCounter  -->
+</head>

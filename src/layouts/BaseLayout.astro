@@ -1,0 +1,15 @@
+---
+import 'styles/styles.scss'
+import Head from '@components/Head.astro'
+---
+
+<html lang="en">
+  <Head {...Astro.props} />
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style lang="scss">
+  @import 'styles/variables.scss';
+</style>

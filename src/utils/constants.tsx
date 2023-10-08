@@ -42,9 +42,6 @@ export const LOCATION = {
   flag: '🇷🇸',
 } as const
 
-export const META = {
-  description: `${PERSONAL_DATA.fullName}, a ${PERSONAL_DATA.occupation} based in ${LOCATION.title}`,
-} as const
 export const URLS: Record<Social, string> = {
   [Social.Twitter]: `https://twitter.com/${PERSONAL_DATA.nickname}`,
   [Social.Github]: `https://github.com/${PERSONAL_DATA.nickname}`,
@@ -221,3 +218,15 @@ export const EDUCATION = {
   startDate: '2011',
   endDate: '2015',
 } as const
+
+export const HOST = 'dolf.me'
+
+export const META = {
+  title: `${PERSONAL_DATA.fullName}, ${PERSONAL_DATA.occupation}`,
+  shortDescription: `${PERSONAL_DATA.fullName}, a ${PERSONAL_DATA.occupation} based in ${LOCATION.title}`,
+  description: `${PERSONAL_DATA.fullName}, a ${PERSONAL_DATA.occupation} at ${WORK.experience[0]?.company} & ${WORK.experience[1]?.company} with ${WORK.totalYearsOfExperience}+ years of experience based in ${LOCATION.title}. I'm passionate about web and, especially, frontend development.`,
+  twitterUsername: `@${PERSONAL_DATA.nickname}`,
+  host: HOST,
+  siteUrl: `https://${HOST}`,
+  defaultLang: 'en',
+}
