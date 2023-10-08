@@ -1,0 +1,34 @@
+html, body {
+  @apply text-gray-700 bg-white dark:bg-stone-900 dark:text-gray-200 transition-colors scroll-smooth;
+  font-family: -apple-system, Arial, system-ui;
+  font-size: 16px;
+}
+
+h1, h2, h3, h4, h5 {
+  @apply font-bold dark:text-primary-dark font-play;
+}
+
+h1 {
+  @apply text-6xl pb-6;
+}
+
+h2 {
+  @apply text-4xl pb-4;
+}
+
+h3 {
+  @apply text-2xl pb-2;
+}
+
+h4 {
+  @apply text-xl pb-1;
+}
+
+h5 {
+  @apply text-base pb-1;
+}
+
+.hyphens {
+  hyphens: auto;
+}
+
