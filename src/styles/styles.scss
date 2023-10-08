@@ -32,3 +32,10 @@ h5 {
   hyphens: auto;
 }
 
+a, a * {
+  @apply text-primary underline dark:text-primary-dark transition hover:brightness-125 focus:ring-2;
+}
+
+a:visited, a:visited * {
+  @apply text-blue-800 stroke-blue-800 dark:text-amber-800 dark:stroke-amber-800;
+}

@@ -230,3 +230,5 @@ export const META = {
   siteUrl: `https://${HOST}`,
   defaultLang: 'en',
 }
+
+export const DEFAULT_ICON_SIZE = 13
