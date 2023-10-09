@@ -7,7 +7,7 @@ export enum ContactGroup {
   Other = 'other',
 }
 
-export interface Contact {
+export type Contact = {
   url: (typeof URLS)[keyof typeof URLS]
   icon: ReactElement
   title: string
@@ -15,7 +15,7 @@ export interface Contact {
   group?: ContactGroup
 }
 
-export interface Workplace {
+export type Workplace = {
   title: string
   company: string
   isContract?: boolean

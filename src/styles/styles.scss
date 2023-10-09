@@ -32,10 +32,27 @@ h5 {
   hyphens: auto;
 }
 
+a {
+  @apply border-solid border-b-2;
+}
+
 a, a * {
-  @apply text-primary underline dark:text-primary-dark transition hover:brightness-125 focus:ring-2;
+  @apply text-primary dark:text-primary-dark transition hover:brightness-125 focus:ring-2 border-primary dark:border-primary-dark;
 }
 
 a:visited, a:visited * {
-  @apply text-blue-800 stroke-blue-800 dark:text-amber-800 dark:stroke-amber-800;
+  @apply text-blue-800 dark:text-amber-800 dark:stroke-amber-800 border-blue-800 dark:border-amber-800;
+}
+
+.btn {
+  @apply hover:border-transparent hover:bg-primary hover:text-white dark:hover:bg-primary-dark dark:hover:text-white;
+  @apply focus:ring-2 focus:border-transparent focus:bg-primary focus:text-white dark:focus:bg-primary-dark dark:focus:text-white;
+  @apply rounded border border-primary dark:border-primary-dark;
+  @apply bg-white dark:bg-stone-900 px-2 text-primary transition-colors active:brightness-90 dark:text-primary-dark;
+}
+
+.btn:disabled {
+  @apply border-gray-500 dark:border-gray-400;
+  @apply hover:border-solid hover:bg-transparent;
+  @apply text-gray-500 dark:text-gray-400;
 }

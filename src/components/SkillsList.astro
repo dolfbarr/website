@@ -1,0 +1,26 @@
+---
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+export interface Props {
+  class?: string
+  skills: string[]
+}
+
+const { class: className, skills } = Astro.props
+---
+
+<p
+  class:list={[
+    'flex flex-wrap justify-start gap-1 pb-2 font-extralight leading-tight dark:text-gray-300',
+    className ?? '',
+  ]}>
+  <slot name='prepend' />
+  {skills.map((skill) => (
+    <span
+      data-testid="skill"
+      class='rounded-full py-0'>
+      {skill}
+      <span class="inline-flex pl-1 last-of-type:hidden">·</span>
+    </span>
+  ))}
+  <slot name='append' />
+</p>

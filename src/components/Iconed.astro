@@ -1,12 +1,34 @@
 ---
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export interface Props {
-  class: string
+  class?: string
 }
 
-const {class: className} = Astro.props
+const { class: className } = Astro.props
 ---
 
-<span class:list={['inline-flex items-baseline gap-1', className ?? '']}>
-  <slot name="icon" />
+<span class:list={['inline-flex items-baseline', className ?? '']}>
+  <span class='icon mr-1 relative top-[1px]'>
+    <slot name="icon" />
+  </span>
   <slot />
 </span>
+
+<style lang="scss" is:inline>
+  .icon {
+    width: 1em;
+    height: 1em;
+  }
+
+  .icon > * {
+    stroke: context-stroke;
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+    &::before {
+      content: "a";
+
+    }
+  }
+</style>

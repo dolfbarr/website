@@ -1,0 +1,45 @@
+---
+import { Calendar } from 'react-feather'
+import Iconed from '@components/Iconed.astro'
+
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+export interface Props {
+  startDate?: string
+  endDate?: string
+  present?: string
+}
+
+const { startDate, endDate, present } = Astro.props
+---
+
+<li class="flex flex-col">
+  <h3 class="font-normal leading-normal"></h3>
+
+  {Astro.slots.has('description') && (
+    <p class="md:hyphens pb-2 leading-normal"><slot name="description" /></p>
+  )}
+
+  <slot />
+
+  <div class="flex-grow" />
+
+  {startDate && (
+    <p class=" text-gray-500 dark:text-gray-400">
+      <Iconed>
+        <Calendar strokeWidth={3} slot="icon"/>
+        <span>{startDate}</span>
+      </Iconed>{' '}
+      —{' '}
+      {endDate ? (
+        <>
+          <Iconed>
+            <Calendar strokeWidth={3} slot="icon" />
+            <span>{endDate}</span>
+          </Iconed>
+        </>
+      ) : (
+        present
+      )}
+    </p>
+  )}
+</li>

@@ -3,7 +3,6 @@ import Landing from '@layouts/Landing.astro'
 import { URLS } from '@utils/constants'
 import { Home, Mail } from 'react-feather'
 import Iconed from '@components/Iconed.astro'
-import { DEFAULT_ICON_SIZE } from '../utils/constants'
 ---
 <Landing>
   <h1 class="pb-12 leading-snug">
@@ -22,7 +21,7 @@ import { DEFAULT_ICON_SIZE } from '../utils/constants'
         href={`mailto:${URLS.email}`}
         title={`Email: ${URLS.email}`}>
         <Iconed >
-          <Mail slot="icon" size={DEFAULT_ICON_SIZE} />
+          <Mail slot="icon" />
           <span>Email me</span>
         </Iconed>
       </a>{' '}
@@ -32,11 +31,10 @@ import { DEFAULT_ICON_SIZE } from '../utils/constants'
       <a href="/" title="Home Page">
         Redirect to{' '}
         <Iconed>
-          <Home slot="icon" size={DEFAULT_ICON_SIZE} />
+          <Home slot="icon" />
           <span>home</span>
         </Iconed>
       </a>
     </li>
   </ul>
 </Landing>
-

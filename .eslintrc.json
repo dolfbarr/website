@@ -10,9 +10,6 @@
     "standard-with-typescript",
     "plugin:astro/recommended"
   ],
-  "parserOptions": {
-    "project": "./tsconfig.json"
-  },
   "plugins": [
     "react",
     "astro",
@@ -20,14 +17,10 @@
   ],
   "overrides": [
     {
-      // Define the configuration for `.astro` file.
       "files": [
         "*.astro"
       ],
-      // Allows Astro components to be parsed.
       "parser": "astro-eslint-parser",
-      // Parse the script in `.astro` as TypeScript by adding the following configuration.
-      // It's the setting you need when using TypeScript.
       "parserOptions": {
         "parser": "@typescript-eslint/parser",
         "extraFileExtensions": [
@@ -36,7 +29,8 @@
       },
       "rules": {
         "prettier/prettier": "off",
-        "react/no-unknown-property": "off"
+        "react/no-unknown-property": "off",
+        "react/jsx-key": "off"
       }
     }
   ],
@@ -68,6 +62,10 @@
     "@typescript-eslint/space-before-function-paren": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/indent": "off",
+    "@typescript-eslint/consistent-type-definitions": [
+      "error",
+      "type"
+    ],
     "multiline-ternary": "off",
     "react/jsx-closing-bracket-location": [
       1,
