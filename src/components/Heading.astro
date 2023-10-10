@@ -1,0 +1,40 @@
+---
+import { Hash } from 'react-feather'
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+export interface Props {
+  headingLevel?: number
+  href?: string
+  class?: string
+  id: string
+  iconSize?: number
+}
+type HeadingElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+
+const { id, class: className, headingLevel = 2, href = '/', iconSize = 24, ...attrs } = Astro.props
+const TitleElement = (headingLevel > 0 ? 'h' + headingLevel : 'div') as HeadingElement;
+---
+
+<TitleElement
+  class:list={['flex justify-between align-baseline', className ?? '']}
+  id={id}
+  data-testid={id}
+  {...attrs}>
+  <a
+    class:list={[
+      'group inline-flex no-underline visited:text-primary hover:underline visited:dark:text-primary-dark',
+      !href && 'md:-ml-8',
+    ]}
+    href={href ?? `#${id}`}>
+      {!href && (
+        <span class="instapaper_ignore not-sr-only hidden flex-col items-center justify-center opacity-0 group-hover:opacity-100 md:inline-flex md:w-8">
+          <Hash strokeWidth={3} size={iconSize} />
+        </span>
+      )}
+      <span>
+        <slot />
+      </span>
+  </a>
+  <aside class="flex flex-col justify-center align-baseline">
+    <slot name="aside">
+  </aside>
+</TitleElement>
