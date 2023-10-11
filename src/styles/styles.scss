@@ -33,11 +33,7 @@ h5 {
 }
 
 a {
-  @apply border-solid border-b-2;
-}
-
-a, a * {
-  @apply text-primary dark:text-primary-dark transition hover:brightness-125 focus:ring-2 border-primary dark:border-primary-dark;
+  @apply text-primary dark:text-primary-dark transition hover:brightness-125 focus:ring-2 underline;
 }
 
 a:visited, a:visited * {

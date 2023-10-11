@@ -2,11 +2,12 @@
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export interface Props {
   class: string
+  title?: string
 }
 
-const { class: className } = Astro.props
+const { class: className, ...attrs } = Astro.props
 ---
 
-<button class:list={['btn', className]}>
+<button class:list={['btn', className]} {...attrs} >
   <slot />
 </button>

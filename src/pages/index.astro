@@ -1,7 +1,109 @@
 ---
+import Button from '@components/Button.astro'
+import Clock from '@components/Clock'
+import Heading from '@components/Heading.astro'
+import Iconed from '@components/Iconed.astro'
+import Section from '@components/Section.astro'
+import StartOfContentAnchor from '@components/StartOfContentAnchor.astro'
 import Landing from '@layouts/Landing.astro'
+import { CONTACTS, LOCATION, PERSONAL_DATA, URLS, WORK } from '@utils/data'
+import { AtSign, MapPin, Clock as ClockIcon, Mail } from 'react-feather'
 ---
 
 <Landing>
-  <h1>Dolf Barr</h1>
+  <Section class="relative">
+    <span class="align-center inline-flex flex-wrap">
+      <StartOfContentAnchor />
+      <Heading
+        headingLevel={1}
+        id="greeting"
+        iconSize={32}>
+        <>
+        <span>Hi!</span>
+        <br class="sm:hidden" />
+        <span> I&rsquo;m </span>
+        {PERSONAL_DATA.fullName}{' '}
+        </>
+        <div class="absolute right-0 top-5 flex justify-between gap-4 align-baseline" slot="aside">
+        <a
+          href={`mailto:${CONTACTS.email.url}`}
+          target="_blank"
+          title={
+            CONTACTS.email.title +
+            ': ' +
+            URLS.email
+          }
+          rel="noreferrer noopener"
+          class="hidden md:inline-block"
+          data-goatcounter-click="email-top"
+          data-goatcounter-title={CONTACTS.email.title}>
+          <Mail />
+        </a>
+        </div>
+      </Heading>
+      <span class="duration-2000 ml-4 hidden origin-bottom-right text-6xl transition-all ease-in-out hover:animate-wave sm:inline-flex">
+        👋
+      </span>
+    </span>
+    <p class="hyphens text-xl leading-loose">
+      a{' '}
+      <em>{PERSONAL_DATA.occupation}</em> at{' '}
+      <a
+        href={WORK.experience[0].url}
+        title={WORK.experience[0].company}
+        target="_blank"
+        rel="noopener noreferrer">
+        <Iconed>
+          <AtSign strokeWidth={3} slot="icon" />
+          <span>{WORK.experience[0].company}</span>
+        </Iconed>
+      </a>{' '}
+      &{' '}
+      <a
+        href={WORK.experience[1].url}
+        title={WORK.experience[1].company}
+        target="_blank"
+        rel="noopener noreferrer">
+        <Iconed>
+          <AtSign strokeWidth={3} slot="icon" />
+          <span>{WORK.experience[1].company}</span>
+        </Iconed>
+      </a>{' '}with {WORK.totalYearsOfExperience}+&nbsp;years of experience based in{' '}
+      <Button
+        class="group/location text-base"
+        title={LOCATION.flag + ' ' + LOCATION.title}>
+        <Iconed class="relative inline-flex">
+          <MapPin slot="icon" />
+          <span class="inline-flex tracking-[.008em] opacity-100 transition-opacity group-hover/location:hidden">
+            {LOCATION.title}
+          </span>
+          <span class="hidden group-hover/location:inline-flex">
+            {LOCATION.original}
+          </span>
+        </Iconed>
+      </Button>{' '}
+      <Iconed class='font-mono text-lg'>
+        <ClockIcon slot="icon" strokeWidth={3} />
+        <Clock />
+      </Iconed>
+      {'. '}
+      <span>I&rsquo;m <em>passionate about web</em> and, especially, frontend development. I like to be on the edge of <em>solving business problems</em> & appeal for users and believe that <em>soft skills</em> and <em>clean code</em> matter.</span>
+    </p>
+
+    <p class="mt-6 flex flex-wrap justify-center gap-2 text-center text-xl leading-loose">
+      {PERSONAL_DATA.tagLines.map((tagLine, index) => (
+        <span
+        class="flex flex-wrap justify-center gap-2">
+        <span class="inline-flex" data-testid="tagLine">
+          {tagLine}
+        </span>
+        {index !== PERSONAL_DATA.tagLines.length - 1 && (
+          <span class="inline-flex" data-testid="tagLine-separator">
+            ·
+          </span>
+        )}
+        </span>
+      ))}
+    </p>
+  </Section>
 </Landing>

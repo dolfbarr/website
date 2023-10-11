@@ -10,7 +10,7 @@ export interface Props {
 }
 type HeadingElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 
-const { id, class: className, headingLevel = 2, href = '/', iconSize = 24, ...attrs } = Astro.props
+const { id, class: className, headingLevel = 2, href = null, iconSize = 24, ...attrs } = Astro.props
 const TitleElement = (headingLevel > 0 ? 'h' + headingLevel : 'div') as HeadingElement;
 ---
 
@@ -23,6 +23,7 @@ const TitleElement = (headingLevel > 0 ? 'h' + headingLevel : 'div') as HeadingE
     class:list={[
       'group inline-flex no-underline visited:text-primary hover:underline visited:dark:text-primary-dark',
       !href && 'md:-ml-8',
+      'no-underline',
     ]}
     href={href ?? `#${id}`}>
       {!href && (
