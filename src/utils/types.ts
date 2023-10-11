@@ -1,5 +1,5 @@
 import { type ReactElement } from 'react'
-import { type URLS } from '@utils/constants.tsx'
+import { type URLS } from '@utils/data.tsx'
 
 export enum ContactGroup {
   Social = 'social',
