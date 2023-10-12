@@ -3,6 +3,7 @@ import Landing from '@layouts/Landing.astro'
 import { URLS } from '@utils/data'
 import { Home, Mail } from 'react-feather'
 import Iconed from '@components/Iconed.astro'
+import Link from '@components/Link.astro'
 ---
 
 <Landing>
@@ -16,26 +17,25 @@ import Iconed from '@components/Iconed.astro'
       Do<strong>bu</strong>le check the URL spelling
     </li>
     <li>
-      <a
-        target="_blank"
-        rel="noreferrer noopener"
+      <Link
         href={`mailto:${URLS.email}`}
-        title={`Email: ${URLS.email}`}>
+        title={`Email: ${URLS.email}`}
+        isExternal>
         <Iconed>
           <Mail slot="icon" />
           <span>Email me</span>
         </Iconed>
-      </a>{' '}
+      </Link>{' '}
        if you need this page
     </li>
     <li>
-      <a href="/" title="Home Page">
+      <Link href="/" title="Home Page">
         Redirect to{' '}
         <Iconed>
           <Home slot="icon" />
           <span>home</span>
         </Iconed>
-      </a>
+      </Link>
     </li>
   </ul>
 </Landing>

@@ -1,5 +1,6 @@
 ---
 import { Hash } from 'react-feather'
+import Link from './Link.astro'
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export interface Props {
   headingLevel?: number
@@ -7,6 +8,7 @@ export interface Props {
   class?: string
   id: string
   iconSize?: number
+  title: string
 }
 type HeadingElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 
@@ -16,6 +18,7 @@ const {
   headingLevel = 2,
   href = null,
   iconSize = 24,
+  title,
   ...attrs
 } = Astro.props
 
@@ -29,12 +32,13 @@ const TitleElement = (
   id={id}
   data-testid={id}
   {...attrs}>
-  <a
+  <Link
     class:list={[
       'group inline-flex no-underline visited:text-primary hover:underline visited:dark:text-primary-dark',
       !href && 'md:-ml-8',
       'no-underline',
     ]}
+    title={title}
     href={href ?? `#${id}`}>
     {
       !href && (
@@ -46,7 +50,7 @@ const TitleElement = (
     <span>
       <slot />
     </span>
-  </a>
+  </Link>
   <aside class="flex flex-col justify-center align-baseline">
     <slot name="aside" />
   </aside>

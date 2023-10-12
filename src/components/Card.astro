@@ -5,14 +5,14 @@ import Iconed from '@components/Iconed.astro'
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export interface Props {
   startDate?: string
-  endDate?: string
+  endDate?: string | undefined
   present?: string
 }
 
-const { startDate, endDate, present } = Astro.props
+const { startDate, endDate, present = 'Present', ...attrs } = Astro.props
 ---
 
-<li class="flex flex-col">
+<li class="flex flex-col" {...attrs}>
   <h3 class="font-normal leading-normal">
     <slot name="title" />
   </h3>
@@ -26,8 +26,6 @@ const { startDate, endDate, present } = Astro.props
   }
 
   <slot />
-
-  <div class="flex-grow"></div>
 
   {
     startDate && (
@@ -50,4 +48,6 @@ const { startDate, endDate, present } = Astro.props
       </p>
     )
   }
+
+  <div class="flex-grow"></div>
 </li>

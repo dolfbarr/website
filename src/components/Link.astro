@@ -1,0 +1,29 @@
+---
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+export interface Props {
+  class?: string
+  href: string
+  title: string
+  isExternal?: boolean
+  'class:list'?: Array<string | boolean>
+}
+
+const {
+  class: className,
+  'class:list': classList = [],
+  href,
+  title,
+  isExternal = false,
+  ...attrs
+} = Astro.props
+---
+
+<a
+  target={isExternal ? '_blank' : undefined}
+  rel={isExternal ? 'noreferrer noopener' : undefined}
+  href={href}
+  title={title}
+  class:list={[...classList, className]}
+  {...attrs}>
+  <slot />
+</a>

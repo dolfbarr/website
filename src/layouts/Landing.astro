@@ -1,13 +1,15 @@
 ---
+import Link from '@components/Link.astro'
 import BaseLayout from './BaseLayout.astro'
 ---
 
 <BaseLayout {...Astro.props}>
-  <a
+  <Link
     href="#start-of-content"
+    title="Skip to content"
     class="absolute m-0 inline-block h-[1px] w-[1px] overflow-hidden border-0 p-0 focus:h-auto focus:w-auto">
     Skip to content
-  </a>
+  </Link>
   <div class="flex min-h-screen flex-col items-center justify-center p-4 pt-8">
     <main class="max-w-screen-md flex-1 px-2 sm:px-6">
       <slot />

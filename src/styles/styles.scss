@@ -33,7 +33,7 @@ h5 {
 }
 
 a {
-  @apply text-primary dark:text-primary-dark transition hover:brightness-125 focus:ring-2 underline;
+  @apply text-primary dark:text-primary-dark transition hover:brightness-125 focus:ring-2 hover:underline;
 }
 
 a:visited, a:visited * {

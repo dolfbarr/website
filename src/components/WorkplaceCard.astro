@@ -1,0 +1,49 @@
+---
+import { type Workplace as WorkplaceType } from '@utils/types'
+import { Code } from 'react-feather'
+import Iconed from '@components/Iconed.astro'
+import SkillsList from '@components/SkillsList.astro'
+import Workplace from '@components/Workplace.astro'
+import Card from '@components/Card.astro'
+import Link from './Link.astro'
+
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+export interface Props {
+  workplace: WorkplaceType
+}
+
+const { workplace } = Astro.props
+---
+
+<Card startDate={workplace.startDate} endDate={workplace.endDate}>
+  <div slot="title">
+    <span>{workplace.title}</span>
+    {
+      workplace?.url ? (
+        <Link
+          class="whitespace-nowrap"
+          title={workplace.company}
+          href={workplace.url}>
+          <Workplace companyName={workplace.company} />
+        </Link>
+      ) : (
+        <Workplace companyName={workplace.company} />
+      )
+    }
+
+    <span>{workplace?.isContract ? ' · contract' : ''}</span>
+  </div>
+
+  <span slot="description">{workplace.description}</span>
+
+  {
+    workplace?.skills && workplace?.skills?.length > 0 && (
+      <SkillsList skills={workplace.skills} class="leading-none">
+        <Iconed slot="prepend" class="self-center">
+          <Code slot="icon" />
+          <span class="sr-only">Tech: </span>
+        </Iconed>
+      </SkillsList>
+    )
+  }
+</Card>

@@ -1,13 +1,14 @@
 ---
 import Button from '@components/Button.astro'
-import Card from '@components/Card.astro'
 import Clock from '@components/Clock'
 import Heading from '@components/Heading.astro'
 import Iconed from '@components/Iconed.astro'
+import Link from '@components/Link.astro'
 import Section from '@components/Section.astro'
 import SkillsList from '@components/SkillsList.astro'
 import StartOfContentAnchor from '@components/StartOfContentAnchor.astro'
 import Workplace from '@components/Workplace.astro'
+import WorkplaceCard from '@components/WorkplaceCard.astro'
 import Landing from '@layouts/Landing.astro'
 import { CONTACTS, LOCATION, PERSONAL_DATA, URLS, WORK } from '@utils/data'
 import {
@@ -16,7 +17,6 @@ import {
   Mail,
   Download,
   ExternalLink,
-  Cpu,
 } from 'react-feather'
 
 const allSkills = [
@@ -33,7 +33,11 @@ const allSkills = [
   <Section class="relative">
     <span class="align-center inline-flex flex-wrap">
       <StartOfContentAnchor />
-      <Heading headingLevel={1} id="greeting" iconSize={32}>
+      <Heading
+        headingLevel={1}
+        id="greeting"
+        iconSize={32}
+        title="Main Section Anchor">
         <>
           <span>Hi!</span>
           <br class="sm:hidden" />
@@ -43,14 +47,13 @@ const allSkills = [
         <div
           class="absolute right-0 top-5 flex justify-between gap-4 align-baseline"
           slot="aside">
-          <a
+          <Link
             href={`mailto:${CONTACTS.email.url}`}
-            target="_blank"
             title={CONTACTS.email.title + ': ' + URLS.email}
-            rel="noreferrer noopener"
+            isExternal
             class="hidden md:inline-block">
             <Mail />
-          </a>
+          </Link>
         </div>
       </Heading>
       <span
@@ -61,21 +64,19 @@ const allSkills = [
     <p class="hyphens text-xl leading-loose">
       a{' '}
       <em>{PERSONAL_DATA.occupation}</em> at{' '}
-      <a
+      <Link
         href={WORK.experience[0].url}
         title={WORK.experience[0].company}
-        target="_blank"
-        rel="noopener noreferrer">
+        isExternal>
         <Workplace companyName={WORK.experience[0].company} />
-      </a>{' '}
+      </Link>{' '}
        &{' '}
-      <a
+      <Link
         href={WORK.experience[1].url}
         title={WORK.experience[1].company}
-        target="_blank"
-        rel="noopener noreferrer">
+        isExternal>
         <Workplace companyName={WORK.experience[1].company} />
-      </a>{' '}with {WORK.totalYearsOfExperience}+&nbsp;years of experience
+      </Link>{' '}with {WORK.totalYearsOfExperience}+&nbsp;years of experience
       based in{' '}
       <Button
         class="group/location text-base"
@@ -128,67 +129,34 @@ const allSkills = [
     </p>
   </Section>
   <Section data-testid="experience">
-    <Heading id="experience">
+    <Heading id="experience" title="Experience">
       Work Experience · {WORK.totalYearsOfExperience}+{' '}years{' '}
       <div class="flex gap-1" slot="aside">
-        <a href="/resume" title="Go to resume page">
+        <Link href="/resume" title="Go to resume page">
           <span class="sr-only">Go to resume page</span>
           <ExternalLink />
-        </a>
+        </Link>
 
-        <a
+        <Link
+          isExternal
           href={CONTACTS.resume.url}
-          target="_blank"
           title={CONTACTS.resume.title}
-          rel="noreferrer noopener"
           class="hidden md:inline-block">
           <Download />
           <span class="sr-only">{CONTACTS.resume.title}</span>
-        </a>
+        </Link>
       </div>
     </Heading>
     <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2">
       {
         WORK.experience.map((workplace) => (
-          <Card
-            startDate={workplace.startDate}
-            present={'Present'}
-            endDate={workplace.endDate}>
-            <div slot="title">
-              <span>{workplace.title}</span>
-              {workplace?.url ? (
-                <a
-                  class="whitespace-nowrap"
-                  href={workplace.url}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  title={workplace.company}>
-                  <Workplace companyName={workplace.company} />
-                </a>
-              ) : (
-                <Workplace companyName={workplace.company} />
-              )}
-
-              <span>{workplace?.isContract ? ' · contract' : ''}</span>
-            </div>
-
-            <span slot="description">{workplace.description}</span>
-
-            {workplace?.skills && workplace?.skills?.length > 0 && (
-              <SkillsList skills={workplace.skills} class="leading-none">
-                <Iconed slot="prepend" class="self-center">
-                  <Cpu className="rotate-12" slot="icon" />
-                  <span class="sr-only">Tech: </span>
-                </Iconed>
-              </SkillsList>
-            )}
-          </Card>
+          <WorkplaceCard workplace={workplace} />
         ))
       }
     </ul>
   </Section>
   <Section data-testid="skills-section">
-    <Heading id="skills">Skills</Heading>
+    <Heading id="skills" title="Skills">Skills</Heading>
     <SkillsList skills={allSkills} />
   </Section>
 </Landing>
