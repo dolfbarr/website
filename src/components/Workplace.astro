@@ -1,0 +1,17 @@
+---
+import { AtSign } from 'react-feather'
+import Iconed from '@components/Iconed.astro'
+
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+export interface Props {
+  companyName: string
+}
+
+const { companyName, ...attrs } = Astro.props
+---
+
+<Iconed {...attrs}>
+  <AtSign strokeWidth={3} slot="icon" />
+  <span class="sr-only"> at </span>
+  <span class="whitespace-nowrap">{companyName}</span>
+</Iconed>
