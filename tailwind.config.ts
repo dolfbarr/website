@@ -12,6 +12,9 @@ export default {
           dark: '#c26e00',
         },
       },
+      textDecorationColor: {
+        invisible: 'rgba(0, 0, 0, 0)',
+      },
       fontFamily: {
         play: ['Play', 'sans-serif', '-apple-system', 'Arial', 'system-ui'],
       },

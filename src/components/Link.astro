@@ -23,7 +23,18 @@ const {
   rel={isExternal ? 'noreferrer noopener' : undefined}
   href={href}
   title={title}
-  class:list={[...classList, className]}
+  class:list={[
+    'text-primary dark:text-primary-dark focus:ring-2',
+    'visited:text-blue-800 visited:dark:text-amber-800 visited:dark:stroke-amber-800 visited:border-blue-800 visited:dark:border-amber-800',
+    'visited:hover:decoration-blue-800 [&:visited:hover_*]:decoration-blue-800',
+    'hover:decoration-primary [&:hover_*]:decoration-primary',
+    'hover:brightness-125',
+    'transition [&_*]:transition',
+    'underline [&_*]:underline',
+    'decoration-invisible [&_*]:decoration-invisible',
+    ...classList,
+    className,
+  ]}
   {...attrs}>
   <slot />
 </a>
