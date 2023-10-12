@@ -1,18 +1,4 @@
 import {
-  Facebook,
-  GitHub,
-  Instagram,
-  Layers,
-  Linkedin,
-  Mail,
-  Send,
-  Twitter,
-  Key,
-  FileText,
-  Code,
-  Gitlab,
-} from 'react-feather'
-import {
   Social,
   type Contact,
   ContactGroup,
@@ -60,74 +46,62 @@ export const URLS: Record<Social, string> = {
 export const CONTACTS: Record<Social, Contact> = {
   resume: {
     url: URLS.resume,
-    icon: <FileText />,
     title: 'Download resume in PDF',
     group: ContactGroup.Other,
   },
   gpg: {
     url: URLS.gpg,
-    icon: <Key />,
     title: 'Download GPG Key',
     group: ContactGroup.Other,
   },
   email: {
     url: URLS.email,
-    icon: <Mail />,
     title: 'Email',
     isEmail: true,
     group: ContactGroup.Social,
   },
   telegram: {
     url: URLS.telegram,
-    icon: <Send />,
     title: 'Telegram',
     group: ContactGroup.Social,
   },
   facebook: {
     url: URLS.facebook,
-    icon: <Facebook />,
     title: 'Facebook',
     group: ContactGroup.Social,
   },
   instagram: {
     url: URLS.instagram,
-    icon: <Instagram />,
     title: 'Instagram',
     group: ContactGroup.Social,
   },
   twitter: {
     url: URLS.twitter,
-    icon: <Twitter />,
     title: 'Twitter',
     group: ContactGroup.Social,
   },
   devto: {
     url: URLS.devto,
-    icon: <Code />,
     title: 'Dev.to',
     group: ContactGroup.Code,
   },
   github: {
     url: URLS.github,
-    icon: <GitHub />,
     title: 'GitHub',
     group: ContactGroup.Code,
   },
   gitlab: {
     url: URLS.gitlab,
-    icon: <Gitlab />,
     title: 'Gitlab',
     group: ContactGroup.Code,
   },
   stackoverflow: {
     url: URLS.stackoverflow,
-    icon: <Layers />,
     title: 'Stack Overflow',
     group: ContactGroup.Code,
   },
   linkedin: {
     url: URLS.linkedin,
-    icon: <Linkedin />,
     title: 'LinkedIn',
     group: ContactGroup.Social,
   },

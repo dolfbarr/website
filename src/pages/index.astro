@@ -4,10 +4,20 @@ import Clock from '@components/Clock'
 import Heading from '@components/Heading.astro'
 import Iconed from '@components/Iconed.astro'
 import Section from '@components/Section.astro'
+import SkillsList from '@components/SkillsList.astro'
 import StartOfContentAnchor from '@components/StartOfContentAnchor.astro'
 import Landing from '@layouts/Landing.astro'
 import { CONTACTS, LOCATION, PERSONAL_DATA, URLS, WORK } from '@utils/data'
 import { AtSign, MapPin, Clock as ClockIcon, Mail } from 'react-feather'
+
+const allSkills = [
+  ...new Set([
+    ...WORK.experience
+      .filter((workplace) => workplace.skills)
+      .map((workplace) => workplace.skills)
+      .flat(),
+  ]),
+]
 ---
 
 <Landing>
@@ -84,7 +94,7 @@ import { AtSign, MapPin, Clock as ClockIcon, Mail } from 'react-feather'
       </Button>{' '}
       <Iconed class='font-mono text-lg'>
         <ClockIcon slot="icon" strokeWidth={3} />
-        <Clock />
+        <Clock client:load />
       </Iconed>
       {'. '}
       <span>I&rsquo;m <em>passionate about web</em> and, especially, frontend development. I like to be on the edge of <em>solving business problems</em> & appeal for users and believe that <em>soft skills</em> and <em>clean code</em> matter.</span>
@@ -105,5 +115,9 @@ import { AtSign, MapPin, Clock as ClockIcon, Mail } from 'react-feather'
         </span>
       ))}
     </p>
+  </Section>
+  <Section data-testid="skills-section">
+    <Heading id="skills">Skills</Heading>
+    <SkillsList skills={allSkills} />
   </Section>
 </Landing>

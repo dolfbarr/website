@@ -14,12 +14,14 @@ const { class: className, skills } = Astro.props
     className ?? '',
   ]}>
   <slot name='prepend' />
-  {skills.map((skill) => (
+  {skills.map((skill, index) => (
     <span
       data-testid="skill"
       class='rounded-full py-0'>
       {skill}
-      <span class="inline-flex pl-1 last-of-type:hidden">·</span>
+      {index !== skills.length - 1 && (
+        <span class="inline-flex pl-1">·</span>
+      )}
     </span>
   ))}
   <slot name='append' />

@@ -1,5 +1,4 @@
-import { type ReactElement } from 'react'
-import { type URLS } from '@utils/data.tsx'
+import { type URLS } from '@utils/data'
 
 export enum ContactGroup {
   Social = 'social',
@@ -9,7 +8,6 @@ export enum ContactGroup {
 
 export type Contact = {
   url: (typeof URLS)[keyof typeof URLS]
-  icon: ReactElement
   title: string
   isEmail?: boolean
   group?: ContactGroup

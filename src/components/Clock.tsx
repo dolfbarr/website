@@ -8,10 +8,7 @@ type ClockProps = {
   React.HTMLAttributes<HTMLButtonElement>
 
 const Clock: React.FC<ClockProps> = ({
-  children,
-  className,
   location = LOCATION.timeZone,
-  ...props
 }): ReactElement => {
   const [date, setDate] = useState(new Date())
 
