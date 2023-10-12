@@ -8,6 +8,6 @@ export interface Props {
 const { class: className, ...attrs } = Astro.props
 ---
 
-<button class:list={['btn', className]} {...attrs} >
+<button class:list={['btn', className]} {...attrs}>
   <slot />
 </button>

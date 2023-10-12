@@ -12,6 +12,6 @@ const { companyName, ...attrs } = Astro.props
 
 <Iconed {...attrs}>
   <AtSign strokeWidth={3} slot="icon" />
-  <span class="sr-only"> at </span>
+  <span class="sr-only">at{' '}</span>
   <span class="whitespace-nowrap">{companyName}</span>
 </Iconed>

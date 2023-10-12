@@ -4,10 +4,11 @@ import { URLS } from '@utils/data'
 import { Home, Mail } from 'react-feather'
 import Iconed from '@components/Iconed.astro'
 ---
+
 <Landing>
   <h1 class="pb-12 leading-snug">
     Oops! <br />
-    There&apos;s no such page 💫
+     There&apos;s no such page 💫
   </h1>
   <h2>Troubleshooting</h2>
   <ul class="list-inside list-disc pb-8">
@@ -20,12 +21,12 @@ import Iconed from '@components/Iconed.astro'
         rel="noreferrer noopener"
         href={`mailto:${URLS.email}`}
         title={`Email: ${URLS.email}`}>
-        <Iconed >
+        <Iconed>
           <Mail slot="icon" />
           <span>Email me</span>
         </Iconed>
       </a>{' '}
-      if you need this page
+       if you need this page
     </li>
     <li>
       <a href="/" title="Home Page">

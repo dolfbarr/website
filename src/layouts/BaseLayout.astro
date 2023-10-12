@@ -7,9 +7,8 @@ import Head from '@components/Head.astro'
   <Head {...Astro.props} />
   <body>
     <slot />
+    <style lang="scss">
+      @import '@styles/variables.scss';
+    </style>
   </body>
 </html>
-
-<style lang="scss">
-  @import '@styles/variables.scss';
-</style>

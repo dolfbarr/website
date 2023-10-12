@@ -5,12 +5,15 @@
     "node": true
   },
   "extends": [
+    "plugin:prettier/recommended",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
     "standard-with-typescript",
-    "plugin:astro/recommended"
+    "plugin:astro/recommended",
+    "plugin:astro/jsx-a11y-strict"
   ],
   "plugins": [
+    "html",
     "react",
     "astro",
     "prettier"
@@ -28,7 +31,6 @@
         ]
       },
       "rules": {
-        "prettier/prettier": "off",
         "react/no-unknown-property": "off",
         "react/jsx-key": "off"
       }

@@ -13,16 +13,14 @@ const { class: className, skills } = Astro.props
     'flex flex-wrap justify-start gap-1 pb-2 font-extralight leading-tight dark:text-gray-300',
     className ?? '',
   ]}>
-  <slot name='prepend' />
-  {skills.map((skill, index) => (
-    <span
-      data-testid="skill"
-      class='rounded-full py-0'>
-      {skill}
-      {index !== skills.length - 1 && (
-        <span class="inline-flex pl-1">·</span>
-      )}
-    </span>
-  ))}
-  <slot name='append' />
+  <slot name="prepend" />
+  {
+    skills.map((skill, index) => (
+      <span data-testid="skill" class="rounded-full py-0">
+        {skill}
+        {index !== skills.length - 1 && <span class="inline-flex pl-1">·</span>}
+      </span>
+    ))
+  }
+  <slot name="append" />
 </p>

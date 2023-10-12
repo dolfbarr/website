@@ -10,8 +10,18 @@ export interface Props {
 }
 type HeadingElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 
-const { id, class: className, headingLevel = 2, href = null, iconSize = 24, ...attrs } = Astro.props
-const TitleElement = (headingLevel > 0 ? 'h' + headingLevel : 'div') as HeadingElement;
+const {
+  id,
+  class: className,
+  headingLevel = 2,
+  href = null,
+  iconSize = 24,
+  ...attrs
+} = Astro.props
+
+const TitleElement = (
+  headingLevel > 0 ? 'h' + headingLevel : 'div'
+) as HeadingElement
 ---
 
 <TitleElement
@@ -26,16 +36,18 @@ const TitleElement = (headingLevel > 0 ? 'h' + headingLevel : 'div') as HeadingE
       'no-underline',
     ]}
     href={href ?? `#${id}`}>
-      {!href && (
+    {
+      !href && (
         <span class="instapaper_ignore not-sr-only hidden flex-col items-center justify-center opacity-0 group-hover:opacity-100 md:inline-flex md:w-8">
           <Hash strokeWidth={3} size={iconSize} />
         </span>
-      )}
-      <span>
-        <slot />
-      </span>
+      )
+    }
+    <span>
+      <slot />
+    </span>
   </a>
   <aside class="flex flex-col justify-center align-baseline">
-    <slot name="aside">
+    <slot name="aside" />
   </aside>
 </TitleElement>
