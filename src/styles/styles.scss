@@ -31,16 +31,3 @@ h5 {
 .hyphens {
   hyphens: auto;
 }
-
-.btn {
-  @apply hover:border-transparent hover:bg-primary hover:text-white dark:hover:bg-primary-dark dark:hover:text-white;
-  @apply focus:ring-2 focus:border-transparent focus:bg-primary focus:text-white dark:focus:bg-primary-dark dark:focus:text-white;
-  @apply rounded border border-primary dark:border-primary-dark;
-  @apply bg-white dark:bg-stone-900 px-2 text-primary transition-colors active:brightness-90 dark:text-primary-dark;
-}
-
-.btn:disabled {
-  @apply border-gray-500 dark:border-gray-400;
-  @apply hover:border-solid hover:bg-transparent;
-  @apply text-gray-500 dark:text-gray-400;
-}
