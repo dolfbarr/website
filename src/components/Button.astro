@@ -11,10 +11,10 @@ const { class: className, ...attrs } = Astro.props
 <button
   class:list={[
     'hover:border-transparent hover:bg-primary hover:text-white dark:hover:bg-primary-dark dark:hover:text-white',
-    'focus:ring-2 focus:border-transparent focus:bg-primary focus:text-white dark:focus:bg-primary-dark dark:focus:text-white',
+    'focus:border-transparent focus:bg-primary focus:text-white focus:ring-2 dark:focus:bg-primary-dark dark:focus:text-white',
     'rounded border border-primary dark:border-primary-dark',
-    'bg-white dark:bg-stone-900 px-2 text-primary transition-colors active:brightness-90 dark:text-primary-dark',
-    'disabled:border-gray-500 disabled:dark:border-gray-400 disabled:hover:border-solid disabled:hover:bg-transparent disabled:text-gray-500 disabled:dark:text-gray-400',
+    'bg-white px-2 text-primary transition-colors active:brightness-90 dark:bg-stone-900 dark:text-primary-dark',
+    'disabled:border-gray-500 disabled:text-gray-500 disabled:hover:border-solid disabled:hover:bg-transparent disabled:dark:border-gray-400 disabled:dark:text-gray-400',
     className,
   ]}
   {...attrs}>

@@ -1,5 +1,6 @@
 ---
 import { Hash } from 'react-feather'
+
 import Link from './Link.astro'
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export interface Props {
@@ -38,7 +39,7 @@ const TitleElement = (
     href={href ?? `#${id}`}>
     {
       !href && (
-        <span class="instapaper_ignore not-sr-only hidden flex-col items-center justify-center opacity-0 group-hover:opacity-100 md:inline-flex md:w-8 transition">
+        <span class="instapaper_ignore not-sr-only hidden flex-col items-center justify-center opacity-0 transition group-hover:opacity-100 md:inline-flex md:w-8">
           <Hash strokeWidth={3} size={iconSize} />
         </span>
       )

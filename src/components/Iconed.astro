@@ -8,7 +8,7 @@ const { class: className } = Astro.props
 ---
 
 <span class:list={['inline-flex items-baseline', className ?? '']}>
-  <span class="icon mr-1 relative top-[1px]">
+  <span class="icon relative top-[1px] mr-1">
     <slot name="icon" />
   </span>
   <slot />

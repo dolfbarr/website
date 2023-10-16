@@ -1,11 +1,12 @@
-import { type PropsWithChildren, type ReactElement } from 'react'
-import type React from 'react'
-import { useEffect, useState } from 'react'
 import { LOCATION } from '@utils/data'
+import React, { useEffect, useState } from 'react'
+import { type ReactElement } from 'react'
+
 type ClockProps = {
   location?: string
-} & PropsWithChildren &
-  React.HTMLAttributes<HTMLButtonElement>
+} & React.HTMLAttributes<HTMLButtonElement>
+
+const CLOCK_INTERVAL = 15_000 // ms
 
 const Clock: React.FC<ClockProps> = ({
   location = LOCATION.timeZone,
@@ -15,7 +16,7 @@ const Clock: React.FC<ClockProps> = ({
   useEffect(() => {
     const timer = setInterval(() => {
       setDate(new Date())
-    }, 1000)
+    }, CLOCK_INTERVAL)
 
     return () => {
       clearInterval(timer)
@@ -33,4 +34,4 @@ const Clock: React.FC<ClockProps> = ({
     </span>
   )
 }
-export default Clock
+export default React.memo(Clock)
