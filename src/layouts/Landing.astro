@@ -1,5 +1,6 @@
 ---
 import Footer from '@components/Footer.astro'
+import Header from '@components/Header.astro'
 import Link from '@components/Link.astro'
 
 import BaseLayout from './BaseLayout.astro'
@@ -12,8 +13,9 @@ import BaseLayout from './BaseLayout.astro'
     class="absolute m-0 inline-block h-[1px] w-[1px] overflow-hidden border-0 p-0 focus:h-auto focus:w-auto">
     Skip to content
   </Link>
-  <div class="flex min-h-screen flex-col items-center justify-center p-4 pt-8">
-    <main class="max-w-screen-md flex-1 px-2 sm:px-6">
+  <div class="flex min-h-screen flex-col items-center justify-center p-4 pt-0">
+    <Header class="max-w-screen-md px-2 sm:px-6" />
+    <main class="max-w-screen-md flex-1 px-2 pt-6 sm:px-6">
       <slot />
     </main>
     <Footer class="max-w-screen-md px-2 sm:px-6" />

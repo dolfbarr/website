@@ -1,0 +1,38 @@
+---
+import { Social } from '@utils/types'
+
+import packageJson from '../../package.json'
+
+import Iconed from './Iconed.astro'
+import Link from './Link.astro'
+import Section from './Section.astro'
+import SocialIcon from './SocialIcon'
+
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+export interface Props {
+  class?: string
+}
+
+const { class: className, ...attrs } = Astro.props
+---
+
+<header class:list={['mt-8 w-full font-play text-xl', className]} {...attrs}>
+  <Section class="flex flex-wrap justify-between gap-4 pb-2">
+    <nav class="flex justify-center align-middle">
+      <ul class="flex justify-center align-middle">
+        <li>
+          <Link href="/" title="About">About</Link>
+        </li>
+      </ul>
+    </nav>
+    <Link
+      isExternal
+      href={packageJson.repository.url}
+      title="Github repository">
+      <Iconed>
+        <SocialIcon icon={Social.Github} />
+        <span class="sr-only"> Site source code</span>
+      </Iconed>
+    </Link>
+  </Section>
+</header>

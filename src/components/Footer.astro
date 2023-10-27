@@ -1,13 +1,8 @@
 ---
 import { CONTACTS } from '@utils/data'
 import { ContactGroup, type Social } from '@utils/types'
-import { GitHub } from 'react-feather'
-
-import packageJson from '../../package.json'
 
 import FooterGroup from './FooterGroup.astro'
-import Iconed from './Iconed.astro'
-import Link from './Link.astro'
 import Section from './Section.astro'
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -35,17 +30,6 @@ const otherContacts = allContacts.filter(
     <FooterGroup contactGroup={otherContacts} />
     <FooterGroup contactGroup={socialContacts} />
     <FooterGroup contactGroup={codeContacts} />
-  </Section>
-  <Section class="flex flex-wrap justify-center gap-4 pb-2">
-    <Link
-      isExternal
-      href={packageJson.repository.url}
-      title="Github repository">
-      <Iconed>
-        <GitHub slot="icon" />
-        <span>Site source code</span>
-      </Iconed>
-    </Link>
   </Section>
   <slot />
 </footer>
