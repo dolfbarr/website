@@ -18,16 +18,6 @@ const { startDate, endDate, present = 'Present', ...attrs } = Astro.props
   </h3>
 
   {
-    Astro.slots.has('description') && (
-      <p class="md:hyphens pb-2 leading-normal">
-        <slot name="description" />
-      </p>
-    )
-  }
-
-  <slot />
-
-  {
     startDate && (
       <p class=" text-gray-500 dark:text-gray-400">
         <Iconed>
@@ -48,6 +38,16 @@ const { startDate, endDate, present = 'Present', ...attrs } = Astro.props
       </p>
     )
   }
+
+  {
+    Astro.slots.has('description') && (
+      <p class="md:hyphens py-2 leading-normal">
+        <slot name="description" />
+      </p>
+    )
+  }
+
+  <slot />
 
   <div class="flex-grow"></div>
 </li>

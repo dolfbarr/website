@@ -70,7 +70,7 @@ const allSkills = [
         isExternal>
         <Workplace companyName={WORK.experience[0].company} />
       </Link>{' '}
-       &{' '}
+       via{' '}
       <Link
         href={WORK.experience[1].url}
         title={WORK.experience[1].company}
@@ -128,7 +128,7 @@ const allSkills = [
       }
     </p>
   </Section>
-  <Section data-testid="experience">
+  <Section data-testid="experience" class="pb-2">
     <Heading id="experience" title="Experience">
       Work Experience · {WORK.totalYearsOfExperience}+{' '}years{' '}
       <div class="flex gap-1" slot="aside">

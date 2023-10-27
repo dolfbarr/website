@@ -5,6 +5,8 @@ import {
   type Workplace,
 } from '@utils/types.ts'
 
+import Config from '../../astro.config'
+
 export const PERSONAL_DATA = {
   firstName: 'Dolf',
   lastName: 'Barr',
@@ -39,8 +41,8 @@ export const URLS: Record<Social, string> = {
   [Social.Instagram]: `https://www.instagram.com/${PERSONAL_DATA.firstName.toLocaleLowerCase()}.${PERSONAL_DATA.lastName.toLocaleLowerCase()}/`,
   [Social.Facebook]: `https://www.facebook.com/${PERSONAL_DATA.nickname}/`,
   [Social.DevTo]: `https://dev.to/${PERSONAL_DATA.nickname}`,
-  [Social.Resume]: '/public/dolf-barr-resume.pdf',
-  [Social.GPG]: '/public/dolf-barr-gpg.key',
+  [Social.Resume]: Config.base + '/public/dolf-barr-resume.pdf',
+  [Social.GPG]: Config.base + '/public/dolf-barr-gpg.key',
 } as const
 
 export const CONTACTS: Record<Social, Contact> = {
