@@ -5,6 +5,7 @@ import packageJson from '../../package.json'
 
 import Iconed from './Iconed.astro'
 import Link from './Link.astro'
+import NavLink from './NavLink.astro'
 import Section from './Section.astro'
 import SocialIcon from './SocialIcon'
 
@@ -19,19 +20,19 @@ const { class: className, ...attrs } = Astro.props
 <header class:list={['mt-8 w-full font-play text-xl', className]} {...attrs}>
   <Section class="flex flex-wrap justify-between gap-4 pb-2">
     <nav class="flex justify-center align-middle">
-      <ul class="flex justify-center align-middle">
+      <ul class="flex justify-center gap-4 align-middle">
         <li>
-          <Link href="/" title="About">About</Link>
+          <NavLink title="About" href="/" />
+        </li>
+        <li>
+          <NavLink title="Resume" href="/resume" />
         </li>
       </ul>
     </nav>
-    <Link
-      isExternal
-      href={packageJson.repository.url}
-      title="Github repository">
+    <Link isExternal href={packageJson.repository.url} title="Site source code">
       <Iconed>
         <SocialIcon icon={Social.Github} />
-        <span class="sr-only"> Site source code</span>
+        <span class="sr-only">Site source code</span>
       </Iconed>
     </Link>
   </Section>

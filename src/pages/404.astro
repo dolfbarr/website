@@ -1,41 +1,44 @@
 ---
 import Iconed from '@components/Iconed.astro'
 import Link from '@components/Link.astro'
+import Section from '@components/Section.astro'
 import Landing from '@layouts/Landing.astro'
 import { URLS } from '@utils/data'
 import { Home, Mail } from 'react-feather'
 ---
 
 <Landing>
-  <h1 class="pb-12 leading-snug">
-    Oops! <br />
-     There&apos;s no such page 💫
-  </h1>
-  <h2>Troubleshooting</h2>
-  <ul class="list-inside list-disc pb-8">
-    <li>
-      Do<strong>bu</strong>le check the URL spelling
-    </li>
-    <li>
-      <Link
-        href={`mailto:${URLS.email}`}
-        title={`Email: ${URLS.email}`}
-        isExternal>
-        <Iconed>
-          <Mail slot="icon" />
-          <span>Email me</span>
-        </Iconed>
-      </Link>{' '}
-       if you need this page
-    </li>
-    <li>
-      <Link href="/" title="Home Page">
-        <span>Redirect to{' '}</span>
-        <Iconed>
-          <Home slot="icon" />
-          <span>home</span>
-        </Iconed>
-      </Link>
-    </li>
-  </ul>
+  <Section class="relative">
+    <h1 class="pb-12 leading-snug">
+      Oops! <br />
+       There&apos;s no such page 💫
+    </h1>
+    <h2>Troubleshooting</h2>
+    <ul class="list-inside list-disc pb-8">
+      <li>
+        Do<strong>bu</strong>le check the URL spelling
+      </li>
+      <li>
+        <Link
+          href={`mailto:${URLS.email}`}
+          title={`Email: ${URLS.email}`}
+          isExternal>
+          <Iconed>
+            <Mail slot="icon" />
+            <span>Email me</span>
+          </Iconed>
+        </Link>{' '}
+         if you need this page
+      </li>
+      <li>
+        <Link href="/" title="Home Page">
+          <span>Redirect to{' '}</span>
+          <Iconed>
+            <Home slot="icon" />
+            <span>home</span>
+          </Iconed>
+        </Link>
+      </li>
+    </ul>
+  </Section>
 </Landing>

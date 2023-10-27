@@ -1,10 +1,13 @@
 ---
+import Config from '../../astro.config'
+
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export interface Props {
   class?: string
   href: string
   title: string
   isExternal?: boolean
+  isAlwaysFresh?: boolean
   'class:list'?: Array<string | boolean>
 }
 
@@ -13,6 +16,7 @@ const {
   'class:list': classList = [],
   href,
   title,
+  isAlwaysFresh = false,
   isExternal = false,
   ...attrs
 } = Astro.props
@@ -21,12 +25,14 @@ const {
 <a
   target={isExternal ? '_blank' : undefined}
   rel={isExternal ? 'noreferrer noopener' : undefined}
-  href={href}
+  href={`${!isExternal ? Config.base : ''}${href}`}
   title={title}
   class:list={[
     'text-primary focus:ring-2 dark:text-primary-dark',
-    'visited:border-blue-800 visited:text-blue-800 visited:dark:border-amber-800 visited:dark:stroke-amber-800 visited:dark:text-amber-800',
-    'visited:hover:decoration-blue-800 [&:visited:hover_*]:decoration-blue-800',
+    !isAlwaysFresh &&
+      'visited:border-blue-800 visited:text-blue-800 visited:dark:border-amber-800 visited:dark:stroke-amber-800 visited:dark:text-amber-800',
+    !isAlwaysFresh &&
+      'visited:hover:decoration-blue-800 [&:visited:hover_*]:decoration-blue-800',
     'hover:decoration-primary [&:hover_*]:decoration-primary',
     'hover:brightness-125',
     'transition [&_*]:transition',

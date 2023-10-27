@@ -1,0 +1,30 @@
+---
+import Config from '../../astro.config'
+
+import Link from './Link.astro'
+
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+export interface Props {
+  class?: string
+  title: string
+  href: string
+}
+const { class: className, title, href, ...attrs } = Astro.props
+const pathname = new URL(Astro.request.url).pathname
+const currentPath = pathname.replace(`${Config.base}`, '').slice(1)
+const isActive = currentPath === href.slice(1)
+---
+
+<>
+  {
+    isActive ? (
+      <span class:list={['border-b-2', className ?? '']} {...attrs}>
+        {title}
+      </span>
+    ) : (
+      <Link href={href} title={title} class:list={[className ?? '']}>
+        {title}
+      </Link>
+    )
+  }
+</>
