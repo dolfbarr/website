@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "sync": "astro sync",
     "astro": "astro",
-    "test": "pnpm run test:e2e",
+    "test:unit": "vitest",
+    "test": "pnpm run test:unit run && pnpm run test:e2e",
     "test:e2e": "npx cypress run",
     "lint": "pnpm run lint:eslint && pnpm run lint:stylelint",
     "lint:eslint": "eslint --ext .js,.ts,.jsx,.tsx,.astro src",
@@ -29,10 +30,14 @@
     "@astrojs/react": "^3.0.3",
     "@astrojs/tailwind": "^5.0.1",
     "@tailwindcss/typography": "^0.5.10",
+    "@testing-library/dom": "^9.3.3",
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^14.0.0",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
     "@typescript-eslint/parser": "^6.7.4",
+    "@vitejs/plugin-react": "^4.1.0",
     "astro": "^3.2.3",
     "cypress": "^13.3.0",
     "eslint": "^8.51.0",
@@ -46,6 +51,7 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.33.2",
+    "jsdom": "^22.1.0",
     "lefthook": "^1.5.1",
     "postcss": "^8.4.31",
     "postcss-html": "^1.5.0",
@@ -59,6 +65,7 @@
     "stylelint-config-recommended-scss": "^13.0.0",
     "stylelint-config-standard": "^34.0.0",
     "stylelint-prettier": "^4.0.2",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.6"
   }
 }
