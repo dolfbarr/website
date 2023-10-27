@@ -9,6 +9,8 @@ pre-push:
       run: pnpm run lint
     type-check:
       run: pnpm run typecheck
+    test:unit:
+      run: pnpm run test:unit
 #
 # pre-commit:
 #   parallel: true
