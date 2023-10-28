@@ -10,7 +10,7 @@ pre-push:
     type-check:
       run: pnpm run typecheck
     test:unit:
-      run: pnpm run test:unit
+      run: pnpm run test:unit run
 #
 # pre-commit:
 #   parallel: true
