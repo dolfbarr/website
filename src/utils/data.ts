@@ -4,6 +4,7 @@ import {
   ContactGroup,
   type Workplace,
 } from '@utils/types.ts'
+import { CONFIG } from 'config'
 
 export const PERSONAL_DATA = {
   firstName: 'Dolf',
@@ -36,8 +37,8 @@ export const URLS: Record<Social, string> = {
   [Social.LinkedIn]: `https://www.linkedin.com/in/${PERSONAL_DATA.nickname}`,
   [Social.Email]: `mail@${PERSONAL_DATA.firstName.toLocaleLowerCase()}.me`,
   [Social.DevTo]: `https://dev.to/${PERSONAL_DATA.nickname}`,
-  [Social.Resume]: '/public/dolf-barr-resume.pdf',
-  [Social.GPG]: '/public/dolf-barr-gpg.key',
+  [Social.Resume]: CONFIG.base + '/public/dolf-barr-resume.pdf',
+  [Social.GPG]: CONFIG.base + '/public/dolf-barr-gpg.key',
 } as const
 
 export const CONTACTS: Record<Social, Contact> = {

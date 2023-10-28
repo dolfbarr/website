@@ -1,4 +1,6 @@
 ---
+import { CONFIG } from 'config'
+
 import Link from './Link.astro'
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -9,7 +11,7 @@ export interface Props {
 }
 const { class: className, title, href, ...attrs } = Astro.props
 const pathname = new URL(Astro.request.url).pathname
-const currentPath = pathname.slice(1)
+const currentPath = pathname.replace(`${CONFIG.base}`, '').slice(1)
 const isActive = currentPath === href.slice(1)
 ---
 

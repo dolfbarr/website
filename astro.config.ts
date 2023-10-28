@@ -2,10 +2,11 @@ import react from '@astrojs/react'
 import tailwind from '@astrojs/tailwind'
 import { defineConfig } from 'astro/config'
 
+import { CONFIG } from './config'
+
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://dolfbarr.github.io',
-  base: '/website',
+  ...CONFIG,
   vite: {
     optimizeDeps: { exclude: ['fsevents'] },
   },
