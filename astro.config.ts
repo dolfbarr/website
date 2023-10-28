@@ -6,6 +6,9 @@ import { defineConfig } from 'astro/config'
 export default defineConfig({
   site: 'https://dolfbarr.github.io',
   base: '/website',
+  vite: {
+    optimizeDeps: { exclude: ['fsevents'] },
+  },
   integrations: [
     react(),
     tailwind({

@@ -1,6 +1,6 @@
 import { Social } from '@utils/types'
 import React from 'react'
-import type { ReactElement } from 'react'
+import { type ReactElement } from 'react'
 import {
   GitHub,
   Twitter,
