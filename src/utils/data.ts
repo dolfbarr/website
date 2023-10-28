@@ -33,13 +33,10 @@ export const LOCATION = {
 export const URLS: Record<Social, string> = {
   [Social.Twitter]: `https://twitter.com/${PERSONAL_DATA.nickname}`,
   [Social.Github]: `https://github.com/${PERSONAL_DATA.nickname}`,
-  [Social.Gitlab]: `https://gitlab.com/${PERSONAL_DATA.nickname}`,
   [Social.Telegram]: `https://${PERSONAL_DATA.nickname}.t.me/`,
   [Social.StackOverflow]: 'https://stackoverflow.com/u/8362049',
   [Social.LinkedIn]: `https://www.linkedin.com/in/${PERSONAL_DATA.nickname}`,
   [Social.Email]: `mail@${PERSONAL_DATA.firstName.toLocaleLowerCase()}.me`,
-  [Social.Instagram]: `https://www.instagram.com/${PERSONAL_DATA.firstName.toLocaleLowerCase()}.${PERSONAL_DATA.lastName.toLocaleLowerCase()}/`,
-  [Social.Facebook]: `https://www.facebook.com/${PERSONAL_DATA.nickname}/`,
   [Social.DevTo]: `https://dev.to/${PERSONAL_DATA.nickname}`,
   [Social.Resume]: Config.base + '/public/dolf-barr-resume.pdf',
   [Social.GPG]: Config.base + '/public/dolf-barr-gpg.key',
@@ -67,16 +64,6 @@ export const CONTACTS: Record<Social, Contact> = {
     title: 'Telegram',
     group: ContactGroup.Social,
   },
-  facebook: {
-    url: URLS.facebook,
-    title: 'Facebook',
-    group: ContactGroup.Social,
-  },
-  instagram: {
-    url: URLS.instagram,
-    title: 'Instagram',
-    group: ContactGroup.Social,
-  },
   twitter: {
     url: URLS.twitter,
     title: 'Twitter',
@@ -90,11 +77,6 @@ export const CONTACTS: Record<Social, Contact> = {
   github: {
     url: URLS.github,
     title: 'GitHub',
-    group: ContactGroup.Code,
-  },
-  gitlab: {
-    url: URLS.gitlab,
-    title: 'Gitlab',
     group: ContactGroup.Code,
   },
   stackoverflow: {

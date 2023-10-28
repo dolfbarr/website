@@ -27,13 +27,10 @@ export type Workplace = {
 export enum Social {
   Twitter = 'twitter',
   Github = 'github',
-  Gitlab = 'gitlab',
   Telegram = 'telegram',
   StackOverflow = 'stackoverflow',
   LinkedIn = 'linkedin',
   Email = 'email',
-  Instagram = 'instagram',
-  Facebook = 'facebook',
   DevTo = 'devto',
   Resume = 'resume',
   GPG = 'gpg',

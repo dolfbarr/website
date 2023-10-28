@@ -1,8 +1,13 @@
 ---
 import { CONTACTS } from '@utils/data'
-import { ContactGroup, type Social } from '@utils/types'
+import { type Social } from '@utils/types'
+import { GitHub } from 'react-feather'
+
+import packageJson from '../../package.json'
 
 import FooterGroup from './FooterGroup.astro'
+import Iconed from './Iconed.astro'
+import Link from './Link.astro'
 import Section from './Section.astro'
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -13,23 +18,20 @@ export interface Props {
 const { class: className, ...attrs } = Astro.props
 
 const allContacts = Object.keys(CONTACTS) as Social[]
-
-const socialContacts = allContacts.filter(
-  (key) => CONTACTS[key].group === ContactGroup.Social,
-)
-const codeContacts = allContacts.filter(
-  (key) => CONTACTS[key].group === ContactGroup.Code,
-)
-const otherContacts = allContacts.filter(
-  (key) => CONTACTS[key].group === ContactGroup.Other,
-)
 ---
 
 <footer class:list={['mt-8 w-full', className]} {...attrs}>
-  <Section class="flex flex-wrap justify-evenly pb-4 text-primary">
-    <FooterGroup contactGroup={otherContacts} />
-    <FooterGroup contactGroup={socialContacts} />
-    <FooterGroup contactGroup={codeContacts} />
+  <Section class="flex flex-wrap justify-evenly pb-1">
+    <FooterGroup contactGroup={allContacts} />
+  </Section>
+  <Section class="mt-2 pb-0 text-center">
+    © Dolf Barr, {new Date().getFullYear()} ·{' '}
+    <Link isExternal href={packageJson.repository.url} title="Source code">
+      <Iconed>
+        <GitHub slot="icon" />
+        <span>Source code</span>
+      </Iconed>
+    </Link>
   </Section>
   <slot />
 </footer>
