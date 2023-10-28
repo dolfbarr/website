@@ -13,6 +13,11 @@ const title = customTitle ?? META.title
 ---
 
 <head>
+  <script>
+    const isDarkMode = localStorage.getItem('theme') === 'dark'
+    isDarkMode && document.documentElement.classList.add('dark')
+  </script>
+
   <title>{title}</title>
 
   <meta charset="utf-8" />

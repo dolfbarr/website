@@ -1,4 +1,7 @@
 ---
+import { Moon, Sun } from 'react-feather'
+
+import Button from './Button.astro'
 import NavLink from './NavLink.astro'
 import Section from './Section.astro'
 
@@ -22,5 +25,65 @@ const { class: className, ...attrs } = Astro.props
         </li>
       </ul>
     </nav>
+    <Button
+      data-theme-button
+      class="relative flex w-10 items-center justify-center rounded-full align-middle">
+      <Sun
+        size={16}
+        data-theme-button-icon
+        data-theme-button-light-icon
+        className="absolute transition-opacity"
+      />
+      <Moon
+        size={16}
+        data-theme-button-icon
+        data-theme-button-dark-icon
+        className="absolute transition-opacity"
+      />
+    </Button>
   </Section>
 </header>
+
+<script>
+  const themeButton = document.querySelector(
+    '[data-theme-button]',
+  ) as HTMLButtonElement
+
+  const lightIcon = document.querySelector('[data-theme-button-light-icon]')
+  const darkIcon = document.querySelector('[data-theme-button-dark-icon]')
+
+  const isDarkMode = localStorage.getItem('theme') === 'dark'
+  lightIcon?.classList.add(isDarkMode ? 'opacity-0' : 'opacity-100')
+  darkIcon?.classList.add(!isDarkMode ? 'opacity-0' : 'opacity-100')
+
+  themeButton.onclick = function themeSwitch() {
+    lightIcon?.classList.add('duration-1000')
+    darkIcon?.classList.add('duration-1000')
+
+    const icons = document.querySelectorAll('[data-theme-button-icon]')
+
+    const wasDarkMode = document.documentElement?.classList.contains('dark')
+
+    icons.forEach((icon) => {
+      icon.classList.add('motion-safe:animate-spin')
+    })
+
+    const removeOrAdd = wasDarkMode ? 'remove' : 'add'
+    const addOrRemove = wasDarkMode ? 'add' : 'remove'
+
+    document.documentElement.classList[removeOrAdd]('dark')
+    lightIcon?.classList[removeOrAdd]('opacity-0')
+    darkIcon?.classList[removeOrAdd]('opacity-100')
+
+    lightIcon?.classList[addOrRemove]('opacity-100')
+    darkIcon?.classList[addOrRemove]('opacity-0')
+
+    localStorage.setItem('theme', wasDarkMode ? 'light' : 'dark')
+
+    setTimeout(() => {
+      icons.forEach((icon) => {
+        icon.classList.remove('motion-safe:animate-spin')
+      })
+    }, 1000)
+  }
+</script>
