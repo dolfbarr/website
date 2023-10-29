@@ -85,7 +85,7 @@ const allSkills = [
         data-map-button
         title={LOCATION.flag + ' ' + LOCATION.title}>
         <Iconed class="relative inline-flex">
-          <MapPin slot="icon" />
+          <MapPin slot="icon" data-map-button-icon className="transition" />
           <span
             class="inline-flex tracking-[.008em] opacity-100 transition-opacity group-hover/location:hidden">
             {LOCATION.title}
@@ -178,13 +178,17 @@ const allSkills = [
     '[data-map-button]',
   ) as HTMLButtonElement
 
-  mapButton.onclick = function mapToggle() {
-    const mapContainer = document.querySelector('[data-map-container]')
+  const mapContainer = document.querySelector('[data-map-container]')
+  const mapButtonIcon = document.querySelector('[data-map-button-icon]')
 
+  mapButton.onclick = function mapToggle() {
     const wasOpen = mapContainer?.classList.contains('h-96')
 
     const removeOrAdd = wasOpen ? 'remove' : 'add'
     const addOrRemove = wasOpen ? 'add' : 'remove'
+
+    mapButton?.classList[removeOrAdd]('shadow-inner', 'bg-gray-50')
+    mapButtonIcon?.classList[removeOrAdd]('rotate-180')
 
     mapContainer?.classList[removeOrAdd]('h-96', 'mb-8')
     mapContainer?.classList[addOrRemove]('h-0', 'mb-0')
