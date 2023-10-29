@@ -9,8 +9,18 @@ export interface Props {
   title: string
   href: string
   isExternal?: boolean
+  analyticsClick: string
+  analyticsTitle?: string
 }
-const { class: className, title, href, isExternal, ...attrs } = Astro.props
+const {
+  class: className,
+  title,
+  href,
+  isExternal,
+  analyticsClick,
+  analyticsTitle,
+  ...attrs
+} = Astro.props
 const pathname = new URL(Astro.request.url).pathname
 const currentPath = pathname.replace(`${CONFIG.base}`, '').slice(1)
 const isActive = currentPath === href.slice(1)
@@ -24,6 +34,8 @@ const isActive = currentPath === href.slice(1)
       </span>
     ) : (
       <Link
+        analyticsClick={analyticsClick}
+        analyticsTitle={analyticsTitle ?? title}
         href={href}
         title={title}
         class:list={[className ?? '']}

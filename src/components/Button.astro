@@ -3,9 +3,17 @@
 export interface Props {
   class?: string
   title?: string
+  analyticsClick: string
+  analyticsTitle?: string
 }
 
-const { class: className, ...attrs } = Astro.props
+const {
+  class: className,
+  analyticsClick,
+  analyticsTitle,
+  title,
+  ...attrs
+} = Astro.props
 ---
 
 <button
@@ -18,6 +26,9 @@ const { class: className, ...attrs } = Astro.props
     'disabled:border-gray-500 disabled:text-gray-500 disabled:hover:border-solid disabled:hover:bg-transparent disabled:dark:border-gray-400 disabled:dark:text-gray-400',
     className ?? '',
   ]}
+  data-goatcounter-click={analyticsClick}
+  data-goatcounter-title={analyticsTitle ?? title}
+  title={title}
   {...attrs}>
   <slot />
 </button>

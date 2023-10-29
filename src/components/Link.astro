@@ -8,6 +8,8 @@ export interface Props {
   title: string
   isExternal?: boolean
   isAlwaysFresh?: boolean
+  analyticsClick: string
+  analyticsTitle?: string
   'class:list'?: Array<string | boolean>
 }
 
@@ -18,6 +20,8 @@ const {
   title,
   isAlwaysFresh = false,
   isExternal = false,
+  analyticsClick,
+  analyticsTitle,
   ...attrs
 } = Astro.props
 ---
@@ -27,6 +31,8 @@ const {
   rel={isExternal ? 'noreferrer noopener' : undefined}
   href={`${!isExternal ? CONFIG.base : ''}${href}`}
   title={title}
+  data-goatcounter-click={analyticsClick}
+  data-goatcounter-title={analyticsTitle ?? title}
   class:list={[
     'text-primary focus:ring-2 dark:text-primary-dark',
     !isAlwaysFresh &&

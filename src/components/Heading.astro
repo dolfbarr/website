@@ -34,6 +34,7 @@ const TitleElement = (
   data-testid={id}
   {...attrs}>
   <Link
+    analyticsClick={id + '-event'}
     class:list={['group inline-flex', !href && 'md:-ml-8']}
     title={title}
     href={href ?? `#${id}`}>

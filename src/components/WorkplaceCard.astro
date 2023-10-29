@@ -22,6 +22,8 @@ const { workplace } = Astro.props
     {
       workplace?.url ? (
         <Link
+          analyticsClick={`workplace-${workplace.company}`}
+          analyticsTitle={workplace.company}
           class="whitespace-nowrap"
           title={workplace.company}
           href={workplace.url}>

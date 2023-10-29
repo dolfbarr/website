@@ -45,6 +45,8 @@ const allSkills = [
             href={`mailto:${CONTACTS.email.url}`}
             title={CONTACTS.email.title + ': ' + URLS.email}
             isExternal
+            analyticsClick="email-top"
+            analyticsTitle={CONTACTS.email.title}
             class="hidden md:inline-block">
             <Mail />
           </Link>
@@ -61,11 +63,15 @@ const allSkills = [
       <Link
         href={WORK.experience[0].url}
         title={WORK.experience[0].company}
+        analyticsClick={`current-workplace-${WORK.experience[0].company}`}
+        analyticsTitle={'Current: ' + WORK.experience[0].company}
         isExternal>
         <Workplace companyName={WORK.experience[0].company} />
       </Link>{' '}
        via{' '}
       <Link
+        analyticsClick={`current-workplace-${WORK.experience[1].company}`}
+        analyticsTitle={'Current: ' + WORK.experience[1].company}
         href={WORK.experience[1].url}
         title={WORK.experience[1].company}
         isExternal>
@@ -73,6 +79,8 @@ const allSkills = [
       </Link>{' '}with {WORK.totalYearsOfExperience}+&nbsp;years of experience
       based in{' '}
       <Button
+        analyticsClick="open-map"
+        analyticsTitle="Open map"
         class="group/location text-base"
         title={LOCATION.flag + ' ' + LOCATION.title}>
         <Iconed class="relative inline-flex">
@@ -130,6 +138,7 @@ const allSkills = [
           isExternal
           href={CONTACTS.resume.url}
           title={CONTACTS.resume.title}
+          analyticsClick="resume-download"
           class="hidden md:inline-block">
           <Download />
           <span class="sr-only">{CONTACTS.resume.title}</span>

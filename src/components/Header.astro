@@ -20,12 +20,19 @@ const { class: className, ...attrs } = Astro.props
     <nav class="flex justify-center align-middle">
       <ul class="flex justify-center gap-4 align-middle">
         <li>
-          <NavLink title="About" href="/">About</NavLink>
+          <NavLink
+            title="About"
+            href="/"
+            analyticsClick="about-page"
+            analyticsTitle="About page">
+            About
+          </NavLink>
         </li>
         <li>
           <NavLink
             href={CONTACTS.resume.url}
             title={CONTACTS.resume.title}
+            analyticsClick="resume-download"
             isExternal>
             <Iconed>
               <ExternalLink slot="icon" />
@@ -36,6 +43,8 @@ const { class: className, ...attrs } = Astro.props
       </ul>
     </nav>
     <Button
+      analyticsClick="switch-theme"
+      analyticsTitle="Switch theme"
       data-theme-button
       class="relative flex w-10 items-center justify-center rounded-full align-middle">
       <Sun

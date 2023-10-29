@@ -23,6 +23,7 @@ const { contactGroup } = Astro.props
           href={`${CONTACTS[contactKey].isEmail ? 'mailto:' : ''}${
             CONTACTS[contactKey].url
           }`}
+          analyticsClick={contactKey + '-event'}
           title={
             CONTACTS[contactKey].title +
             (URLS[contactKey] ? `: ${String(URLS[contactKey])}` : '')
