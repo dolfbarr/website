@@ -52,9 +52,18 @@ const { class: className, ...attrs } = Astro.props
   const lightIcon = document.querySelector('[data-theme-button-light-icon]')
   const darkIcon = document.querySelector('[data-theme-button-dark-icon]')
 
-  const isDarkMode = localStorage.getItem('theme') === 'dark'
+  const localStorageTheme = localStorage.getItem('theme')
+
+  const isDarkMode = localStorageTheme
+    ? localStorageTheme === 'dark'
+    : typeof window !== 'undefined'
+    ? window.matchMedia('(prefers-color-scheme: dark)').matches
+    : false
+
   lightIcon?.classList.add(isDarkMode ? 'opacity-0' : 'opacity-100')
   darkIcon?.classList.add(!isDarkMode ? 'opacity-0' : 'opacity-100')
+
+  isDarkMode && document.documentElement.classList.add('dark')
 
   themeButton.onclick = function themeSwitch() {
     lightIcon?.classList.add('duration-1000')
