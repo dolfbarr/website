@@ -88,7 +88,7 @@ const allSkills = [
       </Button>{' '}
       <Iconed class="font-mono text-lg">
         <ClockIcon slot="icon" strokeWidth={3} />
-        <Clock client:load suppressHydrationWarning />
+        <Clock client:only="react" suppressHydrationWarning />
       </Iconed>
       {'. '}
       <span>
