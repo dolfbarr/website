@@ -25,6 +25,7 @@ export const LOCATION = {
   title: 'Belgrade, Serbia',
   original: 'Београд, Србија',
   timeZone: 'Europe/Belgrade',
+  timeZoneText: 'CET; UTC+01:00 / CEST; UTC+02:00',
   coordinates: [44.8178, 20.457],
   flag: '🇷🇸',
 } as const
