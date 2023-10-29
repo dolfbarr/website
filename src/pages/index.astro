@@ -24,7 +24,7 @@ const allSkills = [
 ---
 
 <Landing>
-  <Section class="relative pb-8">
+  <Section class="relative mb-8">
     <span class="align-center inline-flex flex-wrap">
       <StartOfContentAnchor />
       <Heading
@@ -82,6 +82,7 @@ const allSkills = [
         analyticsClick="open-map"
         analyticsTitle="Open map"
         class="group/location text-base"
+        data-map-button
         title={LOCATION.flag + ' ' + LOCATION.title}>
         <Iconed class="relative inline-flex">
           <MapPin slot="icon" />
@@ -130,7 +131,15 @@ const allSkills = [
       }
     </p>
   </Section>
-  <Section data-testid="experience" class="pb-8">
+
+  <div class="h-0 overflow-hidden transition-all ease-in-out " data-map-container>
+   <iframe
+    class="h-96 w-full rounded-lg"
+    title="Location map"
+    src="https://www.openstreetmap.org/export/embed.html?bbox=6.50390625%2C37.21283151445594%2C34.45312500000001%2C51.481382896100975&amp;layer=mapnik&amp;marker=44.78573392716592%2C20.478515625"></iframe>
+  </div>
+
+  <Section data-testid="experience" class="mb-8">
     <Heading id="experience" title="Experience">
       Work Experience · {WORK.totalYearsOfExperience}+{' '}years{' '}
       <div class="flex gap-1" slot="aside">
@@ -158,3 +167,22 @@ const allSkills = [
     <SkillsList skills={allSkills} />
   </Section>
 </Landing>
+
+<script>
+
+  const mapButton = document.querySelector(
+    '[data-map-button]',
+  ) as HTMLButtonElement
+
+  mapButton.onclick = function mapToggle() {
+    const mapContainer = document.querySelector('[data-map-container]')
+
+    const wasOpen = mapContainer?.classList.contains('h-96')
+
+    const removeOrAdd = wasOpen ? 'remove' : 'add'
+    const addOrRemove = wasOpen ? 'add' : 'remove'
+
+    mapContainer?.classList[removeOrAdd]('h-96', 'mb-8')
+    mapContainer?.classList[addOrRemove]('h-0', 'mb-0')
+  }
+</script>
