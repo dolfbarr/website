@@ -28,6 +28,7 @@ export const LOCATION = {
   timeZoneText: 'CET; UTC+01:00 / CEST; UTC+02:00',
   coordinates: [44.8178, 20.457],
   flag: '🇷🇸',
+  link: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10836685.071292663!2d13.607408663156074!3d44.737441157001975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa3d7b53fbd%3A0x1db8645cf2177ee4!2sBelgrade!5e0!3m2!1sen!2srs!4v1698595027670!5m2!1sen!2srs',
 } as const
 
 export const URLS: Record<Social, string> = {
