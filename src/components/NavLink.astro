@@ -8,8 +8,9 @@ export interface Props {
   class?: string
   title: string
   href: string
+  isExternal?: boolean
 }
-const { class: className, title, href, ...attrs } = Astro.props
+const { class: className, title, href, isExternal, ...attrs } = Astro.props
 const pathname = new URL(Astro.request.url).pathname
 const currentPath = pathname.replace(`${CONFIG.base}`, '').slice(1)
 const isActive = currentPath === href.slice(1)
@@ -19,11 +20,15 @@ const isActive = currentPath === href.slice(1)
   {
     isActive ? (
       <span class:list={['border-b-2', className ?? '']} {...attrs}>
-        {title}
+        <slot />
       </span>
     ) : (
-      <Link href={href} title={title} class:list={[className ?? '']}>
-        {title}
+      <Link
+        href={href}
+        title={title}
+        class:list={[className ?? '']}
+        isExternal={isExternal ?? false}>
+        <slot />
       </Link>
     )
   }

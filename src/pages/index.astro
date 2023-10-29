@@ -11,13 +11,7 @@ import Workplace from '@components/Workplace.astro'
 import WorkplaceCard from '@components/WorkplaceCard.astro'
 import Landing from '@layouts/Landing.astro'
 import { CONTACTS, LOCATION, PERSONAL_DATA, URLS, WORK } from '@utils/data'
-import {
-  MapPin,
-  Clock as ClockIcon,
-  Mail,
-  Download,
-  ExternalLink,
-} from 'react-feather'
+import { MapPin, Clock as ClockIcon, Mail, Download } from 'react-feather'
 
 const allSkills = [
   ...new Set([
@@ -94,7 +88,7 @@ const allSkills = [
       </Button>{' '}
       <Iconed class="font-mono text-lg">
         <ClockIcon slot="icon" strokeWidth={3} />
-        <Clock client:load />
+        <Clock client:load suppressHydrationWarning />
       </Iconed>
       {'. '}
       <span>
@@ -132,11 +126,6 @@ const allSkills = [
     <Heading id="experience" title="Experience">
       Work Experience · {WORK.totalYearsOfExperience}+{' '}years{' '}
       <div class="flex gap-1" slot="aside">
-        <Link href="/resume" title="Go to resume page">
-          <span class="sr-only">Go to resume page</span>
-          <ExternalLink />
-        </Link>
-
         <Link
           isExternal
           href={CONTACTS.resume.url}

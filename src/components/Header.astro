@@ -1,7 +1,9 @@
 ---
-import { Moon, Sun } from 'react-feather'
+import { CONTACTS } from '@utils/data'
+import { ExternalLink, Moon, Sun } from 'react-feather'
 
 import Button from './Button.astro'
+import Iconed from './Iconed.astro'
 import NavLink from './NavLink.astro'
 import Section from './Section.astro'
 
@@ -18,10 +20,18 @@ const { class: className, ...attrs } = Astro.props
     <nav class="flex justify-center align-middle">
       <ul class="flex justify-center gap-4 align-middle">
         <li>
-          <NavLink title="About" href="/" />
+          <NavLink title="About" href="/">About</NavLink>
         </li>
         <li>
-          <NavLink title="Resume" href="/resume" />
+          <NavLink
+            href={CONTACTS.resume.url}
+            title={CONTACTS.resume.title}
+            isExternal>
+            <Iconed>
+              <ExternalLink slot="icon" />
+              <span>Resume</span>
+            </Iconed>
+          </NavLink>
         </li>
       </ul>
     </nav>
@@ -40,6 +50,7 @@ const { class: className, ...attrs } = Astro.props
         data-theme-button-dark-icon
         className="absolute transition-opacity"
       />
+      <span class="sr-only">Switch theme</span>
     </Button>
   </Section>
 </header>
