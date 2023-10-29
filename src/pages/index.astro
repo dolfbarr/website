@@ -132,11 +132,14 @@ const allSkills = [
     </p>
   </Section>
 
-  <div class="h-0 overflow-hidden transition-all ease-in-out " data-map-container>
-   <iframe
-    class="h-96 w-full rounded-lg"
-    title="Location map"
-    src="https://www.openstreetmap.org/export/embed.html?bbox=6.50390625%2C37.21283151445594%2C34.45312500000001%2C51.481382896100975&amp;layer=mapnik&amp;marker=44.78573392716592%2C20.478515625"></iframe>
+  <div
+    class="h-0 overflow-hidden transition-all ease-in-out"
+    data-map-container>
+    <iframe
+      class="h-96 w-full rounded-lg"
+      title="Location map"
+      src={'https://www.openstreetmap.org/export/embed.html?bbox=6.50390625%2C37.21283151445594%2C34.45312500000001%2C51.481382896100975&amp;layer=mapnik&amp;marker=44.78573392716592%2C20.478515625'}>
+    </iframe>
   </div>
 
   <Section data-testid="experience" class="mb-8">
@@ -169,7 +172,6 @@ const allSkills = [
 </Landing>
 
 <script>
-
   const mapButton = document.querySelector(
     '[data-map-button]',
   ) as HTMLButtonElement
