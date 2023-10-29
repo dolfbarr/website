@@ -1,5 +1,6 @@
 ---
 import { META } from '@utils/data'
+import { CONFIG } from 'config'
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export interface Props {
@@ -31,58 +32,65 @@ const title = customTitle ?? META.title
   <meta property="og:description" content={description ?? META.description} />
   <meta name="twitter:creator" content={META.twitterUsername} />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
+    rel="preload"
     href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap"
-    rel="stylesheet"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
   />
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </noscript>
 
   <!-- Light Icons -->
   <link
     rel="icon"
-    href="/public/favicons/favicon_light.ico"
+    href={`${CONFIG.base}/favicons/favicon_light.ico`}
     sizes="32x32"
     media="(prefers-color-scheme: light)"
   />
   <link
     rel="icon"
-    href="/public/favicons/favicon_light.svg"
+    href={`${CONFIG.base}/favicons/favicon_light.svg`}
     type="image/svg+xml"
     media="(prefers-color-scheme: light)"
   />
   <link
     rel="apple-touch-icon"
-    href="/public/favicons/favicon-180x180_light.png"
+    href={`${CONFIG.base}/favicons/favicon-180x180_light.png`}
     media="(prefers-color-scheme: light)"
   />
   <link
     rel="manifest"
-    href="/public/favicons/manifest_light.webmanifest"
+    href={`${CONFIG.base}/favicons/manifest_light.webmanifest`}
     media="(prefers-color-scheme: light)"
   />
 
   <!-- Dark Icons -->
   <link
     rel="icon"
-    href="/public/favicons/favicon_dark.ico"
+    href={`${CONFIG.base}/favicons/favicon_dark.ico`}
     sizes="32x32"
     media="(prefers-color-scheme: dark)"
   />
   <link
     rel="icon"
-    href="/public/favicons/favicon_dark.svg"
+    href={`${CONFIG.base}/favicons/favicon_dark.svg`}
     type="image/svg+xml"
     media="(prefers-color-scheme: dark)"
   />
   <link
     rel="apple-touch-icon"
-    href="/public/favicons/favicon-180x180_dark.png"
+    href={`${CONFIG.base}/favicons/favicon-180x180_dark.png`}
     media="(prefers-color-scheme: dark)"
   />
   <link
     rel="manifest"
-    href="/public/favicons/manifest_dark.webmanifest"
+    href={`${CONFIG.base}/favicons/manifest_dark.webmanifest`}
     media="(prefers-color-scheme: dark)"
   />
 

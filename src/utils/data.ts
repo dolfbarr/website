@@ -37,8 +37,8 @@ export const URLS: Record<Social, string> = {
   [Social.LinkedIn]: `https://www.linkedin.com/in/${PERSONAL_DATA.nickname}`,
   [Social.Email]: `mail@${PERSONAL_DATA.firstName.toLocaleLowerCase()}.me`,
   [Social.DevTo]: `https://dev.to/${PERSONAL_DATA.nickname}`,
-  [Social.Resume]: CONFIG.base + '/public/dolf-barr-resume.pdf',
-  [Social.GPG]: CONFIG.base + '/public/dolf-barr-gpg.key',
+  [Social.Resume]: CONFIG.base + '/dolf-barr-resume.pdf',
+  [Social.GPG]: CONFIG.base + '/dolf-barr-gpg.key',
 } as const
 
 export const CONTACTS: Record<Social, Contact> = {

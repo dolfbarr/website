@@ -1,12 +1,18 @@
 {
+  "name": "DolfBarr",
+  "short_name": "DolfBarr",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "Personal website of Dolf Barr",
   "icons": [
     {
-      "src": "/public/favicons/favicon-192x192_dark.png",
+      "src": "favicon-192x192_dark.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/public/favicons/favicon-512x512_dark.png",
+      "src": "favicon-512x512_dark.png",
       "type": "image/png",
       "sizes": "512x512"
     }
