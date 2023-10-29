@@ -30,7 +30,7 @@ const allSkills = [
 ---
 
 <Landing>
-  <Section class="relative">
+  <Section class="relative pb-8">
     <span class="align-center inline-flex flex-wrap">
       <StartOfContentAnchor />
       <Heading
@@ -128,7 +128,7 @@ const allSkills = [
       }
     </p>
   </Section>
-  <Section data-testid="experience" class="pb-2">
+  <Section data-testid="experience" class="pb-8">
     <Heading id="experience" title="Experience">
       Work Experience · {WORK.totalYearsOfExperience}+{' '}years{' '}
       <div class="flex gap-1" slot="aside">
@@ -155,7 +155,7 @@ const allSkills = [
       }
     </ul>
   </Section>
-  <Section data-testid="skills-section">
+  <Section data-testid="skills-section" class="pb-8">
     <Heading id="skills" title="Skills">Skills</Heading>
     <SkillsList skills={allSkills} />
   </Section>
