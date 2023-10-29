@@ -20,8 +20,8 @@
 
 - Hosted with Github Pages
 
-- HTML -> Jekyll -> e11y -> Gatsby -> Astro
+- HTML → Jekyll → e11y → Gatsby → Astro
 
 ## LICENSE
 
-[MIT](LICENSE)
+[MIT for code, CC BY 4.0 for content & design](LICENSE)
