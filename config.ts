@@ -1,4 +1,4 @@
 export const CONFIG = {
-  site: 'https://dolfbarr.github.io',
-  base: '/website',
+  site: 'https://dolf.me',
+  base: '/',
 }
