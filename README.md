@@ -2,7 +2,6 @@
 
 <div align="center">
   <img src="https://badgen.net/github/checks/dolfbarr/website">
-  <img src="https://badgen.net/github/checks/dolfbarr/website">
   <img src="https://badgen.net/github/last-commit/dolfbarr/website">
   <br>
   <img src="https://badgen.net/github/license/dolfbarr/website">
