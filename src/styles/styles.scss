@@ -28,3 +28,18 @@ html.dark {
 .shiki .language-id {
   display: none;
 }
+
+.link, .prose a {
+  &.can-be-visited {
+    @apply   visited:border-blue-800 visited:text-blue-800 visited:dark:border-amber-800 visited:dark:stroke-amber-800 visited:dark:text-amber-800;
+    @apply    visited:hover:decoration-blue-800 [&:visited:hover_*]:decoration-blue-800 dark:[&:visited:hover_*]:decoration-amber-800 dark:visited:hover:decoration-amber-800;
+  }
+
+  @apply text-primary focus:ring-2 dark:text-primary-dark;
+  @apply  hover:decoration-primary dark:hover:decoration-primary-dark [&:hover_*]:decoration-primary dark:[&:hover_*]:decoration-primary-dark;
+  @apply   hover:brightness-125;
+  @apply transition-[text-decoration-color] [&_*]:transition-[text-decoration-color];
+  @apply  transition-[filter] [&_*]:transition-[filter];
+  @apply  underline [&_*]:underline;
+  @apply  decoration-invisible [&_*]:decoration-invisible;
+}

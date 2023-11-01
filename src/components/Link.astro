@@ -34,17 +34,8 @@ const {
   data-goatcounter-click={analyticsClick}
   data-goatcounter-title={analyticsTitle ?? title}
   class:list={[
-    'text-primary focus:ring-2 dark:text-primary-dark',
-    !isAlwaysFresh &&
-      'visited:border-blue-800 visited:text-blue-800 visited:dark:border-amber-800 visited:dark:stroke-amber-800 visited:dark:text-amber-800',
-    !isAlwaysFresh &&
-      'visited:hover:decoration-blue-800 [&:visited:hover_*]:decoration-blue-800 dark:[&:visited:hover_*]:decoration-amber-800 dark:[&:visited:hover_*]:decoration-amber-800',
-    'hover:decoration-primary dark:hover:decoration-primary-dark [&:hover_*]:decoration-primary dark:[&:hover_*]:decoration-primary-dark',
-    'hover:brightness-125',
-    'transition-[text-decoration-color] [&_*]:transition-[text-decoration-color]',
-    'transition-[filter] [&_*]:transition-[filter]',
-    'underline [&_*]:underline',
-    'decoration-invisible [&_*]:decoration-invisible',
+    'link',
+    !isAlwaysFresh && 'can-be-visited',
     ...classList,
     className,
   ]}
