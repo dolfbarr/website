@@ -1,0 +1,65 @@
+---
+import Link from '@components/Link.astro'
+import { META, URLS } from '@utils/data'
+import { Social } from '@utils/types'
+import { Image } from 'astro:assets'
+
+import Main from './Main.astro'
+
+const { frontmatter } = Astro.props
+
+const githubLink = ''
+---
+
+<Main
+  title={frontmatter.title + ' | ' + META.title}
+  description={frontmatter.description}>
+  <article
+    class:list={[
+      'prose prose-neutral dark:prose-invert lg:prose-lg', // general
+      'prose-pre:border-primary dark:prose-pre:border-primary-dark',
+      'prose-pre:rounded-lg prose-pre:border-2',
+    ]}>
+    {
+      frontmatter.image && (
+        <Image
+          src={frontmatter.image.url}
+          alt={frontmatter.image.alt}
+          width={frontmatter.image.width ?? '1600'}
+          height={frontmatter.image.height ?? '900'}
+          class="aspect-video w-full rounded-lg object-cover"
+        />
+      )
+    }
+    <header class="pb-0">
+      <h1 class="mb-0 pb-2 lg:mb-0 lg:pb-2">{frontmatter.title}</h1>
+      <p class="p-O lg:p-O m-0 text-gray-500 dark:text-gray-400 lg:m-0">
+        <time>{new Date(frontmatter.date).toLocaleDateString()}</time>
+        {frontmatter.tags.map((tag: string) => <span> · #{tag}</span>)}
+      </p>
+    </header>
+
+    <slot />
+
+    <p
+      class="not-sr-only my-6 py-0 text-center text-lg text-gray-500 dark:text-gray-400">
+      · · ·
+    </p>
+    <footer>
+      <Link
+        isExternal
+        href={URLS[Social.Twitter] ?? ''}
+        title="Dicuss on twitter"
+        analyticsClick="discuss-on-twitter">
+        Discuss on Twitter
+      </Link> ·{' '}
+      <Link
+        isExternal
+        href={githubLink}
+        title="Edit on GitHub"
+        analyticsClick="edit-on-github">
+        Edit on GitHub
+      </Link>
+    </footer>
+  </article>
+</Main>

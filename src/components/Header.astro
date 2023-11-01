@@ -30,6 +30,15 @@ const { class: className, ...attrs } = Astro.props
         </li>
         <li>
           <NavLink
+            title="Notes"
+            href="/notes/"
+            analyticsClick="notes-page"
+            analyticsTitle="Notes page">
+            Notes
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
             href={CONTACTS.resume.url}
             title={CONTACTS.resume.title}
             analyticsClick="resume-download"

@@ -2,12 +2,12 @@
 import Iconed from '@components/Iconed.astro'
 import Link from '@components/Link.astro'
 import Section from '@components/Section.astro'
-import Landing from '@layouts/Landing.astro'
+import Main from '@layouts/Main.astro'
 import { URLS } from '@utils/data'
 import { Home, Mail } from 'react-feather'
 ---
 
-<Landing>
+<Main>
   <Section class="relative">
     <h1 class="pb-12">
       Oops! <br />
@@ -22,6 +22,7 @@ import { Home, Mail } from 'react-feather'
         <Link
           href={`mailto:${URLS.email}`}
           title={`Email: ${URLS.email}`}
+          analyticsClick="send-email"
           isExternal>
           <Iconed>
             <Mail slot="icon" />
@@ -31,7 +32,7 @@ import { Home, Mail } from 'react-feather'
          if you need this page
       </li>
       <li>
-        <Link href="/" title="Home Page">
+        <Link href="/" title="Home Page" analyticsClick="home-page">
           <span>Redirect to{' '}</span>
           <Iconed>
             <Home slot="icon" />
@@ -41,4 +42,18 @@ import { Home, Mail } from 'react-feather'
       </li>
     </ul>
   </Section>
-</Landing>
+</Main>
+
+<style>
+  h1 {
+    @apply pb-6 text-6xl;
+  }
+
+  h2 {
+    @apply pb-4 text-4xl;
+  }
+
+  h3 {
+    @apply pb-2 text-2xl;
+  }
+</style>
