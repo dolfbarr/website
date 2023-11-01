@@ -24,14 +24,14 @@ const Clock: React.FC<ClockProps> = ({
   }, [])
 
   return (
-    <span title={LOCATION.timeZoneText}>
+    <time title={LOCATION.timeZoneText}>
       {date.toLocaleTimeString(undefined, {
         hour: '2-digit',
         minute: '2-digit',
         hour12: false,
         timeZone: location,
       })}
-    </span>
+    </time>
   )
 }
 export default React.memo(Clock)
