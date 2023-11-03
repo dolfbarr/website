@@ -3,11 +3,11 @@ import Iconed from '@components/Iconed.astro'
 import Link from '@components/Link.astro'
 import Section from '@components/Section.astro'
 import Main from '@layouts/Main.astro'
-import { URLS } from '@utils/data'
+import { META, URLS } from '@utils/data'
 import { Home, Mail } from 'react-feather'
 ---
 
-<Main>
+<Main title={'404: Not Found' + ' | ' + META.title}>
   <Section class="relative">
     <h1 class="pb-12">
       Oops! <br />

@@ -2,9 +2,10 @@
 import Heading from '@components/Heading.astro'
 import Section from '@components/Section.astro'
 import Main from '@layouts/Main.astro'
+import { META } from '@utils/data'
 ---
 
-<Main>
+<Main title={'Notes' + ' | ' + META.title}>
   <Section>
     <Heading id="Notes" title="Notes Section Anchor" headingLevel={1}>
       Notes
