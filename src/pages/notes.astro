@@ -5,7 +5,7 @@ import Main from '@layouts/Main.astro'
 import { META } from '@utils/data'
 import { getCollection } from 'astro:content'
 
-const notes = await getCollection('notes')
+const notes = (await getCollection('notes')) ?? []
 ---
 
 <Main title={'Notes' + ' | ' + META.title}>

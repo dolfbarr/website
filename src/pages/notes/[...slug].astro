@@ -3,13 +3,17 @@ import { getCollection } from 'astro:content'
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths(): Promise<object[]> {
-  const notes = await getCollection('notes')
-  return notes.map((entry) => ({
-    params: {
-      slug: entry.slug,
-    },
-    props: { entry },
-  }))
+  try {
+    const notes = await getCollection('notes')
+    return notes.map((entry) => ({
+      params: {
+        slug: entry.slug,
+      },
+      props: { entry },
+    }))
+  } catch (e) {
+    return []
+  }
 }
 
 const { entry } = Astro.props
