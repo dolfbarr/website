@@ -24,13 +24,14 @@ const allSkills = [
 ---
 
 <Main>
-  <Section class="relative mb-8">
+  <Section class="relative mb-7">
     <span class="align-center inline-flex flex-wrap">
       <StartOfContentAnchor />
       <Heading
         headingLevel={1}
         id="greeting"
         iconSize={32}
+        class="mb-11"
         title="Main Section Anchor">
         <>
           <span>Hi!</span>
@@ -144,8 +145,8 @@ const allSkills = [
       referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 
-  <Section data-testid="experience" class="mb-8">
-    <Heading id="experience" title="Experience">
+  <Section data-testid="experience" class="mb-7">
+    <Heading id="experience" title="Experience" class="mb-5">
       Work Experience · {WORK.totalYearsOfExperience}+{' '}years{' '}
       <div class="flex gap-1" slot="aside">
         <Link
@@ -159,7 +160,7 @@ const allSkills = [
         </Link>
       </div>
     </Heading>
-    <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+    <ul class="grid grid-cols-1 gap-8 sm:grid-cols-2">
       {
         WORK.experience.map((workplace) => (
           <WorkplaceCard workplace={workplace} />
@@ -167,8 +168,8 @@ const allSkills = [
       }
     </ul>
   </Section>
-  <Section data-testid="skills-section" class="pb-8">
-    <Heading id="skills" title="Skills">Skills</Heading>
+  <Section data-testid="skills-section" class="mb-7">
+    <Heading id="skills" title="Skills" class="mb-5">Skills</Heading>
     <SkillsList skills={allSkills} />
   </Section>
 </Main>
@@ -197,14 +198,14 @@ const allSkills = [
 
 <style>
   h1 {
-    @apply pb-6 text-6xl;
+    @apply text-6xl;
   }
 
   h2 {
-    @apply pb-4 text-4xl;
+    @apply text-4xl;
   }
 
   h3 {
-    @apply pb-2 text-2xl;
+    @apply text-2xl;
   }
 </style>
