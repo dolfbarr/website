@@ -8,10 +8,12 @@ import packageJson from '../../package.json'
 
 import Main from './Main.astro'
 
-const { frontmatter } = Astro.props
+const { frontmatter, file } = Astro.props
 
 const githubLink =
-  packageJson.repository.url + '/edit/main/src/pages' + frontmatter.url
+  packageJson.repository.url +
+  '/edit/main/src/content/notes/' +
+  file.split('/').at(-1)
 ---
 
 <Main
@@ -25,6 +27,7 @@ const githubLink =
       'prose-pre:rounded-lg prose-pre:border-2',
       'prose-figcaption:text-center',
       'prose-img:rounded-lg prose-img:shadow-lg prose-img:shadow-gray-300 prose-img:transition-shadow dark:prose-img:shadow-stone-950',
+      'prose-headings:font-bold',
     ]}>
     {
       frontmatter.image && (

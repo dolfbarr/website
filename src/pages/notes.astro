@@ -1,31 +1,43 @@
 ---
-import Heading from '@components/Heading.astro'
+import Link from '@components/Link.astro'
 import Section from '@components/Section.astro'
 import Main from '@layouts/Main.astro'
 import { META } from '@utils/data'
+import { getCollection } from 'astro:content'
+
+const notes = await getCollection('notes')
 ---
 
 <Main title={'Notes' + ' | ' + META.title}>
-  <Section>
-    <Heading id="Notes" title="Notes Section Anchor" headingLevel={1}>
-      Notes
-    </Heading>
-  </Section>
-  <Section>
-    <p>A bit empty here... for now. 😉</p>
+  <Section class="prose w-full max-w-none prose-headings:font-bold">
+    <h1 class="mb-0 pb-2 text-5xl lg:mb-0 lg:pb-2">Notes 📝</h1>
+    <h2>2023</h2>
+    {
+      notes.length > 0 && (
+        <ul class="ml-0 list-outside list-none pl-0">
+          {(notes ?? []).map((note) => (
+            <li>
+              <h3>
+                <Link
+                  title={note.data.title}
+                  analyticsClick={`notes-${note.slug}`}
+                  href={`/notes/${note.slug}`}>
+                  {note.data.title}
+                </Link>
+              </h3>
+
+              <p class=" text-gray-500 dark:text-gray-400">
+                <span>{new Date(note.data.date).toLocaleDateString()}</span> ·{' '}
+                {note.data.description}
+              </p>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+    <p class="not-sr-only text-center text-gray-500 dark:text-gray-400">
+      · · ·
+    </p>
+    <p class="text-center">A bit empty here... for now. 😉</p>
   </Section>
 </Main>
-
-<style>
-  h1 {
-    @apply pb-6 text-6xl;
-  }
-
-  h2 {
-    @apply pb-4 text-4xl;
-  }
-
-  h3 {
-    @apply pb-2 text-2xl;
-  }
-</style>
