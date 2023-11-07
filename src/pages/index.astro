@@ -96,7 +96,7 @@ const title = 'About'
         data-map-button
         title={LOCATION.flag + ' ' + LOCATION.title}>
         <Iconed class="relative">
-          <MapPin slot="icon" data-map-button-icon className="transition" />
+          <MapPin slot="icon" data-map-button-icon />
           <span
             class="inline-flex tracking-[.008em] opacity-100 transition-opacity group-hover/location:hidden">
             {LOCATION.title}
@@ -105,23 +105,19 @@ const title = 'About'
             {LOCATION.original}
           </span>
         </Iconed>
-      </Button>
+      </Button>{' '}
       <Iconed class="not-sr-only font-mono text-lg">
         <ClockIcon slot="icon" strokeWidth={3} />
         <Clock client:load />
-      </Iconed>
-      {'. '}
-      <span>
-        I&rsquo;m
-        <em>passionate about web</em>
-         and, especially, frontend development. I like to be on the edge of
-        <em>solving business problems</em>
-         & appeal for users and believe that
-        <em>soft skills</em>
-         and
-        <em>clean code</em>
-         matter.
-      </span>
+      </Iconed>. I&rsquo;m
+      <em>passionate about web</em>
+       and, especially, frontend development. I like to be on the edge of
+      <em>solving business problems</em>
+       & appeal for users and believe that
+      <em>soft skills</em>
+       and
+      <em>clean code</em>
+       matter.
     </p>
 
     <p
