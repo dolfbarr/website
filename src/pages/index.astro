@@ -44,10 +44,10 @@ const title = 'About'
         class="mb-9"
         title="Main Section Anchor">
         <>
-          <span>Hi!</span>
+          Hi!
           <br class="sm:hidden" />
-          <span> I&rsquo;m</span>{' '}
-          {PERSONAL_DATA.fullName}{' '}
+           I&rsquo;m
+          {PERSONAL_DATA.fullName}
         </>
         <div
           class="absolute right-0 top-5 flex justify-between gap-4 align-baseline"
@@ -69,8 +69,8 @@ const title = 'About'
       </span>
     </span>
     <p class="hyphens text-xl leading-loose">
-      a{' '}
-      <em>{PERSONAL_DATA.occupation}</em> at{' '}
+      a
+      <em>{PERSONAL_DATA.occupation}</em> at
       <Link
         href={WORK.experience[0].url}
         title={WORK.experience[0].company}
@@ -78,8 +78,8 @@ const title = 'About'
         analyticsTitle={'Current: ' + WORK.experience[0].company}
         isExternal>
         <Workplace companyName={WORK.experience[0].company} />
-      </Link>{' '}
-       via{' '}
+      </Link>
+       via
       <Link
         analyticsClick={`current-workplace-${WORK.experience[1].company}`}
         analyticsTitle={'Current: ' + WORK.experience[1].company}
@@ -87,15 +87,15 @@ const title = 'About'
         title={WORK.experience[1].company}
         isExternal>
         <Workplace companyName={WORK.experience[1].company} />
-      </Link>{' '}with {WORK.totalYearsOfExperience}+&nbsp;years of experience
-      based in{' '}
+      </Link> with {WORK.totalYearsOfExperience}+&nbsp;years of experience based
+      in
       <Button
         analyticsClick="open-map"
         analyticsTitle="Open map"
         class="group/location text-base"
         data-map-button
         title={LOCATION.flag + ' ' + LOCATION.title}>
-        <Iconed class="relative inline-flex">
+        <Iconed class="relative">
           <MapPin slot="icon" data-map-button-icon className="transition" />
           <span
             class="inline-flex tracking-[.008em] opacity-100 transition-opacity group-hover/location:hidden">
@@ -105,7 +105,7 @@ const title = 'About'
             {LOCATION.original}
           </span>
         </Iconed>
-      </Button>{' '}
+      </Button>
       <Iconed class="not-sr-only font-mono text-lg">
         <ClockIcon slot="icon" strokeWidth={3} />
         <Clock client:load />
@@ -157,8 +157,8 @@ const title = 'About'
 
   <Section data-testid="experience" class="mb-9">
     <Heading id="experience" title="Experience" class="mb-5">
-      Work Experience {SEPARATOR}
-      {WORK.totalYearsOfExperience}+{' '}years{' '}
+      Work Experience {SEPARATOR}{' '}
+      {WORK.totalYearsOfExperience}+ years
       <div class="flex gap-1" slot="aside">
         <Link
           isExternal

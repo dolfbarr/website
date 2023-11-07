@@ -7,8 +7,8 @@ export interface Props {
 const { class: className } = Astro.props
 ---
 
-<span class:list={['inline-flex items-baseline', className ?? '']}>
-  <span class="icon relative top-[1px] mr-1">
+<span class:list={['inline-block ', className ?? '']}>
+  <span class="icon relative top-[1px] mr-1 inline-block">
     <slot name="icon" />
   </span>
   <slot />
@@ -24,10 +24,5 @@ const { class: className } = Astro.props
     stroke: context-stroke;
     width: 100%;
     height: 100%;
-    display: flex;
-
-    &::before {
-      content: 'a';
-    }
   }
 </style>

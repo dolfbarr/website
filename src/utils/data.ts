@@ -104,7 +104,7 @@ export const WORK = {
   experience: [
     {
       title: 'Senior Frontend Engineer',
-      company: ' Invitae',
+      company: 'Invitae',
       isContract: true,
       description:
         'Working on the frontend architecture and implementation business processes for web portal & inner tools.',
@@ -131,7 +131,7 @@ export const WORK = {
     },
     {
       title: 'Senior Software Engineer',
-      company: ' QuantumSoft',
+      company: 'QuantumSoft',
       description:
         'Within different teams working on projects for QuantumSoft partners. Most of the time, I am responsible for the frontend architecture and development of the UI and application business logic.',
       startDate: 'Oct ’15',
