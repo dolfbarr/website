@@ -5,7 +5,7 @@ date: 2023-11-07
 
 Hello! I'm Dolf Barr and this is the start of my 'notes' section. Here I plan to talk about frontend development. Additionally, I will explore broader topics in software engineering and computer science.
 
-A little bit about myself:  I have over 10 years of experience as a frontend software engineer. During my career, I've worked in various settings. These range from the dynamic startups to the established tech firms. I'm also a family man with two dachshunds at home.
+A little bit about myself:  I have over 10 years of experience as a frontend software engineer. During my career, I've worked in various settings. These range from the dynamic startups to the established tech firms. I'm also a family man, with a loving household that includes two dachshunds.
 
 English is not my native language. So, I would appreciate any corrections or feedback to aid in improving my writing skills.
 
