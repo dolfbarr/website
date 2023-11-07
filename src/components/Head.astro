@@ -36,7 +36,7 @@ const title = customTitle ?? META.title
   <meta property="og:url" content={`${META.siteUrl}${url}`} />
   <meta property="og:site_name" content={title} />
   <meta property="og:description" content={description ?? META.description} />
-  <meta property="og:image" content={image} />
+  <meta property="og:image" content={META.host + image} />
   <meta name="twitter:creator" content={META.twitterUsername} />
 
   <link
