@@ -7,9 +7,11 @@ import { META, SEPARATOR } from '@utils/data'
 import { getCollection } from 'astro:content'
 
 const notes = (await getCollection('notes')) ?? []
+
+const title = 'Notes'
 ---
 
-<Main title={'Notes' + META.ogTitle}>
+<Main fullTitle={title + META.ogTitle} title={title} url="/notes">
   <Section class="prose w-full max-w-none prose-headings:font-bold">
     <h1 class="mb-0 pb-2 text-5xl lg:mb-0 lg:pb-2">Notes 📝</h1>
     <h2>2023</h2>

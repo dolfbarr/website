@@ -5,9 +5,11 @@ import Section from '@components/Section.astro'
 import Main from '@layouts/Main.astro'
 import { META, URLS } from '@utils/data'
 import { Home, Mail } from 'react-feather'
+
+const title = '404: Not Found'
 ---
 
-<Main title={'404: Not Found' + META.ogTitle}>
+<Main fullTitle={title + META.ogTitle} title={title}>
   <Section class="relative">
     <h1 class="mb-11">
       Oops! <br />

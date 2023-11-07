@@ -21,6 +21,6 @@ const { entry } = Astro.props
 const { Content, remarkPluginFrontmatter } = await entry.render()
 ---
 
-<Note data={remarkPluginFrontmatter} id={entry.id}>
+<Note data={remarkPluginFrontmatter} id={entry.id} slug={entry.slug}>
   <Content />
 </Note>

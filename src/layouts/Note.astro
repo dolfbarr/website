@@ -9,15 +9,21 @@ import packageJson from '../../package.json'
 
 import Main from './Main.astro'
 
-const { data, id } = Astro.props
+const { data, id, slug } = Astro.props
 
 const githubLink =
   packageJson.repository.url + '/edit/main/src/content/notes/' + id
+
+const dateObject = new Date(data.date)
 ---
 
 <Main
-  title={data.title + META.ogTitle}
+  title={data.title}
+  fullTitle={data.title + META.ogTitle}
   description={data.description}
+  date={dateObject.toISOString().split('T')[0]}
+  type="article"
+  url={'/notes/' + slug}
   image={`/notes/${id.split('.').slice(0, -1).join('')}.png`}>
   <article
     class:list={[
@@ -43,7 +49,7 @@ const githubLink =
     <header class="pb-0">
       <h1 class="mb-0 pb-2 lg:mb-0 lg:pb-2">{data.title}</h1>
       <p class="p-O lg:p-O m-0 text-gray-500 dark:text-gray-400 lg:m-0">
-        <time>{new Date(data.date).toLocaleDateString()}</time>
+        <time>{dateObject.toLocaleDateString()}</time>
         {
           (data?.tags ?? []).map((tag: string) => (
             <span>
