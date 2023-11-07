@@ -38,7 +38,7 @@ const { workplace } = Astro.props
     <span>{workplace?.isContract ? ` ${SEPARATOR} contract` : ''}</span>
   </div>
 
-  <span slot="description" class="hyphens">{workplace.description}</span>
+  <span slot="description">{workplace.description}</span>
 
   {
     workplace?.skills && workplace?.skills?.length > 0 && (

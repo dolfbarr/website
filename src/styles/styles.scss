@@ -5,13 +5,8 @@ html, body {
 }
 
 h1, h2, h3, h4, h5 {
-  @apply font-bold dark:text-primary-dark font-play;
+  @apply font-bold font-play;
 }
-
-.hyphens {
-  hyphens: auto;
-}
-
 
 html:not(.dark) {
   .shiki.github-dark {

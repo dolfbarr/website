@@ -41,7 +41,7 @@ const { startDate, endDate, present = 'Present', ...attrs } = Astro.props
 
   {
     Astro.slots.has('description') && (
-      <p class="md:hyphens py-2 leading-normal">
+      <p class="py-2 leading-normal">
         <slot name="description" />
       </p>
     )
