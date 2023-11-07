@@ -24,7 +24,7 @@ const Clock: React.FC<ClockProps> = ({
   }, [])
 
   return (
-    <time title={LOCATION.timeZoneText}>
+    <time title={LOCATION.timeZoneText} dateTime={date.toLocaleTimeString()}>
       {date.toLocaleTimeString(undefined, {
         hour: '2-digit',
         minute: '2-digit',
