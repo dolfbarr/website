@@ -106,10 +106,12 @@ const title = 'About'
           </span>
         </Iconed>
       </Button>{' '}
-      <Iconed class="not-sr-only font-mono text-lg">
-        <ClockIcon slot="icon" strokeWidth={3} />
-        <Clock client:load />
-      </Iconed>. I&rsquo;m
+      <span class="inline-block w-20" data-clock-wrapper>
+        <Iconed class="not-sr-only font-mono text-lg">
+          <ClockIcon slot="icon" strokeWidth={3} />
+          <Clock client:only="react" />
+        </Iconed>.</span
+      > I&rsquo;m
       <em>passionate about web</em>
        and, especially, frontend development. I like to be on the edge of
       <em>solving business problems</em>
@@ -200,6 +202,13 @@ const title = 'About'
 
     mapContainer?.classList[removeOrAdd]('h-96', 'mb-8')
     mapContainer?.classList[addOrRemove]('h-0', 'mb-0')
+  }
+
+  if (window) {
+    window.onload = function updateClockWrapper() {
+      const clockWrapper = document.querySelector('[data-clock-wrapper]')
+      clockWrapper?.classList.remove('w-20')
+    }
   }
 </script>
 
