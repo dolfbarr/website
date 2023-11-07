@@ -7,9 +7,15 @@ export interface Props {
   url?: string
   title?: string
   description?: string
+  image?: string
 }
 
-const { title: customTitle, description, url = '/' } = Astro.props
+const {
+  title: customTitle,
+  description,
+  image = '/dolf-barr.png',
+  url = '/',
+} = Astro.props
 const title = customTitle ?? META.title
 ---
 
@@ -30,6 +36,7 @@ const title = customTitle ?? META.title
   <meta property="og:url" content={`${META.siteUrl}${url}`} />
   <meta property="og:site_name" content={title} />
   <meta property="og:description" content={description ?? META.description} />
+  <meta property="og:image" content={image} />
   <meta name="twitter:creator" content={META.twitterUsername} />
 
   <link
@@ -107,7 +114,6 @@ const title = customTitle ?? META.title
     />
   </noscript>
 
-  <!--  Image?  -->
   <!--  RSS Feed  -->
   <!--  Sitemap  -->
 </head>

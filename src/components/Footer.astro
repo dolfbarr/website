@@ -1,5 +1,5 @@
 ---
-import { CONTACTS } from '@utils/data'
+import { CONTACTS, SEPARATOR } from '@utils/data'
 import { type Social } from '@utils/types'
 import { GitHub } from 'react-feather'
 
@@ -25,7 +25,8 @@ const allContacts = Object.keys(CONTACTS) as Social[]
     <FooterGroup contactGroup={allContacts} />
   </Section>
   <Section class="mt-2 pb-0 text-center text-gray-500 dark:text-gray-400">
-    © Dolf Barr, {new Date().getFullYear()} ·{' '}
+    © Dolf Barr, {new Date().getFullYear()}{' '}
+    {SEPARATOR}{' '}
     <Link
       isExternal
       href={packageJson.repository.url}

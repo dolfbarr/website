@@ -1,6 +1,7 @@
 ---
 title: 'Initial note'
 date: 2023-11-07
+description: "Hello! I'm Dolf Barr and this is the start of my 'notes' section."
 ---
 
 Hello! I'm Dolf Barr and this is the start of my 'notes' section. Here I plan to talk about frontend development. Additionally, I will explore broader topics in software engineering and computer science.

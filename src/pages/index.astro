@@ -10,7 +10,14 @@ import StartOfContentAnchor from '@components/StartOfContentAnchor.astro'
 import Workplace from '@components/Workplace.astro'
 import WorkplaceCard from '@components/WorkplaceCard.astro'
 import Main from '@layouts/Main.astro'
-import { CONTACTS, LOCATION, PERSONAL_DATA, URLS, WORK } from '@utils/data'
+import {
+  CONTACTS,
+  LOCATION,
+  PERSONAL_DATA,
+  SEPARATOR,
+  URLS,
+  WORK,
+} from '@utils/data'
 import { MapPin, Clock as ClockIcon, Mail, Download } from 'react-feather'
 
 const allSkills = [
@@ -124,7 +131,7 @@ const allSkills = [
             </span>
             {index !== PERSONAL_DATA.tagLines.length - 1 && (
               <span class="inline-flex" data-testid="tagLine-separator">
-                ·
+                {SEPARATOR}
               </span>
             )}
           </span>
@@ -147,7 +154,8 @@ const allSkills = [
 
   <Section data-testid="experience" class="mb-9">
     <Heading id="experience" title="Experience" class="mb-5">
-      Work Experience · {WORK.totalYearsOfExperience}+{' '}years{' '}
+      Work Experience {SEPARATOR}
+      {WORK.totalYearsOfExperience}+{' '}years{' '}
       <div class="flex gap-1" slot="aside">
         <Link
           isExternal

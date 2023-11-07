@@ -3,6 +3,7 @@ import Card from '@components/Card.astro'
 import Iconed from '@components/Iconed.astro'
 import SkillsList from '@components/SkillsList.astro'
 import Workplace from '@components/Workplace.astro'
+import { SEPARATOR } from '@utils/data'
 import { type Workplace as WorkplaceType } from '@utils/types'
 import { Code } from 'react-feather'
 
@@ -34,7 +35,7 @@ const { workplace } = Astro.props
       )
     }
 
-    <span>{workplace?.isContract ? ' · contract' : ''}</span>
+    <span>{workplace?.isContract ? ` ${SEPARATOR} contract` : ''}</span>
   </div>
 
   <span slot="description" class="hyphens">{workplace.description}</span>

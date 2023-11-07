@@ -6,6 +6,8 @@ import {
 } from '@utils/types.ts'
 import { CONFIG } from 'config'
 
+export const SEPARATOR = '⋅'
+
 export const PERSONAL_DATA = {
   firstName: 'Dolf',
   lastName: 'Barr',
@@ -185,6 +187,7 @@ export const META = {
   shortDescription: `${PERSONAL_DATA.fullName}, a ${PERSONAL_DATA.occupation} based in ${LOCATION.title}`,
   description: `${PERSONAL_DATA.fullName}, a ${PERSONAL_DATA.occupation} at ${WORK.experience[0]?.company} & ${WORK.experience[1]?.company} with ${WORK.totalYearsOfExperience}+ years of experience based in ${LOCATION.title}. I'm passionate about web and, especially, frontend development.`,
   twitterUsername: `@${PERSONAL_DATA.nickname}`,
+  ogTitle: ` ${SEPARATOR} ${PERSONAL_DATA.fullName}`,
   host: HOST,
   siteUrl: `https://${HOST}`,
   defaultLang: 'en',
