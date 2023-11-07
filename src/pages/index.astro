@@ -13,6 +13,7 @@ import Main from '@layouts/Main.astro'
 import {
   CONTACTS,
   LOCATION,
+  META,
   PERSONAL_DATA,
   SEPARATOR,
   URLS,
@@ -28,9 +29,11 @@ const allSkills = [
       .flat(),
   ]),
 ]
+
+const title = 'About'
 ---
 
-<Main>
+<Main fullTitle={title + META.ogTitle} title={title}>
   <Section class="relative mb-9">
     <span class="align-center inline-flex flex-wrap">
       <StartOfContentAnchor />
