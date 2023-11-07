@@ -8,17 +8,13 @@ import packageJson from '../../package.json'
 
 import Main from './Main.astro'
 
-const { frontmatter, file } = Astro.props
+const { data, id } = Astro.props
 
 const githubLink =
-  packageJson.repository.url +
-  '/edit/main/src/content/notes/' +
-  file.split('/').at(-1)
+  packageJson.repository.url + '/edit/main/src/content/notes/' + id
 ---
 
-<Main
-  title={frontmatter.title + ' | ' + META.title}
-  description={frontmatter.description}>
+<Main title={data.title + ' | ' + META.title} description={data.description}>
   <article
     class:list={[
       'w-full max-w-none',
@@ -30,21 +26,21 @@ const githubLink =
       'prose-headings:font-bold',
     ]}>
     {
-      frontmatter.image && (
+      data.image && (
         <Image
-          src={frontmatter.image.url}
-          alt={frontmatter.image.alt}
-          width={frontmatter.image.width ?? '1600'}
-          height={frontmatter.image.height ?? '900'}
+          src={data.image.url}
+          alt={data.image.alt}
+          width={data.image.width ?? '1600'}
+          height={data.image.height ?? '900'}
           class="aspect-video w-full rounded-lg object-cover"
         />
       )
     }
     <header class="pb-0">
-      <h1 class="mb-0 pb-2 lg:mb-0 lg:pb-2">{frontmatter.title}</h1>
+      <h1 class="mb-0 pb-2 lg:mb-0 lg:pb-2">{data.title}</h1>
       <p class="p-O lg:p-O m-0 text-gray-500 dark:text-gray-400 lg:m-0">
-        <time>{new Date(frontmatter.date).toLocaleDateString()}</time>
-        {(frontmatter?.tags ?? []).map((tag: string) => <span> · #{tag}</span>)}
+        <time>{new Date(data.date).toLocaleDateString()}</time>
+        {(data?.tags ?? []).map((tag: string) => <span> · #{tag}</span>)}
       </p>
     </header>
 
