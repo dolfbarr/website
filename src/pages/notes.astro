@@ -12,7 +12,11 @@ const title = 'Notes'
 ---
 
 <Main fullTitle={title + META.ogTitle} title={title} url="/notes">
-  <Section class="prose w-full max-w-none prose-headings:font-bold">
+  <Section
+    class:list={[
+      'prose w-full max-w-none prose-headings:font-bold',
+      'prose-headings:text-gray-700 dark:prose-headings:text-gray-200',
+    ]}>
     <h1 class="mb-0 pb-2 text-5xl lg:mb-0 lg:pb-2">Notes 📝</h1>
     <h2>2023</h2>
     {
