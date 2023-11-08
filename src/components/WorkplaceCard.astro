@@ -8,6 +8,7 @@ import { type Workplace as WorkplaceType } from '@utils/types'
 import { Code } from 'react-feather'
 
 import Link from './Link.astro'
+import Stack from './Stack.astro'
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export interface Props {
@@ -40,14 +41,5 @@ const { workplace } = Astro.props
 
   <span slot="description">{workplace.description}</span>
 
-  {
-    workplace?.skills && workplace?.skills?.length > 0 && (
-      <SkillsList skills={workplace.skills} class="leading-none">
-        <Iconed slot="prepend" class="self-center">
-          <Code slot="icon" />
-          <span class="sr-only">Tech: </span>
-        </Iconed>
-      </SkillsList>
-    )
-  }
+  <Stack stack={workplace?.skills ?? []} />
 </Card>

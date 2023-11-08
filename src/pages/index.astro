@@ -4,6 +4,7 @@ import Clock from '@components/Clock'
 import Heading from '@components/Heading.astro'
 import Iconed from '@components/Iconed.astro'
 import Link from '@components/Link.astro'
+import ProjectCard from '@components/ProjectCard.astro'
 import Section from '@components/Section.astro'
 import SkillsList from '@components/SkillsList.astro'
 import StartOfContentAnchor from '@components/StartOfContentAnchor.astro'
@@ -15,6 +16,7 @@ import {
   LOCATION,
   META,
   PERSONAL_DATA,
+  PROJECTS,
   SEPARATOR,
   URLS,
   WORK,
@@ -153,6 +155,17 @@ const title = 'About'
       referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 
+  <Section data-testid="projects" class="mb-9">
+    <Heading id="projects" title="Projects" class="mb-1">Projects</Heading>
+    <p class="mb-5 text-gray-500 dark:text-gray-400">
+      I&rsquo;m currently involved in a few small open-source projects. Keep an
+      eye out for more contributions from me soon. 🚀
+    </p>
+    <ul class="grid grid-cols-1 gap-8 gap-x-4 sm:grid-cols-2">
+      {PROJECTS.map((project) => <ProjectCard project={project} />)}
+    </ul>
+  </Section>
+
   <Section data-testid="experience" class="mb-9">
     <Heading id="experience" title="Experience" class="mb-5">
       Work Experience {SEPARATOR}{' '}
@@ -177,6 +190,7 @@ const title = 'About'
       }
     </ul>
   </Section>
+
   <Section data-testid="skills-section" class="mb-9">
     <Heading id="skills" title="Skills" class="mb-5">Skills</Heading>
     <SkillsList skills={allSkills} />

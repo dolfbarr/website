@@ -1,0 +1,58 @@
+---
+import Card from '@components/Card.astro'
+import { SEPARATOR } from '@utils/data'
+import { type Project } from '@utils/types'
+import { GitHub, Star } from 'react-feather'
+
+import Iconed from './Iconed.astro'
+import Link from './Link.astro'
+import Stack from './Stack.astro'
+
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+export interface Props {
+  project: Project
+}
+
+const { project } = Astro.props
+---
+
+<Card>
+  <div slot="title" class="flex items-center justify-between align-middle">
+    <span class="flex">
+      {
+        project?.url ? (
+          <Link
+            analyticsClick={`workplace-${project.title}`}
+            analyticsTitle={project.title}
+            class="whitespace-nowrap"
+            title={project.title}
+            href={project.url}>
+            {project.title}
+          </Link>
+        ) : (
+          <span>{project.title}</span>
+        )
+      }
+      {
+        project.stars && (
+          <Iconed class="relative top-2 ml-1 text-base">
+            <Star slot="icon" />
+            {project.stars}+
+          </Iconed>
+        )
+      }
+    </span>
+    <Link
+      class="flex flex-col justify-center align-baseline"
+      analyticsClick={`workplace-${project.title}-github`}
+      analyticsTitle={project.title + '-github'}
+      title={project.title + '-github'}
+      href={project.github}>
+      <GitHub />
+    </Link>
+  </div>
+
+  <span class="py-2">{project.description}</span>
+
+  <Stack stack={project.stack ?? []} />
+</Card>

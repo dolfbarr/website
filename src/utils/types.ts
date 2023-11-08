@@ -13,6 +13,15 @@ export type Contact = {
   group?: ContactGroup
 }
 
+export type Project = {
+  title: string
+  description: string
+  stack?: string[]
+  github: string
+  url?: string
+  stars?: number
+}
+
 export type Workplace = {
   title: string
   company: string

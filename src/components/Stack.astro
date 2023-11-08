@@ -1,0 +1,24 @@
+---
+import { Code } from "react-feather";
+import Iconed from "./Iconed.astro";
+import SkillsList from "./SkillsList.astro";
+
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+export interface Props {
+  stack?: string[]
+}
+
+const { stack } = Astro.props
+---
+<>
+{
+    stack && stack?.length > 0 && (
+      <SkillsList skills={stack} class="leading-none">
+        <Iconed slot="prepend" class="self-center">
+          <Code slot="icon" />
+          <span class="sr-only">Tech: </span>
+        </Iconed>
+      </SkillsList>
+    )
+  }
+  </>

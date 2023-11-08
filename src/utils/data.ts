@@ -3,6 +3,7 @@ import {
   type Contact,
   ContactGroup,
   type Workplace,
+  type Project,
 } from '@utils/types.ts'
 import { CONFIG } from 'config'
 
@@ -93,6 +94,24 @@ export const CONTACTS: Record<Social, Contact> = {
     group: ContactGroup.Social,
   },
 }
+
+export const PROJECTS: Project[] = [
+  {
+    title: '🪵 react-log-hook',
+    description:
+      'Lightweight & customizable logging hook for your react components lifecycle',
+    stack: ['React', 'TypeScript', 'testing-library'],
+    github: 'https://github.com/dolfbarr/react-log-hook',
+    stars: 40,
+  },
+  {
+    title: '🍅 pimer',
+    description: 'Simple & minimalistic pomodoro app',
+    stack: ['Svelte', 'JavaScript', 'tailwind'],
+    github: 'https://github.com/dolfbarr/pimer',
+    url: 'https://dolfbarr.github.io/pimer/',
+  },
+]
 
 export const WORK = {
   totalYearsOfExperience: Math.abs(
