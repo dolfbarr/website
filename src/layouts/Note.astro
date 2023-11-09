@@ -50,7 +50,7 @@ const dateObject = new Date(data.date)
     }
     <header class="pb-0">
       <h1 class="mb-0 pb-2 lg:mb-0 lg:pb-2">{data.title}</h1>
-      <p class="p-O lg:p-O m-0 text-gray-500 dark:text-gray-400 lg:m-0">
+      <p class="p-O lg:p-O dimmed m-0 lg:m-0">
         <time>{dateObject.toLocaleDateString()}</time>
         {
           (data?.tags ?? []).map((tag: string) => (

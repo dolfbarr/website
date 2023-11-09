@@ -1,10 +1,14 @@
 ---
+import Heading from '@components/Heading.astro'
 import Link from '@components/Link.astro'
 import Section from '@components/Section.astro'
 import Separator from '@components/Separator.astro'
+import StartOfContentAnchor from '@components/StartOfContentAnchor.astro'
 import Main from '@layouts/Main.astro'
 import { META, SEPARATOR } from '@utils/data'
 import { getCollection } from 'astro:content'
+
+import '@styles/landing.scss'
 
 const notes = (await getCollection('notes')) ?? []
 
@@ -12,19 +16,22 @@ const title = 'Notes'
 ---
 
 <Main fullTitle={title + META.ogTitle} title={title} url="/notes">
-  <Section
-    class:list={[
-      'prose w-full max-w-none prose-headings:font-bold',
-      'prose-headings:text-gray-700 dark:prose-headings:text-gray-200',
-    ]}>
-    <h1 class="mb-0 pb-2 text-5xl lg:mb-0 lg:pb-2">Notes 📝</h1>
-    <h2>2023</h2>
+  <Section>
+    <span class="align-center inline-flex flex-wrap">
+      <StartOfContentAnchor />
+      <Heading headingLevel={1} id="notes" class="mb-9" title="Notes">
+        Notes
+      </Heading>
+
+      <span class="ml-4 text-6xl sm:inline-flex"> 📝</span>
+    </span>
+    <Heading headingLevel={2} id="2023" class="mb-9" title="2023">2023</Heading>
     {
       notes.length > 0 && (
         <ul class="ml-0 list-outside list-none pl-0">
           {(notes ?? []).map((note) => (
-            <li>
-              <h3>
+            <li class="mb-5">
+              <h3 class="small-heading">
                 <Link
                   title={note.data.title}
                   analyticsClick={`notes-${note.slug}`}
@@ -33,7 +40,7 @@ const title = 'Notes'
                 </Link>
               </h3>
 
-              <p class=" text-gray-500 dark:text-gray-400">
+              <p class="dimmed">
                 <span>{new Date(note.data.date).toLocaleDateString()}</span>
                 {note.data.description && (
                   <>
@@ -48,6 +55,6 @@ const title = 'Notes'
       )
     }
     <Separator />
-    <p class="text-center">A bit empty here... for now. 😉</p>
+    <p class="dimmed text-center">A bit empty here... for now. 😉</p>
   </Section>
 </Main>

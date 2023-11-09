@@ -23,6 +23,8 @@ import {
 } from '@utils/data'
 import { MapPin, Clock as ClockIcon, Mail, Download } from 'react-feather'
 
+import '@styles/landing.scss'
+
 const allSkills = [
   ...new Set([
     ...WORK.experience
@@ -125,18 +127,11 @@ const title = 'About'
     </p>
 
     <p
-      class="mt-6 flex flex-wrap justify-center gap-2 text-center text-xl leading-loose">
+      class="mt-6 flex flex-wrap justify-center overflow-hidden text-center text-xl leading-loose">
       {
-        PERSONAL_DATA.tagLines.map((tagLine, index) => (
-          <span class="flex flex-wrap justify-center gap-2">
-            <span class="inline-flex" data-testid="tagLine">
-              {tagLine}
-            </span>
-            {index !== PERSONAL_DATA.tagLines.length - 1 && (
-              <span class="inline-flex" data-testid="tagLine-separator">
-                {SEPARATOR}
-              </span>
-            )}
+        PERSONAL_DATA.tagLines.map((tagLine) => (
+          <span data-testid="tagLine" class="tag relative mr-8">
+            {tagLine}
           </span>
         ))
       }
@@ -157,11 +152,11 @@ const title = 'About'
 
   <Section data-testid="projects" class="mb-9">
     <Heading id="projects" title="Projects" class="mb-1">Projects</Heading>
-    <p class="mb-5 text-gray-500 dark:text-gray-400">
+    <p class="dimmed mb-5">
       I&rsquo;m currently involved in a few small open-source projects. Keep an
       eye out for more contributions from me soon 🚀
     </p>
-    <ul class="grid grid-cols-1 gap-8 gap-x-4 sm:grid-cols-2">
+    <ul class="landing-grid">
       {PROJECTS.map((project) => <ProjectCard project={project} />)}
     </ul>
   </Section>
@@ -182,7 +177,7 @@ const title = 'About'
         </Link>
       </div>
     </Heading>
-    <ul class="grid grid-cols-1 gap-8 gap-x-4 sm:grid-cols-2">
+    <ul class="landing-grid">
       {
         WORK.experience.map((workplace) => (
           <WorkplaceCard workplace={workplace} />
@@ -191,7 +186,7 @@ const title = 'About'
     </ul>
   </Section>
 
-  <Section data-testid="skills-section" class="mb-9">
+  <Section data-testid="skills-section" class="mb-9 text-current">
     <Heading id="skills" title="Skills" class="mb-5">Skills</Heading>
     <SkillsList skills={allSkills} />
   </Section>
@@ -227,15 +222,40 @@ const title = 'About'
 </script>
 
 <style>
-  h1 {
-    @apply text-6xl;
+  .tag::after {
+    content: '⋅';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: -0.5em;
+    width: 0;
   }
 
-  h2 {
-    @apply text-4xl;
+  .tag:last-of-type:after {
+    display: none;
   }
 
-  h3 {
-    @apply text-2xl;
+  @media (max-width: 410px) {
+    .tag:after {
+      display: none;
+    }
+  }
+
+  @media (min-width: 410px) and (max-width: 418px) {
+    .tag:nth-child(1):after {
+      display: none;
+    }
+  }
+
+  @media (min-width: 419px) and (max-width: 624px) {
+    .tag:nth-child(2n):after {
+      display: none;
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 672px) {
+    .tag:nth-child(2n):after {
+      display: none;
+    }
   }
 </style>

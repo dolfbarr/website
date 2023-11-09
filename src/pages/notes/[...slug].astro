@@ -1,4 +1,5 @@
 ---
+import StartOfContentAnchor from '@components/StartOfContentAnchor.astro'
 import Note from '@layouts/Note.astro'
 import { getCollection } from 'astro:content'
 
@@ -22,5 +23,6 @@ const { Content, remarkPluginFrontmatter } = await entry.render()
 ---
 
 <Note data={remarkPluginFrontmatter} id={entry.id} slug={entry.slug}>
+  <StartOfContentAnchor />
   <Content />
 </Note>

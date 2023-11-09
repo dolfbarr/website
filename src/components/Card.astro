@@ -13,13 +13,13 @@ const { startDate, endDate, present = 'Present', ...attrs } = Astro.props
 ---
 
 <li class="flex flex-col" {...attrs}>
-  <h3 class="mb-3 text-2xl font-normal leading-normal">
+  <h3 class="small-heading">
     <slot name="title" />
   </h3>
 
   {
     startDate && (
-      <p class=" text-gray-500 dark:text-gray-400">
+      <p class="dimmed">
         <Iconed>
           <Calendar strokeWidth={3} slot="icon" />
           <span>{startDate}</span>

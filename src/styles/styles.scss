@@ -38,3 +38,7 @@ html.dark {
   @apply  underline [&_*]:underline;
   @apply  decoration-invisible [&_*]:decoration-invisible;
 }
+
+.dimmed {
+   @apply text-gray-500 dark:text-gray-400;
+}
