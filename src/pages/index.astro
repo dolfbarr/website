@@ -74,25 +74,39 @@ const title = 'About'
     </span>
     <p class="text-xl leading-loose">
       a
-      <em>{PERSONAL_DATA.occupation}</em> at
-      <Link
-        href={WORK.experience[0].url}
-        title={WORK.experience[0].company}
-        analyticsClick={`current-workplace-${WORK.experience[0].company}`}
-        analyticsTitle={'Current: ' + WORK.experience[0].company}
-        isExternal>
-        <Workplace companyName={WORK.experience[0].company} />
-      </Link>
-       via
-      <Link
-        analyticsClick={`current-workplace-${WORK.experience[1].company}`}
-        analyticsTitle={'Current: ' + WORK.experience[1].company}
-        href={WORK.experience[1].url}
-        title={WORK.experience[1].company}
-        isExternal>
-        <Workplace companyName={WORK.experience[1].company} />
-      </Link> with {WORK.totalYearsOfExperience}+&nbsp;years of experience based
-      in
+      <em>{PERSONAL_DATA.occupation}</em>{
+        WORK.experience[0] && (
+          <span>
+            {' '}
+            at
+            <Link
+              href={WORK.experience[0].url}
+              title={WORK.experience[0].company}
+              analyticsClick={`current-workplace-${WORK.experience[0].company}`}
+              analyticsTitle={'Current: ' + WORK.experience[0].company}
+              isExternal>
+              <Workplace companyName={WORK.experience[0].company} />
+            </Link>
+          </span>
+        )
+      }
+      {
+        WORK.experience[1] && (
+          <span>
+            {' '}
+            via
+            <Link
+              analyticsClick={`current-workplace-${WORK.experience[1].company}`}
+              analyticsTitle={'Current: ' + WORK.experience[1].company}
+              href={WORK.experience[1].url}
+              title={WORK.experience[1].company}
+              isExternal>
+              <Workplace companyName={WORK.experience[1].company} />
+            </Link>
+          </span>
+        )
+      }
+       with {WORK.totalYearsOfExperience}+&nbsp;years of experience based in
       <Button
         analyticsClick="open-map"
         analyticsTitle="Open map"

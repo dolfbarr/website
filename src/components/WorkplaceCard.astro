@@ -17,7 +17,7 @@ const { workplace } = Astro.props
 
 <Card startDate={workplace.startDate} endDate={workplace.endDate}>
   <div slot="title">
-    <span>{workplace.title}</span>
+    <div>{workplace.title}</div>
     {
       workplace?.url ? (
         <Link

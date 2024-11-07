@@ -30,7 +30,7 @@ export type Workplace = {
   skills?: string[]
   startDate: string
   endDate?: string
-  url?: string
+  url: string
 }
 
 export enum Social {
@@ -42,5 +42,4 @@ export enum Social {
   Email = 'email',
   DevTo = 'devto',
   Resume = 'resume',
-  GPG = 'gpg',
 }

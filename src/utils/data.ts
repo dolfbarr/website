@@ -43,18 +43,12 @@ export const URLS: Record<Social, string> = {
   [Social.Email]: `mail@${PERSONAL_DATA.firstName.toLocaleLowerCase()}.me`,
   [Social.DevTo]: `https://dev.to/${PERSONAL_DATA.nickname}`,
   [Social.Resume]: CONFIG.base + '/dolf-barr-resume.pdf',
-  [Social.GPG]: CONFIG.base + '/dolf-barr-gpg.key',
 } as const
 
 export const CONTACTS: Record<Social, Contact> = {
   resume: {
     url: URLS.resume,
     title: 'Download resume in PDF',
-    group: ContactGroup.Other,
-  },
-  gpg: {
-    url: URLS.gpg,
-    title: 'Download GPG Key',
     group: ContactGroup.Other,
   },
   email: {
