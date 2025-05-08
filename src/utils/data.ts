@@ -140,6 +140,7 @@ export const WORK = {
         'Python (Django)',
       ],
       startDate: 'Apr ’19',
+      endDate: 'Oct ’24',
       url: 'https://invitae.com',
     },
     {
@@ -148,6 +149,7 @@ export const WORK = {
       description:
         'Within different teams working on projects for QuantumSoft partners. Most of the time, I am responsible for the frontend architecture and development of the UI and application business logic.',
       startDate: 'Oct ’15',
+      endDate: 'May ’25',
       url: 'https://quantumsoft.pro',
     },
     {
