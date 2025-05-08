@@ -116,6 +116,15 @@ export const WORK = {
 
   experience: [
     {
+      title: 'Senior Software Engineer',
+      company: 'QuantumSoft',
+      description:
+        'Within different teams working on projects for QuantumSoft partners. Most of the time, I am responsible for the frontend architecture and development of the UI and application business logic.',
+      startDate: 'Oct ’15',
+      endDate: 'May ’25',
+      url: 'https://quantumsoft.pro',
+    },
+    {
       title: 'Senior Frontend Engineer',
       company: 'Invitae',
       isContract: true,
@@ -142,15 +151,6 @@ export const WORK = {
       startDate: 'Apr ’19',
       endDate: 'Oct ’24',
       url: 'https://invitae.com',
-    },
-    {
-      title: 'Senior Software Engineer',
-      company: 'QuantumSoft',
-      description:
-        'Within different teams working on projects for QuantumSoft partners. Most of the time, I am responsible for the frontend architecture and development of the UI and application business logic.',
-      startDate: 'Oct ’15',
-      endDate: 'May ’25',
-      url: 'https://quantumsoft.pro',
     },
     {
       title: 'Frontend Engineer',
