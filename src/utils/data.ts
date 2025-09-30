@@ -20,8 +20,8 @@ export const PERSONAL_DATA = {
       this.lastName.toLocaleLowerCase(),
     )}`
   },
-  occupation: 'senior frontend engineer',
-  tagLines: ['💻 frontend engineer', '☕️ coffee driven', '🏡 remote advocate'],
+  occupation: 'senior software engineer',
+  tagLines: ['💻 software engineer', '☕️ coffee driven', '🏡 remote advocate'],
 } as const
 
 export const LOCATION = {
@@ -116,6 +116,20 @@ export const WORK = {
 
   experience: [
     {
+      title: 'Senior Frontend Engineer',
+      company: 'Semrush',
+      startDate: 'Jun  ’25',
+      url: 'https://semrush.com',
+      skills: [
+        'Javascript',
+        'React.js',
+        'Typescript',
+        'React Flow',
+        'HTML',
+        'CSS',
+      ],
+    },
+    {
       title: 'Senior Software Engineer',
       company: 'QuantumSoft',
       description:
@@ -123,45 +137,54 @@ export const WORK = {
       startDate: 'Oct ’15',
       endDate: 'May ’25',
       url: 'https://quantumsoft.pro',
+      skills: [
+        'Javascript',
+        'React.js',
+        'Typescript',
+        'Python',
+        'HTML',
+        'CSS',
+        'PHP',
+      ],
     },
     {
-      title: 'Senior Frontend Engineer',
+      title: 'Senior Software Engineer (Frontend)',
       company: 'Invitae',
       isContract: true,
       description:
         'Working on the frontend architecture and implementation business processes for web portal & inner tools.',
       skills: [
         'Javascript',
+        'React.js',
         'Typescript',
+        'Python',
         'HTML',
         'CSS',
         'Less',
         'Stylus',
         'Sass',
         'Node.js (NestJS)',
-        'Redux-Forms',
+        'Cypress',
         'React Hook Form',
-        'Formik',
         'Yup',
         'Storybook',
         'Testing Library',
-        'Cypress',
-        'Python (Django)',
       ],
       startDate: 'Apr ’19',
       endDate: 'Oct ’24',
       url: 'https://invitae.com',
     },
     {
-      title: 'Frontend Engineer',
+      title: 'Fullstack Engineer',
       company: 'Mind Doodle',
       isContract: true,
       description:
         'Responsibility for the frontend architecture and development of the UI and application business logic.',
       skills: [
         'Javascript',
-        'Flow',
+        'React.js',
         'Typescript',
+        'Flow',
         'HTML',
         'CSS',
         'Less',
@@ -171,6 +194,7 @@ export const WORK = {
         'Cytoscape',
         'd3',
         'Draft.js',
+        'PHP',
       ],
       startDate: 'Aug ’16',
       endDate: 'Mar ’19',
@@ -184,6 +208,15 @@ export const WORK = {
       startDate: 'Nov ’13',
       endDate: 'Sep ’15',
       url: 'https://kreosoft.ru',
+      skills: [
+        'Javascript',
+        'jQuery',
+        'CSS',
+        'HTML',
+        'PHP',
+        'Python',
+        'Bootstrap',
+      ],
     },
   ] as Workplace[],
 } as const
@@ -200,7 +233,7 @@ export const HOST = 'dolf.me'
 export const META = {
   title: `${PERSONAL_DATA.fullName}, ${PERSONAL_DATA.occupation}`,
   shortDescription: `${PERSONAL_DATA.fullName}, a ${PERSONAL_DATA.occupation} based in ${LOCATION.title}`,
-  description: `${PERSONAL_DATA.fullName}, a ${PERSONAL_DATA.occupation} at ${WORK.experience[0]?.company} & ${WORK.experience[1]?.company} with ${WORK.totalYearsOfExperience}+ years of experience based in ${LOCATION.title}. I'm passionate about web and, especially, frontend development.`,
+  description: `${PERSONAL_DATA.fullName}, a ${PERSONAL_DATA.occupation} at ${WORK.experience[0]?.company} with ${WORK.totalYearsOfExperience}+ years of experience based in ${LOCATION.title}. I'm passionate about web and, especially, frontend development.`,
   twitterUsername: `@${PERSONAL_DATA.nickname}`,
   ogTitle: ` ${SEPARATOR} ${PERSONAL_DATA.fullName}`,
   host: HOST,
