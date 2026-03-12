@@ -26,9 +26,22 @@ const title = customTitle ?? META.title
 ---
 
 <head>
-  <script>
-    const isDarkMode = localStorage.getItem('theme') === 'dark'
-    isDarkMode && document.documentElement.classList.add('dark')
+  <script is:inline>
+    ;(() => {
+      try {
+        const localStorageTheme = localStorage.getItem('theme')
+        const isDarkMode = localStorageTheme
+          ? localStorageTheme === 'dark'
+          : window.matchMedia('(prefers-color-scheme: dark)').matches
+
+        document.documentElement.classList.toggle('dark', isDarkMode)
+        document.documentElement.style.colorScheme = isDarkMode
+          ? 'dark'
+          : 'light'
+      } catch {
+        document.documentElement.style.colorScheme = 'light'
+      }
+    })()
   </script>
 
   <!-- Meta -->

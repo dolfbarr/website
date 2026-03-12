@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 
 import Clock from './Clock'
 
@@ -8,8 +8,12 @@ describe('Clock', () => {
     vi.useFakeTimers()
   })
 
+  afterEach(() => {
+    vi.useRealTimers()
+  })
+
   it('renders time for specified location', () => {
-    const date = new Date('2023-27-12 00:00:00 UTC')
+    const date = new Date('2023-12-27T00:00:00.000Z')
     vi.setSystemTime(date)
     render(<Clock location="Europe/Belgrade" />)
 
@@ -19,7 +23,7 @@ describe('Clock', () => {
           hour: '2-digit',
           minute: '2-digit',
           hour12: false,
-          timeZone: 'Europe / Belgrade',
+          timeZone: 'Europe/Belgrade',
         }),
       ),
     ).toBeInTheDocument()

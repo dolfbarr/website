@@ -59,14 +59,12 @@ const { class: className, ...attrs } = Astro.props
       <Sun
         size={16}
         data-theme-button-icon
-        data-theme-button-light-icon
-        className="absolute transition-opacity"
+        className="absolute opacity-100 transition-opacity dark:opacity-0"
       />
       <Moon
         size={16}
         data-theme-button-icon
-        data-theme-button-dark-icon
-        className="absolute transition-opacity"
+        className="absolute opacity-0 transition-opacity dark:opacity-100"
       />
       <span class="sr-only">Switch theme</span>
     </Button>
@@ -76,52 +74,32 @@ const { class: className, ...attrs } = Astro.props
 <script>
   const themeButton = document.querySelector(
     '[data-theme-button]',
-  ) as HTMLButtonElement
+  ) as HTMLButtonElement | null
 
-  const lightIcon = document.querySelector('[data-theme-button-light-icon]')
-  const darkIcon = document.querySelector('[data-theme-button-dark-icon]')
+  if (themeButton) {
+    themeButton.onclick = function themeSwitch() {
+      const icons = themeButton.querySelectorAll('[data-theme-button-icon]')
 
-  const localStorageTheme = localStorage.getItem('theme')
+      const wasDarkMode = document.documentElement.classList.contains('dark')
 
-  const isDarkMode = localStorageTheme
-    ? localStorageTheme === 'dark'
-    : typeof window !== 'undefined'
-    ? window.matchMedia('(prefers-color-scheme: dark)').matches
-    : false
-
-  lightIcon?.classList.add(isDarkMode ? 'opacity-0' : 'opacity-100')
-  darkIcon?.classList.add(!isDarkMode ? 'opacity-0' : 'opacity-100')
-
-  isDarkMode && document.documentElement.classList.add('dark')
-
-  themeButton.onclick = function themeSwitch() {
-    lightIcon?.classList.add('duration-1000')
-    darkIcon?.classList.add('duration-1000')
-
-    const icons = document.querySelectorAll('[data-theme-button-icon]')
-
-    const wasDarkMode = document.documentElement?.classList.contains('dark')
-
-    icons.forEach((icon) => {
-      icon.classList.add('motion-safe:animate-spin')
-    })
-
-    const removeOrAdd = wasDarkMode ? 'remove' : 'add'
-    const addOrRemove = wasDarkMode ? 'add' : 'remove'
-
-    document.documentElement.classList[removeOrAdd]('dark')
-    lightIcon?.classList[removeOrAdd]('opacity-0')
-    darkIcon?.classList[removeOrAdd]('opacity-100')
-
-    lightIcon?.classList[addOrRemove]('opacity-100')
-    darkIcon?.classList[addOrRemove]('opacity-0')
-
-    localStorage.setItem('theme', wasDarkMode ? 'light' : 'dark')
-
-    setTimeout(() => {
       icons.forEach((icon) => {
-        icon.classList.remove('motion-safe:animate-spin')
+        icon.classList.add('duration-1000')
+        icon.classList.add('motion-safe:animate-spin')
       })
-    }, 1000)
+
+      document.documentElement.classList.toggle('dark', !wasDarkMode)
+      document.documentElement.style.colorScheme = wasDarkMode
+        ? 'light'
+        : 'dark'
+
+      localStorage.setItem('theme', wasDarkMode ? 'light' : 'dark')
+
+      setTimeout(() => {
+        icons.forEach((icon) => {
+          icon.classList.remove('duration-1000')
+          icon.classList.remove('motion-safe:animate-spin')
+        })
+      }, 1000)
+    }
   }
 </script>
