@@ -25,6 +25,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@fontsource/play": "^5.2.8",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-feather": "^2.0.10",

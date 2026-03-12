@@ -1,36 +1,36 @@
-import typography from '@tailwindcss/typography'
-import { type Config } from 'tailwindcss'
+import typography from "@tailwindcss/typography";
+import { type Config } from "tailwindcss";
 
 export default {
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-  darkMode: 'class',
+  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#0078d4',
-          dark: '#c26e00',
+          DEFAULT: "#0078d4",
+          dark: "#c26e00",
         },
       },
       textDecorationColor: {
-        invisible: 'rgba(0, 0, 0, 0)',
+        invisible: "rgba(0, 0, 0, 0)",
       },
       fontFamily: {
-        play: ['Play', 'sans-serif', '-apple-system', 'Arial', 'system-ui'],
+        play: ["Play", "-apple-system", "Arial", "system-ui", "sans-serif"],
       },
       width: {
-        46: '11.5rem',
+        46: "11.5rem",
       },
       keyframes: {
         wave: {
-          '0%, 100%': { transform: 'rotate(0deg)' },
-          '50%': { transform: 'rotate(20deg)' },
+          "0%, 100%": { transform: "rotate(0deg)" },
+          "50%": { transform: "rotate(20deg)" },
         },
       },
       animation: {
-        wave: 'wave 1s ease-in-out infinite',
+        wave: "wave 1s ease-in-out infinite",
       },
     },
   },
   plugins: [typography()],
-} satisfies Config
+} satisfies Config;
