@@ -1,5 +1,24 @@
-@import '@fontsource/play/400.css';
-@import '@fontsource/play/700.css';
+@font-face {
+  font-family: 'Play';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 400;
+  src:
+    url('@fontsource/play/files/play-latin-ext-400-normal.woff2')
+      format('woff2'),
+    url('@fontsource/play/files/play-latin-400-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Play';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 700;
+  src:
+    url('@fontsource/play/files/play-latin-ext-700-normal.woff2')
+      format('woff2'),
+    url('@fontsource/play/files/play-latin-700-normal.woff2') format('woff2');
+}
 
 html, body {
   @apply text-gray-700 bg-white dark:bg-stone-900 dark:text-gray-200 transition-colors scroll-smooth;

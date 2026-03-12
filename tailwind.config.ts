@@ -16,7 +16,7 @@ export default {
         invisible: "rgba(0, 0, 0, 0)",
       },
       fontFamily: {
-        play: ["Play", "sans-serif", "-apple-system", "Arial", "system-ui"],
+        play: ["Play", "-apple-system", "Arial", "system-ui", "sans-serif"],
       },
       width: {
         46: "11.5rem",
