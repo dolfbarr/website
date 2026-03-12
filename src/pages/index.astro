@@ -34,6 +34,13 @@ const allSkills = [
   ]),
 ] as string[]
 
+const initialLocalTime = new Intl.DateTimeFormat(undefined, {
+  hour: '2-digit',
+  minute: '2-digit',
+  hour12: false,
+  timeZone: LOCATION.timeZone,
+}).format(new Date())
+
 const title = 'About'
 ---
 
@@ -91,29 +98,35 @@ const title = 'About'
         )
       }
        with {WORK.totalYearsOfExperience}+&nbsp;YoE based in
-      <Button
-        analyticsClick="open-map"
-        analyticsTitle="Open map"
-        class="group/location text-base"
-        data-map-button
-        title={LOCATION.flag + ' ' + LOCATION.title}>
-        <Iconed class="relative">
-          <MapPin slot="icon" data-map-button-icon />
-          <span
-            class="inline-flex tracking-[.008em] opacity-100 transition-opacity group-hover/location:hidden [.safari_&]:tracking-[.01725em]">
-            {LOCATION.title}
+      <span class="align-baseline">
+        <Button
+          analyticsClick="open-map"
+          analyticsTitle="Open map"
+          class="group/location mx-1 px-1.5 py-0.5 align-baseline text-lg leading-none"
+          data-map-button
+          title={LOCATION.flag + ' ' + LOCATION.title}>
+          <Iconed class="relative">
+            <MapPin slot="icon" data-map-button-icon />
+            <span
+              class="inline-flex tracking-[.008em] opacity-100 transition-opacity group-hover/location:hidden [.safari_&]:tracking-[.01725em]">
+              {LOCATION.title}
+            </span>
+            <span class="hidden group-hover/location:inline-flex">
+              {LOCATION.original}
+            </span>
+          </Iconed>
+        </Button>
+        <span
+          class="dimmed ml-1 inline-flex items-center gap-1.5 whitespace-nowrap align-baseline text-lg">
+          <span aria-hidden="true" class="leading-none">
+            {SEPARATOR}
           </span>
-          <span class="hidden group-hover/location:inline-flex">
-            {LOCATION.original}
-          </span>
-        </Iconed>
-      </Button>{' '}
-      <span class="inline-block w-20" data-clock-wrapper>
-        <Iconed class="not-sr-only font-mono text-lg">
-          <ClockIcon slot="icon" strokeWidth={3} />
-          <Clock client:only="react" />
-        </Iconed>.</span
-      ><br />I&rsquo;m
+          <Iconed class="not-sr-only font-mono text-lg tabular-nums">
+            <ClockIcon slot="icon" strokeWidth={3} />
+            <Clock client:load initialTime={initialLocalTime} />
+          </Iconed>
+        </span>
+      </span>. I&rsquo;m
       <em>passionate about web</em>
        and, especially, frontend development. I like to be on the edge of
       <em>solving business problems</em>
@@ -193,13 +206,17 @@ const title = 'About'
 <script>
   const mapButton = document.querySelector(
     '[data-map-button]',
-  ) as HTMLButtonElement
+  ) as HTMLButtonElement | null
 
   const mapContainer = document.querySelector('[data-map-container]')
   const mapButtonIcon = document.querySelector('[data-map-button-icon]')
 
-  mapButton.onclick = function mapToggle() {
-    const wasOpen = mapContainer?.classList.contains('h-96')
+  const mapToggle = () => {
+    if (!mapContainer) {
+      return
+    }
+
+    const wasOpen = mapContainer.classList.contains('h-96')
 
     const removeOrAdd = wasOpen ? 'remove' : 'add'
     const addOrRemove = wasOpen ? 'add' : 'remove'
@@ -207,16 +224,11 @@ const title = 'About'
     mapButton?.classList[removeOrAdd]('shadow-inner', 'bg-gray-50')
     mapButtonIcon?.classList[removeOrAdd]('rotate-180')
 
-    mapContainer?.classList[removeOrAdd]('h-96', 'mb-8')
-    mapContainer?.classList[addOrRemove]('h-0', 'mb-0')
+    mapContainer.classList[removeOrAdd]('h-96', 'mb-8')
+    mapContainer.classList[addOrRemove]('h-0', 'mb-0')
   }
 
-  if (window) {
-    window.onload = function updateClockWrapper() {
-      const clockWrapper = document.querySelector('[data-clock-wrapper]')
-      clockWrapper?.classList.remove('w-20')
-    }
-  }
+  mapButton?.addEventListener('click', mapToggle)
 </script>
 
 <style>
