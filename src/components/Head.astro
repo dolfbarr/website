@@ -1,4 +1,6 @@
 ---
+import play400LatinUrl from '@fontsource/play/files/play-latin-400-normal.woff2?url'
+import play700LatinUrl from '@fontsource/play/files/play-latin-700-normal.woff2?url'
 import { META, SEPARATOR, PERSONAL_DATA } from '@utils/data'
 import { CONFIG } from 'config'
 
@@ -33,8 +35,12 @@ const title = customTitle ?? META.title
         const isDarkMode = localStorageTheme
           ? localStorageTheme === 'dark'
           : window.matchMedia('(prefers-color-scheme: dark)').matches
+        const isSafari = /^((?!chrome|android).)*safari/i.test(
+          navigator.userAgent,
+        )
 
         document.documentElement.classList.toggle('dark', isDarkMode)
+        document.documentElement.classList.toggle('safari', isSafari)
         document.documentElement.style.colorScheme = isDarkMode
           ? 'dark'
           : 'light'
@@ -89,17 +95,18 @@ const title = customTitle ?? META.title
   <!-- Fonts -->
   <link
     rel="preload"
-    href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap"
-    as="style"
-    onload="this.onload=null;this.rel='stylesheet'"
+    href={play400LatinUrl}
+    as="font"
+    type="font/woff2"
+    crossorigin
   />
-  <noscript>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap"
-      rel="stylesheet"
-      type="text/css"
-    />
-  </noscript>
+  <link
+    rel="preload"
+    href={play700LatinUrl}
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
 
   <!-- Light Icons -->
   <link

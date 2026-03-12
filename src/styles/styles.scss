@@ -1,3 +1,6 @@
+@import '@fontsource/play/400.css';
+@import '@fontsource/play/700.css';
+
 html, body {
   @apply text-gray-700 bg-white dark:bg-stone-900 dark:text-gray-200 transition-colors scroll-smooth;
   font-family: -apple-system, Arial, system-ui;

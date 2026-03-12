@@ -1,6 +1,5 @@
 ---
 import Button from '@components/Button.astro'
-import Clock from '@components/Clock'
 import Heading from '@components/Heading.astro'
 import Iconed from '@components/Iconed.astro'
 import Link from '@components/Link.astro'
@@ -33,13 +32,6 @@ const allSkills = [
       .flat(),
   ]),
 ] as string[]
-
-const initialLocalTime = new Intl.DateTimeFormat(undefined, {
-  hour: '2-digit',
-  minute: '2-digit',
-  hour12: false,
-  timeZone: LOCATION.timeZone,
-}).format(new Date())
 
 const title = 'About'
 ---
@@ -123,7 +115,14 @@ const title = 'About'
           </span>
           <Iconed class="not-sr-only font-mono text-lg tabular-nums">
             <ClockIcon slot="icon" strokeWidth={3} />
-            <Clock client:load initialTime={initialLocalTime} />
+            <time
+              title={LOCATION.timeZoneText}
+              class="inline-block min-w-[3.25rem]"
+              data-clock
+              data-time-zone={LOCATION.timeZone}
+              dateTime="">
+              --:--
+            </time>
           </Iconed>
         </span>
       </span>. I&rsquo;m
@@ -151,14 +150,8 @@ const title = 'About'
 
   <div
     class="h-0 overflow-hidden rounded-lg shadow-lg shadow-gray-300 transition-[height] transition-shadow ease-in-out dark:shadow-stone-950"
-    data-map-container>
-    <iframe
-      title="Location map"
-      class="h-96 w-full"
-      src={LOCATION.link}
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"></iframe>
+    data-map-container
+    data-map-src={LOCATION.link}>
   </div>
 
   <Section data-testid="projects" class="mb-9">
@@ -208,8 +201,47 @@ const title = 'About'
     '[data-map-button]',
   ) as HTMLButtonElement | null
 
-  const mapContainer = document.querySelector('[data-map-container]')
+  const mapContainer = document.querySelector(
+    '[data-map-container]',
+  ) as HTMLDivElement | null
   const mapButtonIcon = document.querySelector('[data-map-button-icon]')
+  const clock = document.querySelector('[data-clock]') as HTMLTimeElement | null
+
+  const updateClock = (clockElement: HTMLTimeElement) => {
+    const timeZone = clockElement.dataset.timeZone
+
+    if (!timeZone) {
+      return
+    }
+
+    const time = new Intl.DateTimeFormat(undefined, {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+      timeZone,
+    }).format(new Date())
+
+    clockElement.dateTime = time
+    clockElement.textContent = time
+  }
+
+  const ensureMapFrame = () => {
+    const mapSource = mapContainer?.dataset.mapSrc
+
+    if (!mapContainer || mapContainer.querySelector('iframe') || !mapSource) {
+      return
+    }
+
+    const mapFrame = document.createElement('iframe')
+    mapFrame.title = 'Location map'
+    mapFrame.className = 'h-96 w-full'
+    mapFrame.src = mapSource
+    mapFrame.allowFullscreen = true
+    mapFrame.loading = 'lazy'
+    mapFrame.referrerPolicy = 'no-referrer-when-downgrade'
+
+    mapContainer.append(mapFrame)
+  }
 
   const mapToggle = () => {
     if (!mapContainer) {
@@ -217,6 +249,10 @@ const title = 'About'
     }
 
     const wasOpen = mapContainer.classList.contains('h-96')
+
+    if (!wasOpen) {
+      ensureMapFrame()
+    }
 
     const removeOrAdd = wasOpen ? 'remove' : 'add'
     const addOrRemove = wasOpen ? 'add' : 'remove'
@@ -226,6 +262,13 @@ const title = 'About'
 
     mapContainer.classList[removeOrAdd]('h-96', 'mb-8')
     mapContainer.classList[addOrRemove]('h-0', 'mb-0')
+  }
+
+  if (clock) {
+    updateClock(clock)
+    window.setInterval(() => {
+      updateClock(clock)
+    }, 15_000)
   }
 
   mapButton?.addEventListener('click', mapToggle)
