@@ -1,0 +1,88 @@
+---
+import Heading from '@components/Heading.astro'
+import Link from '@components/Link.astro'
+import Section from '@components/Section.astro'
+import Separator from '@components/Separator.astro'
+import StartOfContentAnchor from '@components/StartOfContentAnchor.astro'
+import Main from '@layouts/Main.astro'
+import { META, SEPARATOR } from '@utils/data'
+import { getCollection } from 'astro:content'
+
+import '@styles/landing.scss'
+
+const notes = (await getCollection('notes'))
+  .slice()
+  .sort(
+    (noteA, noteB) =>
+      new Date(noteB.data.date).getTime() - new Date(noteA.data.date).getTime(),
+  )
+
+type NoteEntry = (typeof notes)[number]
+
+const notesByYear = notes.reduce<Map<number, NoteEntry[]>>((acc, note) => {
+  const year = new Date(note.data.date).getFullYear()
+  const yearNotes = acc.get(year) ?? []
+  yearNotes.push(note)
+  acc.set(year, yearNotes)
+  return acc
+}, new Map())
+
+const years = [...notesByYear.keys()]
+
+const title = 'Notes'
+---
+
+<Main fullTitle={title + META.ogTitle} title={title} url="/notes/">
+  <Section>
+    <span class="align-center inline-flex flex-wrap">
+      <StartOfContentAnchor />
+      <Heading headingLevel={1} id="notes" class="mb-9" title="Notes">
+        Notes
+      </Heading>
+
+      <span class="ml-4 text-6xl sm:inline-flex"> 📝</span>
+    </span>
+    {
+      years.length > 0 ? (
+        years.map((year) => (
+          <>
+            <Heading
+              headingLevel={2}
+              id={`notes-${String(year)}`}
+              class="mb-9"
+              title={String(year)}>
+              {year}
+            </Heading>
+            <ul class="ml-0 list-outside list-none pl-0">
+              {(notesByYear.get(year) ?? []).map((note) => (
+                <li class="mb-5">
+                  <h3 class="small-heading">
+                    <Link
+                      title={note.data.title}
+                      analyticsClick={`notes-${note.slug}`}
+                      href={`/notes/${note.slug}`}>
+                      {note.data.title}
+                    </Link>
+                  </h3>
+
+                  <p class="dimmed">
+                    <span>{new Date(note.data.date).toLocaleDateString()}</span>
+                    {note.data.description && (
+                      <>
+                        {' '}
+                        {SEPARATOR} {note.data.description}
+                      </>
+                    )}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </>
+        ))
+      ) : (
+        <p class="dimmed text-center">A bit empty here... for now. 😉</p>
+      )
+    }
+    {years.length > 0 && <Separator />}
+  </Section>
+</Main>

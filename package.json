@@ -2,7 +2,11 @@
   "name": "website",
   "type": "module",
   "version": "0.0.1",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
+    "check:node": "node -e \"if (!process.versions.node.startsWith('20.')) { console.error('Node 20.x is required. Current: ' + process.versions.node); process.exit(1) }\"",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
@@ -11,14 +15,17 @@
     "astro": "astro",
     "test:unit": "vitest",
     "test": "pnpm run test:unit run && pnpm run test:e2e",
-    "test:e2e": "npx cypress run --browser chrome",
-    "ci": "pnpm run typecheck && pnpm run lint && start-server-and-test dev http://localhost:4321 test",
+    "cypress:install": "cypress install",
+    "pretest:e2e": "pnpm run cypress:install",
+    "test:e2e": "cypress run --browser chrome",
+    "ci": "pnpm run check:node && pnpm run typecheck && pnpm run lint && start-server-and-test dev http://localhost:4321 test",
     "lint": "pnpm run lint:eslint && pnpm run lint:stylelint",
     "lint:eslint": "eslint --ext .js,.ts,.jsx,.tsx,.astro src",
     "lint:stylelint": "stylelint \"src/**/*.{astro,scss}\"",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@fontsource/play": "^5.2.8",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-feather": "^2.0.10",
@@ -42,6 +49,7 @@
     "@typescript-eslint/parser": "^6.7.4",
     "@vitejs/plugin-react": "^4.1.0",
     "astro": "^3.2.3",
+    "astro-eslint-parser": "^1.4.0",
     "cypress": "^13.3.3",
     "eslint": "^8.51.0",
     "eslint-config-prettier": "^9.0.0",

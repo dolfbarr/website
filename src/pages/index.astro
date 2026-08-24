@@ -1,6 +1,5 @@
 ---
 import Button from '@components/Button.astro'
-import Clock from '@components/Clock'
 import Heading from '@components/Heading.astro'
 import Iconed from '@components/Iconed.astro'
 import Link from '@components/Link.astro'
@@ -32,7 +31,7 @@ const allSkills = [
       .map((workplace) => workplace.skills)
       .flat(),
   ]),
-]
+] as string[]
 
 const title = 'About'
 ---
@@ -75,7 +74,7 @@ const title = 'About'
     <p class="text-xl leading-loose">
       a
       <em>{PERSONAL_DATA.occupation}</em>{
-        WORK.experience[0] && (
+        WORK.experience[0] && !WORK.experience[0].endDate && (
           <span>
             {' '}
             at
@@ -90,46 +89,43 @@ const title = 'About'
           </span>
         )
       }
-      {
-        WORK.experience[1] && (
-          <span>
-            {' '}
-            via
-            <Link
-              analyticsClick={`current-workplace-${WORK.experience[1].company}`}
-              analyticsTitle={'Current: ' + WORK.experience[1].company}
-              href={WORK.experience[1].url}
-              title={WORK.experience[1].company}
-              isExternal>
-              <Workplace companyName={WORK.experience[1].company} />
-            </Link>
+       with {WORK.totalYearsOfExperience}+&nbsp;YoE based in
+      <span class="align-baseline">
+        <Button
+          analyticsClick="open-map"
+          analyticsTitle="Open map"
+          class="group/location mx-1 px-1.5 py-0.5 align-baseline text-lg leading-none"
+          data-map-button
+          title={LOCATION.flag + ' ' + LOCATION.title}>
+          <Iconed class="relative">
+            <MapPin slot="icon" data-map-button-icon />
+            <span
+              class="inline-flex tracking-[.008em] opacity-100 transition-opacity group-hover/location:hidden [.safari_&]:tracking-[.01725em]">
+              {LOCATION.title}
+            </span>
+            <span class="hidden group-hover/location:inline-flex">
+              {LOCATION.original}
+            </span>
+          </Iconed>
+        </Button>
+        <span
+          class="dimmed ml-1 inline-flex items-center gap-1.5 whitespace-nowrap align-baseline text-lg">
+          <span aria-hidden="true" class="leading-none">
+            {SEPARATOR}
           </span>
-        )
-      }
-       with {WORK.totalYearsOfExperience}+&nbsp;years of experience based in
-      <Button
-        analyticsClick="open-map"
-        analyticsTitle="Open map"
-        class="group/location text-base"
-        data-map-button
-        title={LOCATION.flag + ' ' + LOCATION.title}>
-        <Iconed class="relative">
-          <MapPin slot="icon" data-map-button-icon />
-          <span
-            class="inline-flex tracking-[.008em] opacity-100 transition-opacity group-hover/location:hidden">
-            {LOCATION.title}
-          </span>
-          <span class="hidden group-hover/location:inline-flex">
-            {LOCATION.original}
-          </span>
-        </Iconed>
-      </Button>{' '}
-      <span class="inline-block w-20" data-clock-wrapper>
-        <Iconed class="not-sr-only font-mono text-lg">
-          <ClockIcon slot="icon" strokeWidth={3} />
-          <Clock client:only="react" />
-        </Iconed>.</span
-      > I&rsquo;m
+          <Iconed class="not-sr-only font-mono text-lg tabular-nums">
+            <ClockIcon slot="icon" strokeWidth={3} />
+            <time
+              title={LOCATION.timeZoneText}
+              class="inline-block min-w-[3.25rem]"
+              data-clock
+              data-time-zone={LOCATION.timeZone}
+              dateTime="">
+              --:--
+            </time>
+          </Iconed>
+        </span>
+      </span>. I&rsquo;m
       <em>passionate about web</em>
        and, especially, frontend development. I like to be on the edge of
       <em>solving business problems</em>
@@ -154,14 +150,8 @@ const title = 'About'
 
   <div
     class="h-0 overflow-hidden rounded-lg shadow-lg shadow-gray-300 transition-[height] transition-shadow ease-in-out dark:shadow-stone-950"
-    data-map-container>
-    <iframe
-      title="Location map"
-      class="h-96 w-full"
-      src={LOCATION.link}
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"></iframe>
+    data-map-container
+    data-map-src={LOCATION.link}>
   </div>
 
   <Section data-testid="projects" class="mb-9">
@@ -209,13 +199,60 @@ const title = 'About'
 <script>
   const mapButton = document.querySelector(
     '[data-map-button]',
-  ) as HTMLButtonElement
+  ) as HTMLButtonElement | null
 
-  const mapContainer = document.querySelector('[data-map-container]')
+  const mapContainer = document.querySelector(
+    '[data-map-container]',
+  ) as HTMLDivElement | null
   const mapButtonIcon = document.querySelector('[data-map-button-icon]')
+  const clock = document.querySelector('[data-clock]') as HTMLTimeElement | null
 
-  mapButton.onclick = function mapToggle() {
-    const wasOpen = mapContainer?.classList.contains('h-96')
+  const updateClock = (clockElement: HTMLTimeElement) => {
+    const timeZone = clockElement.dataset.timeZone
+
+    if (!timeZone) {
+      return
+    }
+
+    const time = new Intl.DateTimeFormat(undefined, {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+      timeZone,
+    }).format(new Date())
+
+    clockElement.dateTime = time
+    clockElement.textContent = time
+  }
+
+  const ensureMapFrame = () => {
+    const mapSource = mapContainer?.dataset.mapSrc
+
+    if (!mapContainer || mapContainer.querySelector('iframe') || !mapSource) {
+      return
+    }
+
+    const mapFrame = document.createElement('iframe')
+    mapFrame.title = 'Location map'
+    mapFrame.className = 'h-96 w-full'
+    mapFrame.src = mapSource
+    mapFrame.allowFullscreen = true
+    mapFrame.loading = 'lazy'
+    mapFrame.referrerPolicy = 'no-referrer-when-downgrade'
+
+    mapContainer.append(mapFrame)
+  }
+
+  const mapToggle = () => {
+    if (!mapContainer) {
+      return
+    }
+
+    const wasOpen = mapContainer.classList.contains('h-96')
+
+    if (!wasOpen) {
+      ensureMapFrame()
+    }
 
     const removeOrAdd = wasOpen ? 'remove' : 'add'
     const addOrRemove = wasOpen ? 'add' : 'remove'
@@ -223,16 +260,18 @@ const title = 'About'
     mapButton?.classList[removeOrAdd]('shadow-inner', 'bg-gray-50')
     mapButtonIcon?.classList[removeOrAdd]('rotate-180')
 
-    mapContainer?.classList[removeOrAdd]('h-96', 'mb-8')
-    mapContainer?.classList[addOrRemove]('h-0', 'mb-0')
+    mapContainer.classList[removeOrAdd]('h-96', 'mb-8')
+    mapContainer.classList[addOrRemove]('h-0', 'mb-0')
   }
 
-  if (window) {
-    window.onload = function updateClockWrapper() {
-      const clockWrapper = document.querySelector('[data-clock-wrapper]')
-      clockWrapper?.classList.remove('w-20')
-    }
+  if (clock) {
+    updateClock(clock)
+    window.setInterval(() => {
+      updateClock(clock)
+    }, 15_000)
   }
+
+  mapButton?.addEventListener('click', mapToggle)
 </script>
 
 <style>
