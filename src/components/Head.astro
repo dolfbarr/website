@@ -1,8 +1,9 @@
 ---
 import play400LatinUrl from '@fontsource/play/files/play-latin-400-normal.woff2?url'
 import play700LatinUrl from '@fontsource/play/files/play-latin-700-normal.woff2?url'
-import { META, SEPARATOR, PERSONAL_DATA } from '@utils/data'
-import { CONFIG } from 'config'
+import { META, SEPARATOR, PERSONAL_DATA, LOCATION } from '@utils/data'
+
+import { CONFIG } from '../../config'
 
 export type Props = {
   fullTitle?: string
@@ -24,6 +25,25 @@ const {
   date,
 } = Astro.props
 const title = customTitle ?? META.title
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: PERSONAL_DATA.fullName,
+  givenName: PERSONAL_DATA.firstName,
+  familyName: PERSONAL_DATA.lastName,
+  jobTitle: PERSONAL_DATA.occupation,
+  url: META.siteUrl,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: LOCATION.title,
+  },
+  sameAs: [
+    `https://github.com/${PERSONAL_DATA.nickname}`,
+    `https://twitter.com/${PERSONAL_DATA.nickname}`,
+    `https://www.linkedin.com/in/${PERSONAL_DATA.nickname}`,
+  ],
+}
 ---
 
 <head>
@@ -52,6 +72,16 @@ const title = customTitle ?? META.title
   <!-- Meta -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="theme-color"
+    content="#ffffff"
+    media="(prefers-color-scheme: light)"
+  />
+  <meta
+    name="theme-color"
+    content="#1c1917"
+    media="(prefers-color-scheme: dark)"
+  />
   <meta name="twitter:card" content="summary_large_image" />
   <meta property="og:type" content={type} />
   {date && <meta property="article:published_time" content={date} />}
@@ -169,6 +199,15 @@ const title = customTitle ?? META.title
     />
   </noscript>
 
-  <!--  RSS Feed  -->
-  <!--  Sitemap  -->
+  <!--  RSS Feed & Sitemap  -->
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title={`${PERSONAL_DATA.fullName} — Notes RSS Feed`}
+    href={`${CONFIG.base}/rss.xml`}
+  />
+  <link rel="sitemap" href={`${CONFIG.base}/sitemap-index.xml`} />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 </head>

@@ -34,6 +34,16 @@ describe('Landing Page', () => {
     cy.get('[data-testid="skills-section"]').should('be.visible')
   })
 
+  it('includes RSS, sitemap, and structured data meta tags in head', () => {
+    cy.get('link[type="application/rss+xml"]')
+      .should('have.attr', 'href')
+      .and('include', '/rss.xml')
+    cy.get('link[rel="sitemap"]')
+      .should('have.attr', 'href')
+      .and('include', '/sitemap-index.xml')
+    cy.get('script[type="application/ld+json"]').should('exist')
+  })
+
   it('navigates to Notes page', () => {
     cy.get('nav').contains('Notes').click()
     cy.url().should('include', '/notes')

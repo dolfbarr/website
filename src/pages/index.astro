@@ -64,6 +64,8 @@ const title = 'About'
         </div>
       </Heading>
       <span
+        role="img"
+        aria-label="waving hand"
         class="ml-4 hidden origin-bottom-right text-6xl transition-all duration-[2000ms] ease-in-out hover:animate-wave sm:inline-flex">
         👋
       </span>
@@ -243,6 +245,10 @@ const title = 'About'
     mapFrame.allowFullscreen = true
     mapFrame.loading = 'lazy'
     mapFrame.referrerPolicy = 'no-referrer-when-downgrade'
+    mapFrame.setAttribute(
+      'sandbox',
+      'allow-scripts allow-same-origin allow-popups',
+    )
 
     mapContainer.append(mapFrame)
   }

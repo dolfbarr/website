@@ -32,13 +32,13 @@ const title = 'Notes'
 
 <Main fullTitle={title + META.ogTitle} title={title} url="/notes/">
   <Section>
-    <div class="flex flex-wrap items-center">
+    <div class="mb-9 flex flex-wrap items-center">
       <StartOfContentAnchor />
-      <Heading headingLevel={1} id="notes" class="mb-9" title="Notes">
-        Notes
-      </Heading>
+      <Heading headingLevel={1} id="notes" title="Notes">Notes</Heading>
 
-      <span class="ml-4 text-6xl sm:inline-flex">📝</span>
+      <span role="img" aria-label="memo" class="ml-4 text-6xl sm:inline-flex">
+        📝
+      </span>
     </div>
     {
       years.length > 0 ? (
