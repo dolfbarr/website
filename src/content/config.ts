@@ -1,21 +1,10 @@
-import { z, defineCollection } from 'astro:content'
+import { defineCollection } from 'astro:content'
+
+import { noteSchema } from './schema'
 
 const notes = defineCollection({
   type: 'content',
-  schema: z.object({
-    title: z.string(),
-    date: z.date(),
-    description: z.string().optional(),
-    image: z
-      .object({
-        url: z.string(),
-        alt: z.string(),
-        width: z.number().optional(),
-        height: z.number().optional(),
-      })
-      .optional(),
-    tags: z.array(z.string()).optional(),
-  }),
+  schema: noteSchema,
 })
 
 // Keys should match your collection directory name in "src/content"
