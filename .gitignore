@@ -27,3 +27,4 @@ pnpm-debug.log*
 
 # test artifacts
 .playwright-mcp/
+coverage/
