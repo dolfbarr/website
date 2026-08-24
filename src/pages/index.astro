@@ -154,7 +154,7 @@ const title = 'About'
 
   <div
     id="map-container"
-    class="h-0 overflow-hidden rounded-lg shadow-xl shadow-gray-300/70 ring-1 ring-gray-900/5 transition-[height,box-shadow] duration-300 ease-in-out dark:shadow-2xl dark:shadow-black/80 dark:ring-1 dark:ring-white/10"
+    class="h-0 overflow-hidden rounded-lg transition-[height,box-shadow,opacity] duration-300 ease-in-out"
     data-map-container
     data-map-src={LOCATION.link}>
   </div>
@@ -278,7 +278,17 @@ const title = 'About'
     )
     mapButtonIcon?.classList[removeOrAdd]('rotate-180')
 
-    mapContainer.classList[removeOrAdd]('h-96', 'mb-8')
+    mapContainer.classList[removeOrAdd](
+      'h-96',
+      'mb-8',
+      'border',
+      'border-gray-200',
+      'dark:border-stone-800',
+      'shadow-xl',
+      'shadow-gray-300/70',
+      'dark:shadow-2xl',
+      'dark:shadow-black/80',
+    )
     mapContainer.classList[addOrRemove]('h-0', 'mb-0')
   }
 
