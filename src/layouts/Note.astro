@@ -42,10 +42,11 @@ const readingTime = getReadingTime(rawBody)
       'prose prose-neutral dark:prose-invert lg:prose-lg', // general
       'prose-pre:border-primary dark:prose-pre:border-primary-dark',
       'prose-pre:rounded-lg prose-pre:border-2',
+      'prose-pre:shadow-lg prose-pre:shadow-blue-900/5 dark:prose-pre:shadow-2xl dark:prose-pre:shadow-black/60',
       'prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:italic dark:prose-blockquote:border-primary-dark',
       'prose-blockquote:before:content-none prose-blockquote:after:content-none',
       'prose-figcaption:text-center',
-      'prose-img:rounded-lg prose-img:shadow-lg prose-img:shadow-gray-300 prose-img:transition-shadow dark:prose-img:shadow-stone-950',
+      'prose-img:rounded-lg prose-img:shadow-xl prose-img:shadow-gray-300/70 prose-img:ring-1 prose-img:ring-gray-900/5 prose-img:transition-shadow dark:prose-img:shadow-2xl dark:prose-img:shadow-black/80 dark:prose-img:ring-1 dark:prose-img:ring-white/10',
       'prose-headings:font-bold',
       'prose-p:text-gray-700 dark:prose-p:text-gray-200',
       'prose-headings:text-gray-700 dark:prose-headings:text-gray-200',
@@ -69,7 +70,7 @@ const readingTime = getReadingTime(rawBody)
           alt={data.image.alt}
           width={data.image.width ?? 1600}
           height={data.image.height ?? 900}
-          class="aspect-video w-full rounded-lg object-cover"
+          class="aspect-video w-full rounded-lg object-cover shadow-xl shadow-gray-300/70 ring-1 ring-gray-900/5 dark:shadow-2xl dark:shadow-black/80 dark:ring-1 dark:ring-white/10"
         />
       )
     }

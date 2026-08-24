@@ -100,12 +100,15 @@ const title = 'About'
           title={LOCATION.flag + ' ' + LOCATION.title}>
           <Iconed class="relative">
             <MapPin slot="icon" data-map-button-icon />
-            <span
-              class="inline-flex tracking-[.008em] opacity-100 transition-opacity group-hover/location:hidden [.safari_&]:tracking-[.01725em]">
-              {LOCATION.title}
-            </span>
-            <span class="hidden group-hover/location:inline-flex">
-              {LOCATION.original}
+            <span class="inline-grid grid-cols-1 grid-rows-1 text-left">
+              <span
+                class="col-start-1 row-start-1 inline-flex tracking-[.008em] opacity-100 transition-opacity duration-200 group-hover/location:opacity-0 [.safari_&]:tracking-[.01725em]">
+                {LOCATION.title}
+              </span>
+              <span
+                class="col-start-1 row-start-1 inline-flex opacity-0 transition-opacity duration-200 group-hover/location:opacity-100">
+                {LOCATION.original}
+              </span>
             </span>
           </Iconed>
         </Button>
@@ -151,7 +154,7 @@ const title = 'About'
 
   <div
     id="map-container"
-    class="h-0 overflow-hidden rounded-lg shadow-lg shadow-gray-300 transition-[height] transition-shadow ease-in-out dark:shadow-stone-950"
+    class="h-0 overflow-hidden rounded-lg shadow-xl shadow-gray-300/70 ring-1 ring-gray-900/5 transition-[height,box-shadow] duration-300 ease-in-out dark:shadow-2xl dark:shadow-black/80 dark:ring-1 dark:ring-white/10"
     data-map-container
     data-map-src={LOCATION.link}>
   </div>
