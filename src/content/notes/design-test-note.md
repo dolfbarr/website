@@ -1,7 +1,12 @@
 ---
 title: 'Typography and Styling Showcase'
 date: 2026-08-24
-description: 'A comprehensive markdown note testing headings, code blocks, blockquotes, tables, and typography rendering.'
+description: 'A comprehensive markdown note testing headings, code blocks, blockquotes, tables, images with and without captions, and typography rendering.'
+image:
+  url: '/note-images/initial-note.png'
+  alt: 'Showcase banner artwork'
+  width: 1200
+  height: 630
 tags:
   - design
   - typography
@@ -38,6 +43,24 @@ const dolf: Developer = {
   skills: ['TypeScript', 'React', 'Astro', 'Tailwind CSS'],
 }
 ```
+
+### 🖼️ Images & Visual Figures
+
+#### 1. Standalone Image (No Caption)
+
+![Software engineering workflow banner](/note-images/initial-note.png)
+
+#### 2. Markdown Image with Italicized Caption
+
+![Dolf Barr Avatar](/dolf-barr.png)
+_Figure 1: Portrait photo asset with elevated elevation shadows._
+
+#### 3. Semantic Figure with Captioned Explanation
+
+<figure>
+  <img src="/note-images/initial-note.png" alt="Architecture pipeline diagram" />
+  <figcaption>Figure 2: Static site generation (SSG) pipeline and content collection lifecycle.</figcaption>
+</figure>
 
 ### Lists & Structured Data
 
