@@ -19,7 +19,10 @@ const { entry } = Astro.props
 const { Content, remarkPluginFrontmatter } = await entry.render()
 ---
 
-<Note data={remarkPluginFrontmatter} id={entry.id} slug={entry.slug}>
+<Note
+  data={{ ...entry.data, ...remarkPluginFrontmatter }}
+  id={entry.id}
+  slug={entry.slug}>
   <StartOfContentAnchor />
   <Content />
 </Note>

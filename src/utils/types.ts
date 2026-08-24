@@ -1,5 +1,3 @@
-import { type URLS } from '@utils/data'
-
 export enum ContactGroup {
   Social = 'social',
   Code = 'code',
@@ -7,7 +5,7 @@ export enum ContactGroup {
 }
 
 export type Contact = {
-  url: (typeof URLS)[keyof typeof URLS]
+  url: string
   title: string
   isEmail?: boolean
   group?: ContactGroup

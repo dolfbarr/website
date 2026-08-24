@@ -8,8 +8,6 @@ import Main from '@layouts/Main.astro'
 import { META, SEPARATOR } from '@utils/data'
 import { getCollection } from 'astro:content'
 
-import '@styles/landing.scss'
-
 const notes = (await getCollection('notes'))
   .slice()
   .sort(
@@ -34,14 +32,14 @@ const title = 'Notes'
 
 <Main fullTitle={title + META.ogTitle} title={title} url="/notes/">
   <Section>
-    <span class="align-center inline-flex flex-wrap">
+    <div class="flex flex-wrap items-center">
       <StartOfContentAnchor />
       <Heading headingLevel={1} id="notes" class="mb-9" title="Notes">
         Notes
       </Heading>
 
-      <span class="ml-4 text-6xl sm:inline-flex"> 📝</span>
-    </span>
+      <span class="ml-4 text-6xl sm:inline-flex">📝</span>
+    </div>
     {
       years.length > 0 ? (
         years.map((year) => (
@@ -55,7 +53,7 @@ const title = 'Notes'
             </Heading>
             <ul class="ml-0 list-outside list-none pl-0">
               {(notesByYear.get(year) ?? []).map((note) => (
-                <li class="mb-5">
+                <li key={note.slug} class="mb-5">
                   <h3 class="small-heading">
                     <Link
                       title={note.data.title}
@@ -66,7 +64,13 @@ const title = 'Notes'
                   </h3>
 
                   <p class="dimmed">
-                    <span>{new Date(note.data.date).toLocaleDateString()}</span>
+                    <time dateTime={new Date(note.data.date).toISOString()}>
+                      {new Date(note.data.date).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                      })}
+                    </time>
                     {note.data.description && (
                       <>
                         {' '}

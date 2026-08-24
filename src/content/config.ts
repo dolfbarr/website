@@ -10,6 +10,8 @@ const notes = defineCollection({
       .object({
         url: z.string(),
         alt: z.string(),
+        width: z.number().optional(),
+        height: z.number().optional(),
       })
       .optional(),
     tags: z.array(z.string()).optional(),

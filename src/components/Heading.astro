@@ -2,8 +2,7 @@
 import { Hash } from 'react-feather'
 
 import Link from './Link.astro'
-// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-export interface Props {
+export type Props = {
   headingLevel?: number
   href?: string
   class?: string
@@ -12,7 +11,7 @@ export interface Props {
   title: string
 }
 
-type HeadingElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+type HeadingElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'div'
 
 const {
   id,
@@ -25,12 +24,12 @@ const {
 } = Astro.props
 
 const TitleElement = (
-  headingLevel > 0 ? 'h' + headingLevel : 'div'
+  headingLevel >= 1 && headingLevel <= 6 ? 'h' + headingLevel : 'div'
 ) as HeadingElement
 ---
 
 <TitleElement
-  class:list={['flex justify-between align-baseline', className ?? '']}
+  class:list={['flex items-baseline justify-between', className ?? '']}
   id={id}
   data-testid={id}
   {...attrs}>
@@ -50,7 +49,11 @@ const TitleElement = (
       <slot />
     </span>
   </Link>
-  <aside class="flex flex-col justify-center align-baseline">
-    <slot name="aside" />
-  </aside>
+  {
+    Astro.slots.has('aside') && (
+      <span class="flex flex-col items-center justify-center">
+        <slot name="aside" />
+      </span>
+    )
+  }
 </TitleElement>

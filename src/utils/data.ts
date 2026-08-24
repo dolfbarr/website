@@ -4,8 +4,9 @@ import {
   ContactGroup,
   type Workplace,
   type Project,
-} from '@utils/types.ts'
-import { CONFIG } from 'config'
+} from '@utils/types'
+
+import { CONFIG } from '../../config'
 
 export const SEPARATOR = '⋅'
 
@@ -107,23 +108,23 @@ export const PROJECTS: Project[] = [
   },
 ]
 
+const startCareerDate = new Date('2013-11-01T00:00:00Z')
+
 export const WORK = {
-  totalYearsOfExperience: Math.abs(
-    new Date(
-      Number(Date.now()) - Number(new Date('1 Nov 2013')),
-    ).getUTCFullYear() - 1970,
+  totalYearsOfExperience: Math.floor(
+    (Date.now() - startCareerDate.getTime()) / (1000 * 60 * 60 * 24 * 365.2425),
   ),
 
   experience: [
     {
       title: 'Senior Frontend Engineer',
       company: 'Semrush',
-      startDate: 'Jun  ’25',
+      startDate: 'Jun ’25',
       url: 'https://semrush.com',
       skills: [
-        'Javascript',
+        'JavaScript',
         'React.js',
-        'Typescript',
+        'TypeScript',
         'React Flow',
         'HTML',
         'CSS',
@@ -138,9 +139,9 @@ export const WORK = {
       endDate: 'May ’25',
       url: 'https://quantumsoft.pro',
       skills: [
-        'Javascript',
+        'JavaScript',
         'React.js',
-        'Typescript',
+        'TypeScript',
         'Python',
         'HTML',
         'CSS',
@@ -154,9 +155,9 @@ export const WORK = {
       description:
         'Working on the frontend architecture and implementation business processes for web portal & inner tools.',
       skills: [
-        'Javascript',
+        'JavaScript',
         'React.js',
-        'Typescript',
+        'TypeScript',
         'Python',
         'HTML',
         'CSS',
@@ -181,9 +182,9 @@ export const WORK = {
       description:
         'Responsibility for the frontend architecture and development of the UI and application business logic.',
       skills: [
-        'Javascript',
+        'JavaScript',
         'React.js',
-        'Typescript',
+        'TypeScript',
         'Flow',
         'HTML',
         'CSS',
@@ -209,7 +210,7 @@ export const WORK = {
       endDate: 'Sep ’15',
       url: 'https://kreosoft.ru',
       skills: [
-        'Javascript',
+        'JavaScript',
         'jQuery',
         'CSS',
         'HTML',

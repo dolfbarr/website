@@ -28,7 +28,11 @@ const SOCIAL_ICONS: Record<Social, ReactElement> = {
   [Social.Resume]: <FileText />,
 }
 
-const SocialIcon: React.FC<IconProps> = ({ icon, size = 24 }): ReactElement => {
-  return React.cloneElement(SOCIAL_ICONS[icon], { size })
+const SocialIcon = ({ icon, size = 24 }: IconProps): ReactElement | null => {
+  const iconElement = SOCIAL_ICONS[icon]
+  if (!iconElement) {
+    return null
+  }
+  return React.cloneElement(iconElement, { size })
 }
 export default SocialIcon

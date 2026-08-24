@@ -4,8 +4,7 @@ import play700LatinUrl from '@fontsource/play/files/play-latin-700-normal.woff2?
 import { META, SEPARATOR, PERSONAL_DATA } from '@utils/data'
 import { CONFIG } from 'config'
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-export interface Props {
+export type Props = {
   fullTitle?: string
   url?: string
   title?: string
@@ -82,7 +81,7 @@ const title = customTitle ?? META.title
 
   <!-- Image -->
   <meta property="og:image" content={META.siteUrl + image} />
-  <meta property="twitter:image" content={META.siteUrl + image} />
+  <meta name="twitter:image" content={META.siteUrl + image} />
 
   <!-- Author -->
   <meta name="author" content={PERSONAL_DATA.fullName} />
@@ -90,6 +89,7 @@ const title = customTitle ?? META.title
   <meta property="profile:last_name" content={PERSONAL_DATA.lastName} />
   <meta property="profile:username" content={PERSONAL_DATA.nickname} />
   <meta property="profile:gender" content="male" />
+  <meta name="twitter:site" content={META.twitterUsername} />
   <meta name="twitter:creator" content={META.twitterUsername} />
 
   <!-- Fonts -->

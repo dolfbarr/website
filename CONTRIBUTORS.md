@@ -1,51 +1,77 @@
-# CONTRIBUTORS
+# Contributor's Guide
 
-This website is built with [Astro](https://astro.build/) & Minimal Starter Kit
+Welcome to the repository for [dolf.me](https://dolf.me), the personal website of Dolf Barr.
 
-## Astro Starter Kit: Minimal
+## 🛠️ Tech Stack
+
+- **Framework**: [Astro](https://astro.build/)
+- **UI & Components**: [React](https://react.dev/), [Tailwind CSS](https://tailwindcss.com/), [SCSS](https://sass-lang.com/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/) (strict mode)
+- **Icons**: [React Feather](https://feathericons.com/)
+- **Testing**: [Vitest](https://vitest.dev/) (unit) + [Testing Library](https://testing-library.com/), [Cypress](https://www.cypress.io/) (E2E)
+- **Code Quality**: [ESLint](https://eslint.org/), [Prettier](https://prettier.io/), [Stylelint](https://stylelint.io/), [Lefthook](https://github.com/evilmartians/lefthook)
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Node.js**: `20.x` (enforced via `.nvmrc` and `package.json` engines)
+- **Package Manager**: [pnpm](https://pnpm.io/)
 
 ```sh
-npm create astro@latest -- --template minimal
+# Ensure you are on Node 20
+nvm use
+
+# Install dependencies
+pnpm install
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+---
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🧞 Available Commands
 
-## 🚀 Project Structure
+| Command | Description |
+| :--- | :--- |
+| `pnpm dev` | Starts local dev server at `http://localhost:4321` |
+| `pnpm build` | Builds the static production site into `./dist/` |
+| `pnpm preview` | Serves the built site locally for verification |
+| `pnpm typecheck` | Runs TypeScript compiler checks (`tsc --noEmit`) |
+| `pnpm lint` | Runs both ESLint and Stylelint |
+| `pnpm test:unit run` | Runs Vitest unit tests once |
+| `pnpm test:e2e` | Runs Cypress E2E test suite in Chrome |
+| `pnpm test` | Runs both unit and E2E test suites |
+| `pnpm ci` | Runs the full local CI pipeline (typecheck, lint, build, tests) |
 
-Inside your Astro project, you'll see the following folders and files:
+---
+
+## 📁 Project Structure
 
 ```text
-/
-├── public/
+├── public/                 # Static assets (favicons, resume, images)
+├── cypress/                # Cypress E2E tests and configuration
+│   └── e2e/                # E2E test specifications
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/         # Reusable UI components (.astro and .tsx)
+│   ├── content/            # Markdown content collections (notes)
+│   │   ├── config.ts       # Zod schema definitions
+│   │   └── notes/          # Markdown posts
+│   ├── layouts/            # Page layout wrappers (BaseLayout, Main, Note)
+│   ├── pages/              # File-based routing pages
+│   │   ├── index.astro     # Landing page
+│   │   ├── 404.astro       # 404 Not Found page
+│   │   └── notes/          # Notes archive and dynamic [slug] post pages
+│   ├── styles/             # Global and landing SCSS styles
+│   └── utils/              # Shared data, types, and helpers
+└── tests/                  # Test setup and shared testing utilities
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+---
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## 📐 Guidelines & Conventions
 
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **Code Style**: 2-space indentation, single quotes, no semicolons, trailing commas.
+- **Type Definitions**: Prefer `type` over `interface` for TypeScript consistency.
+- **Client Scripts**: Write resilient client scripts using standard `addEventListener` and null-safe DOM checks.
+- **Commits**: Follow Conventional Commits (`feat:`, `fix:`, `chore:`, `docs:`, `test:`).

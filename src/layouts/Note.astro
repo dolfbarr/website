@@ -24,7 +24,7 @@ const dateObject = new Date(data.date)
   date={dateObject.toISOString().split('T')[0]}
   type="article"
   url={'/notes/' + slug}
-  image={`/note-images/${id.split('.').slice(0, -1).join('')}.png`}>
+  image={data.image?.url ?? `/note-images/${id.replace(/\.[^/.]+$/, '')}.png`}>
   <article
     class:list={[
       'w-full max-w-none',
@@ -42,8 +42,8 @@ const dateObject = new Date(data.date)
         <Image
           src={data.image.url}
           alt={data.image.alt}
-          width={data.image.width ?? '1600'}
-          height={data.image.height ?? '900'}
+          width={data.image.width ?? 1600}
+          height={data.image.height ?? 900}
           class="aspect-video w-full rounded-lg object-cover"
         />
       )
@@ -51,10 +51,18 @@ const dateObject = new Date(data.date)
     <header class="pb-0">
       <h1 class="mb-0 pb-2 lg:mb-0 lg:pb-2">{data.title}</h1>
       <p class="dimmed m-0 p-0 lg:m-0 lg:p-0">
-        <time>{dateObject.toLocaleDateString()}</time>
+        <time dateTime={dateObject.toISOString()}>
+          {
+            dateObject.toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric',
+            })
+          }
+        </time>
         {
           (data?.tags ?? []).map((tag: string) => (
-            <span>
+            <span key={tag}>
               {' '}
               {SEPARATOR} #{tag}
             </span>

@@ -22,8 +22,6 @@ import {
 } from '@utils/data'
 import { MapPin, Clock as ClockIcon, Mail, Download } from 'react-feather'
 
-import '@styles/landing.scss'
-
 const allSkills = [
   ...new Set([
     ...WORK.experience
@@ -38,13 +36,12 @@ const title = 'About'
 
 <Main fullTitle={title + META.ogTitle} title={title}>
   <Section class="relative mb-9">
-    <span class="align-center inline-flex flex-wrap">
+    <div class="mb-9 flex flex-wrap items-center">
       <StartOfContentAnchor />
       <Heading
         headingLevel={1}
         id="greeting"
         iconSize={32}
-        class="mb-9"
         title="Main Section Anchor">
         <>
           Hi!
@@ -53,7 +50,7 @@ const title = 'About'
           {PERSONAL_DATA.fullName}
         </>
         <div
-          class="absolute right-0 top-5 flex justify-between gap-4 align-baseline"
+          class="absolute right-0 top-5 flex items-baseline justify-between gap-4"
           slot="aside">
           <Link
             href={`mailto:${CONTACTS.email.url}`}
@@ -67,10 +64,10 @@ const title = 'About'
         </div>
       </Heading>
       <span
-        class="duration-2000 ml-4 hidden origin-bottom-right text-6xl transition-all ease-in-out hover:animate-wave sm:inline-flex">
+        class="ml-4 hidden origin-bottom-right text-6xl transition-all duration-[2000ms] ease-in-out hover:animate-wave sm:inline-flex">
         👋
       </span>
-    </span>
+    </div>
     <p class="text-xl leading-loose">
       a
       <em>{PERSONAL_DATA.occupation}</em>{
@@ -92,6 +89,8 @@ const title = 'About'
        with {WORK.totalYearsOfExperience}+&nbsp;YoE based in
       <span class="align-baseline">
         <Button
+          aria-expanded="false"
+          aria-controls="map-container"
           analyticsClick="open-map"
           analyticsTitle="Open map"
           class="group/location mx-1 px-1.5 py-0.5 align-baseline text-lg leading-none"
@@ -140,7 +139,7 @@ const title = 'About'
       class="mt-6 flex flex-wrap justify-center overflow-hidden text-center text-xl leading-loose">
       {
         PERSONAL_DATA.tagLines.map((tagLine) => (
-          <span data-testid="tagLine" class="tag relative mr-8">
+          <span key={tagLine} data-testid="tagLine" class="tag relative mr-8">
             {tagLine}
           </span>
         ))
@@ -149,6 +148,7 @@ const title = 'About'
   </Section>
 
   <div
+    id="map-container"
     class="h-0 overflow-hidden rounded-lg shadow-lg shadow-gray-300 transition-[height] transition-shadow ease-in-out dark:shadow-stone-950"
     data-map-container
     data-map-src={LOCATION.link}>
@@ -160,8 +160,12 @@ const title = 'About'
       I&rsquo;m currently involved in a few small open-source projects. Keep an
       eye out for more contributions from me soon 🚀
     </p>
-    <ul class="landing-grid">
-      {PROJECTS.map((project) => <ProjectCard project={project} />)}
+    <ul class="grid grid-cols-1 gap-x-5 gap-y-4 sm:grid-cols-2 sm:gap-y-8">
+      {
+        PROJECTS.map((project) => (
+          <ProjectCard key={project.title} project={project} />
+        ))
+      }
     </ul>
   </Section>
 
@@ -181,10 +185,13 @@ const title = 'About'
         </Link>
       </div>
     </Heading>
-    <ul class="landing-grid">
+    <ul class="grid grid-cols-1 gap-x-5 gap-y-4 sm:grid-cols-2 sm:gap-y-8">
       {
         WORK.experience.map((workplace) => (
-          <WorkplaceCard workplace={workplace} />
+          <WorkplaceCard
+            key={`${workplace.company}-${workplace.startDate}`}
+            workplace={workplace}
+          />
         ))
       }
     </ul>
@@ -197,6 +204,8 @@ const title = 'About'
 </Main>
 
 <script>
+  import { formatTime } from '@utils/clock'
+
   const mapButton = document.querySelector(
     '[data-map-button]',
   ) as HTMLButtonElement | null
@@ -214,12 +223,7 @@ const title = 'About'
       return
     }
 
-    const time = new Intl.DateTimeFormat(undefined, {
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false,
-      timeZone,
-    }).format(new Date())
+    const time = formatTime(new Date(), timeZone)
 
     clockElement.dateTime = time
     clockElement.textContent = time
@@ -257,7 +261,12 @@ const title = 'About'
     const removeOrAdd = wasOpen ? 'remove' : 'add'
     const addOrRemove = wasOpen ? 'add' : 'remove'
 
-    mapButton?.classList[removeOrAdd]('shadow-inner', 'bg-gray-50')
+    mapButton?.setAttribute('aria-expanded', String(!wasOpen))
+    mapButton?.classList[removeOrAdd](
+      'shadow-inner',
+      'bg-gray-50',
+      'dark:bg-stone-800',
+    )
     mapButtonIcon?.classList[removeOrAdd]('rotate-180')
 
     mapContainer.classList[removeOrAdd]('h-96', 'mb-8')

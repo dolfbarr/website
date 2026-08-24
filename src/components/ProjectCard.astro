@@ -7,8 +7,7 @@ import Iconed from './Iconed.astro'
 import Link from './Link.astro'
 import Stack from './Stack.astro'
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-export interface Props {
+export type Props = {
   project: Project
 }
 
@@ -16,12 +15,13 @@ const { project } = Astro.props
 ---
 
 <Card>
-  <div slot="title" class="flex items-center justify-between align-middle">
+  <div slot="title" class="flex items-center justify-between">
     <span class="flex">
       {
         project?.url ? (
           <Link
-            analyticsClick={`workplace-${project.title}`}
+            isExternal
+            analyticsClick={`project-${project.title}`}
             analyticsTitle={project.title}
             class="whitespace-nowrap"
             title={project.title}
@@ -42,12 +42,14 @@ const { project } = Astro.props
       }
     </span>
     <Link
-      class="flex flex-col justify-center align-baseline"
-      analyticsClick={`workplace-${project.title}-github`}
+      isExternal
+      class="flex flex-col justify-center"
+      analyticsClick={`project-${project.title}-github`}
       analyticsTitle={project.title + '-github'}
       title={project.title + '-github'}
       href={project.github}>
       <GitHub />
+      <span class="sr-only">GitHub repository for {project.title}</span>
     </Link>
   </div>
 

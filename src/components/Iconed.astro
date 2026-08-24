@@ -1,6 +1,5 @@
 ---
-// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-export interface Props {
+export type Props = {
   class?: string
 }
 
@@ -14,7 +13,7 @@ const { class: className } = Astro.props
   <slot />
 </span>
 
-<style lang="scss" is:inline>
+<style lang="scss" is:global>
   .icon {
     max-width: 0.8em;
     max-height: 0.8em;

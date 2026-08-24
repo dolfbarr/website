@@ -20,14 +20,35 @@
     url('@fontsource/play/files/play-latin-700-normal.woff2') format('woff2');
 }
 
-html, body {
-  @apply text-gray-700 bg-white dark:bg-stone-900 dark:text-gray-200 transition-colors scroll-smooth;
+html,
+body {
+  @apply scroll-smooth bg-white text-gray-700 transition-colors dark:bg-stone-900 dark:text-gray-200;
   font-family: -apple-system, Arial, system-ui;
   font-size: 16px;
 }
 
-h1, h2, h3, h4, h5 {
-  @apply font-bold font-play;
+h1,
+h2,
+h3,
+h4,
+h5 {
+  @apply font-play font-bold;
+}
+
+h1 {
+  @apply text-6xl;
+}
+
+h2 {
+  @apply text-4xl;
+}
+
+h3 {
+  @apply text-2xl;
+}
+
+.small-heading {
+  @apply mb-3 text-2xl font-normal leading-normal;
 }
 
 html:not(.dark) {
@@ -46,21 +67,22 @@ html.dark {
   display: none;
 }
 
-.link, .prose a {
+.link,
+.prose a {
   &.can-be-visited {
-    @apply   visited:border-blue-800 visited:text-blue-800 visited:dark:border-amber-800 visited:dark:stroke-amber-800 visited:dark:text-amber-800;
-    @apply    visited:hover:decoration-blue-800 [&:visited:hover_*]:decoration-blue-800 dark:[&:visited:hover_*]:decoration-amber-800 dark:visited:hover:decoration-amber-800;
+    @apply visited:border-blue-800 visited:text-blue-800 visited:dark:border-amber-800 visited:dark:stroke-amber-800 visited:dark:text-amber-800;
+    @apply visited:hover:decoration-blue-800 dark:visited:hover:decoration-amber-800 [&:visited:hover_*]:decoration-blue-800 dark:[&:visited:hover_*]:decoration-amber-800;
   }
 
   @apply text-primary focus:ring-2 dark:text-primary-dark;
-  @apply  hover:decoration-primary dark:hover:decoration-primary-dark [&:hover_*]:decoration-primary dark:[&:hover_*]:decoration-primary-dark;
-  @apply   hover:brightness-125;
+  @apply hover:decoration-primary dark:hover:decoration-primary-dark [&:hover_*]:decoration-primary dark:[&:hover_*]:decoration-primary-dark;
+  @apply hover:brightness-125;
   @apply transition-[text-decoration-color] [&_*]:transition-[text-decoration-color];
-  @apply  transition-[filter] [&_*]:transition-[filter];
-  @apply  underline [&_*]:underline;
-  @apply  decoration-invisible [&_*]:decoration-invisible;
+  @apply transition-[filter] [&_*]:transition-[filter];
+  @apply underline [&_*]:underline;
+  @apply decoration-invisible [&_*]:decoration-invisible;
 }
 
 .dimmed {
-   @apply text-gray-500 dark:text-gray-400;
+  @apply text-gray-500 dark:text-gray-400;
 }

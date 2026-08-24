@@ -3,8 +3,7 @@ import { CONFIG } from 'config'
 
 import Link from './Link.astro'
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-export interface Props {
+export type Props = {
   class?: string
   title: string
   href: string
@@ -23,13 +22,19 @@ const {
 } = Astro.props
 const pathname = new URL(Astro.request.url).pathname
 const currentPath = pathname.replace(`${CONFIG.base}`, '').slice(1)
-const isActive = currentPath === href.slice(1)
+const isActive =
+  href === '/'
+    ? currentPath === '' || currentPath === '/'
+    : currentPath === href.slice(1) || currentPath.startsWith(href.slice(1))
 ---
 
 <>
   {
     isActive ? (
-      <span class:list={['border-b-2', className ?? '']} {...attrs}>
+      <span
+        aria-current="page"
+        class:list={['border-b-2', className ?? '']}
+        {...attrs}>
         <slot />
       </span>
     ) : (

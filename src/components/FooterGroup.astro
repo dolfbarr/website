@@ -2,12 +2,10 @@
 import { CONTACTS, URLS } from '@utils/data'
 import { type Social } from '@utils/types'
 
-import Iconed from './Iconed.astro'
 import Link from './Link.astro'
 import SocialIcon from './SocialIcon'
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-export interface Props {
+export type Props = {
   contactGroup: Social[]
 }
 
@@ -19,6 +17,7 @@ const { contactGroup } = Astro.props
     contactGroup.map((contactKey: Social) => {
       return (
         <Link
+          key={contactKey}
           isExternal
           href={`${CONTACTS[contactKey].isEmail ? 'mailto:' : ''}${
             CONTACTS[contactKey].url
@@ -28,13 +27,11 @@ const { contactGroup } = Astro.props
             CONTACTS[contactKey].title +
             (URLS[contactKey] ? `: ${String(URLS[contactKey])}` : '')
           }>
-          <Iconed>
-            <SocialIcon icon={contactKey} />
-            <span class="sr-only">
-              {CONTACTS[contactKey].title}
-              {URLS[contactKey] && `: ${String(URLS[contactKey])}`}
-            </span>
-          </Iconed>
+          <SocialIcon icon={contactKey} />
+          <span class="sr-only">
+            {CONTACTS[contactKey].title}
+            {URLS[contactKey] && `: ${String(URLS[contactKey])}`}
+          </span>
         </Link>
       )
     })
