@@ -7,10 +7,10 @@ pre-commit:
   parallel: true
   commands:
     prettier:
-      glob: "*.{js,ts,jsx,tsx,astro,scss,json,md,yml,yaml}"
+      glob: '*.{js,ts,jsx,tsx,astro,scss,json,md,yml,yaml}'
       run: pnpm exec prettier --check {staged_files}
     lint:
-      glob: "*.{js,ts,jsx,tsx,astro}"
+      glob: '*.{js,ts,jsx,tsx,astro}'
       run: pnpm exec eslint {staged_files}
 
 pre-push:

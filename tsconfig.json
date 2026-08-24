@@ -1,31 +1,17 @@
 {
   "extends": "astro/tsconfigs/strictest",
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.astro"
-  ],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.astro"],
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "moduleResolution": "bundler",
     "baseUrl": "./",
     "paths": {
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@layouts/*": [
-        "./src/layouts/*"
-      ],
-      "@pages/*": [
-        "./src/pages/*"
-      ],
-      "@utils/*": [
-        "./src/utils/*"
-      ],
-      "@styles/*": [
-        "./src/styles/*"
-      ],
+      "@components/*": ["./src/components/*"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@styles/*": ["./src/styles/*"]
     }
   }
 }

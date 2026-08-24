@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { noteSchema } from './schema'
+import { noteSchema } from './_schema'
 
 describe('noteSchema validation', () => {
   it('validates minimal valid note frontmatter', () => {

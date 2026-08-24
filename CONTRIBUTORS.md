@@ -32,17 +32,17 @@ pnpm install
 
 ## 🧞 Available Commands
 
-| Command | Description |
-| :--- | :--- |
-| `pnpm dev` | Starts local dev server at `http://localhost:4321` |
-| `pnpm build` | Builds the static production site into `./dist/` |
-| `pnpm preview` | Serves the built site locally for verification |
-| `pnpm typecheck` | Runs TypeScript compiler checks (`tsc --noEmit`) |
-| `pnpm lint` | Runs both ESLint and Stylelint |
-| `pnpm test:unit run` | Runs Vitest unit tests once |
-| `pnpm test:e2e` | Runs Cypress E2E test suite in Chrome |
-| `pnpm test` | Runs both unit and E2E test suites |
-| `pnpm ci` | Runs the full local CI pipeline (typecheck, lint, build, tests) |
+| Command              | Description                                                     |
+| :------------------- | :-------------------------------------------------------------- |
+| `pnpm dev`           | Starts local dev server at `http://localhost:4321`              |
+| `pnpm build`         | Builds the static production site into `./dist/`                |
+| `pnpm preview`       | Serves the built site locally for verification                  |
+| `pnpm typecheck`     | Runs TypeScript compiler checks (`tsc --noEmit`)                |
+| `pnpm lint`          | Runs both ESLint and Stylelint                                  |
+| `pnpm test:unit run` | Runs Vitest unit tests once                                     |
+| `pnpm test:e2e`      | Runs Cypress E2E test suite in Chrome                           |
+| `pnpm test`          | Runs both unit and E2E test suites                              |
+| `pnpm ci`            | Runs the full local CI pipeline (typecheck, lint, build, tests) |
 
 ---
 

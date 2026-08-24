@@ -1,7 +1,9 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
+
 Core code lives in `src/`:
+
 - `src/pages/`: route-entry `.astro` pages (`index.astro`, `notes.astro`, `notes/[...slug].astro`, `404.astro`).
 - `src/components/`: reusable UI in `PascalCase` (`.astro` and `.tsx`).
 - `src/layouts/`: page/layout wrappers.
@@ -13,7 +15,9 @@ Static files (favicons, resume, images) are in `public/`.
 Tests are split between unit tests in `src/**` (for example `Clock.test.tsx`) and E2E tests in `cypress/e2e/`.
 
 ## Build, Test, and Development Commands
+
 Use Node `v20` (`.nvmrc`) and `pnpm`.
+
 - `pnpm install`: install dependencies.
 - `pnpm check:node`: assert local runtime is Node `20.x`.
 - `pnpm dev` (or `pnpm start`): run local Astro dev server at `http://localhost:4321`.
@@ -28,6 +32,7 @@ Use Node `v20` (`.nvmrc`) and `pnpm`.
 - `pnpm ci`: local CI flow (typecheck, lint, dev server, tests).
 
 ## Coding Style & Naming Conventions
+
 - Follow `.editorconfig`: UTF-8, LF, 2-space indentation, trim trailing whitespace.
 - Prettier is authoritative (`prettier-plugin-astro`, `prettier-plugin-tailwindcss`): single quotes, no semicolons, trailing commas.
 - ESLint enforces Astro/React/TypeScript rules and import ordering.
@@ -36,6 +41,7 @@ Use Node `v20` (`.nvmrc`) and `pnpm`.
 - Use configured aliases (for example `@components/*`, `@utils/*`) instead of deep relative paths.
 
 ## Testing Guidelines
+
 - Unit tests use Vitest + Testing Library with `happy-dom` and `tests/setup.ts`.
 - Place unit tests near source files as `*.test.tsx`.
 - Keep Cypress specs in `cypress/e2e/`.
@@ -44,6 +50,7 @@ Use Node `v20` (`.nvmrc`) and `pnpm`.
 - Before pushing, run `pnpm lint`, `pnpm typecheck`, and `pnpm test` (also enforced by `lefthook` pre-push).
 
 ## Commit & Pull Request Guidelines
+
 - Follow Conventional Commit style seen in history: `feat: ...`, `fix: ...`, `chore: ...`.
 - Keep subject lines imperative and specific.
 - PRs should include:
@@ -54,7 +61,9 @@ Use Node `v20` (`.nvmrc`) and `pnpm`.
 - Ensure checks pass before requesting review.
 
 ## Current Findings & Priorities
+
 Use this as a short-term improvement backlog while contributing:
+
 - `Guard Node runtime`: keep Node `v20` enforced (`.nvmrc`, package `engines`, CI checks) to avoid Astro config issues.
 - `Keep unit tests deterministic`: use valid timezone/date fixtures and reset fake timers in tests.
 - `Fail loud on content routing errors`: avoid swallowing errors in `getStaticPaths`.

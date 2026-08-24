@@ -8,10 +8,7 @@ describe('Landing Page', () => {
   })
 
   it('handles skip-to-content anchor navigation', () => {
-    cy.get('a[title="Skip to content"]')
-      .focus()
-      .should('be.visible')
-      .click()
+    cy.get('a[title="Skip to content"]').focus().should('be.visible').click()
     cy.url().should('include', '#start-of-content')
   })
 
@@ -36,7 +33,11 @@ describe('Landing Page', () => {
       .should('have.class', 'h-96')
       .find('iframe')
       .should('exist')
-      .and('have.attr', 'sandbox', 'allow-scripts allow-same-origin allow-popups')
+      .and(
+        'have.attr',
+        'sandbox',
+        'allow-scripts allow-same-origin allow-popups',
+      )
 
     cy.get('[data-map-button]').click()
     cy.get('[data-map-button]').should('have.attr', 'aria-expanded', 'false')

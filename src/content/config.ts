@@ -1,6 +1,6 @@
 import { defineCollection } from 'astro:content'
 
-import { noteSchema } from './schema'
+import { noteSchema } from './_schema'
 
 const notes = defineCollection({
   type: 'content',
