@@ -67,17 +67,17 @@ Markdown notes support rich interactive widgets, live code playgrounds, and inte
   height="380"
   style="width: 100%; border: none;"
   scrolling="no"
-  title="CodePen Interactive Demo"
-  src="https://codepen.io/geoffgraham/embed/preview/YzXqVwM?default-tab=result&theme-id=dark"
+  title="CodePen Interactive Animation Demo"
+  src="https://codepen.io/hexagoncircle/embed/preview/gOPmvrv?default-tab=result&theme-id=dark"
   loading="lazy"
   allowfullscreen="true">
 </iframe>
 
-#### 2. StackBlitz / Sandpack Embed (React & TypeScript)
+#### 2. React & TypeScript Live Component Playground
 
 <iframe
-  src="https://stackblitz.com/edit/vitejs-vite-ts?embed=1&file=src%2Fmain.ts&hideNavigation=1&view=preview"
-  title="Interactive Vite + TypeScript Live Playground"
+  src="https://codesandbox.io/embed/new?codemirror=1&fontsize=14&hidenavigation=1&theme=dark"
+  title="Interactive React & TypeScript Component Playground"
   class="h-96 w-full"
   loading="lazy"
   allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"

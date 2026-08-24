@@ -100,3 +100,7 @@ html.dark {
 .dimmed {
   @apply text-gray-500 dark:text-gray-400;
 }
+
+.prose iframe {
+  @apply my-8 w-full rounded-lg border-2 border-primary shadow-xl shadow-gray-300/70 ring-1 ring-gray-900/5 dark:border-primary-dark dark:shadow-2xl dark:shadow-black/80 dark:ring-1 dark:ring-white/10;
+}
