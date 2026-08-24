@@ -20,6 +20,10 @@
     url('@fontsource/play/files/play-latin-700-normal.woff2') format('woff2');
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 html,
 body {
   @apply scroll-smooth bg-white text-gray-700 transition-colors dark:bg-stone-900 dark:text-gray-200;

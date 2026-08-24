@@ -1,11 +1,12 @@
 ---
 export type Props = {
   class?: string
+  [key: string]: unknown
 }
 
-const { class: className } = Astro.props
+const { class: className, ...attrs } = Astro.props
 ---
 
-<section class:list={[className ?? '']}>
+<section class:list={[className ?? '']} {...attrs}>
   <slot />
 </section>

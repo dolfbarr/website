@@ -7,7 +7,7 @@ describe('Notes Section', () => {
     cy.get('time').should('exist').and('have.attr', 'dateTime')
   })
 
-  it('navigates to single note and verifies content, tags, and footer links', () => {
+  it('navigates to single note and verifies content and back navigation', () => {
     cy.visit('/notes/')
     cy.get('a').contains('Initial note').click()
     cy.url().should('include', '/notes/initial-note')
@@ -16,7 +16,6 @@ describe('Notes Section', () => {
     cy.get('article h1').should('contain.text', 'Initial note')
     cy.get('article header time').should('exist')
     cy.get('article header').should('contain.text', 'min read')
-    cy.get('article header').should('contain.text', '#')
 
     // Note body & code blocks
     cy.get('article').should('contain.text', 'frontend development')
@@ -32,5 +31,20 @@ describe('Notes Section', () => {
       .should('have.attr', 'target', '_blank')
       .and('have.attr', 'href')
       .and('include', 'github.com')
+
+    // Back navigation to notes listing
+    cy.get('article nav a').contains('All notes').click()
+    cy.url().should('match', /\/notes\/?$/)
+  })
+
+  it('renders rich typography showcase note with tags and code block', () => {
+    cy.visit('/notes/design-test-note/')
+    cy.get('article h1').should(
+      'contain.text',
+      'Typography and Styling Showcase',
+    )
+    cy.get('article header').should('contain.text', '#design')
+    cy.get('article pre code').should('exist')
+    cy.get('article blockquote').should('exist')
   })
 })

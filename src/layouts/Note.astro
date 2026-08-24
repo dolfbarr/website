@@ -1,10 +1,12 @@
 ---
+import Iconed from '@components/Iconed.astro'
 import Link from '@components/Link.astro'
 import Separator from '@components/Separator.astro'
 import { META, SEPARATOR, URLS } from '@utils/data'
 import { getReadingTime } from '@utils/readingTime'
 import { Social, type Note as NoteType } from '@utils/types'
 import { Image } from 'astro:assets'
+import { ArrowLeft } from 'react-feather'
 
 import packageJson from '../../package.json'
 
@@ -48,6 +50,18 @@ const readingTime = getReadingTime(rawBody)
       'prose-p:text-gray-700 dark:prose-p:text-gray-200',
       'prose-headings:text-gray-700 dark:prose-headings:text-gray-200',
     ]}>
+    <nav aria-label="Breadcrumb" class="not-prose mb-6">
+      <Link
+        href="/notes/"
+        title="Back to all notes"
+        analyticsClick="back-to-notes"
+        class="dimmed inline-flex items-center gap-1.5 text-base hover:text-primary dark:hover:text-primary-dark">
+        <Iconed>
+          <ArrowLeft slot="icon" size={18} />
+          <span>All notes</span>
+        </Iconed>
+      </Link>
+    </nav>
     {
       data.image && (
         <Image
