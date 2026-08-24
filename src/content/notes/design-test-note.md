@@ -57,9 +57,23 @@ const dolf: Developer = {
   <figcaption>Figure 1: Minimalist desk stationery layout showcasing clean studio ergonomics.</figcaption>
 </figure>
 
-### ⚡ Interactive Live Embeds (Playgrounds & Iframes)
+### ⚡ Interactive Live Embeds & Playgrounds
 
-You can embed interactive live playgrounds (StackBlitz, CodeSandbox), interactive widgets, or media directly in markdown notes:
+Markdown notes support rich interactive widgets, live code playgrounds, and interactive runtimes with unified borders, rounded corners, and elevation shadows:
+
+#### 1. CodePen Embed (CSS & JS Animations)
+
+<iframe
+  height="380"
+  style="width: 100%; border: none;"
+  scrolling="no"
+  title="CodePen Interactive Demo"
+  src="https://codepen.io/geoffgraham/embed/preview/YzXqVwM?default-tab=result&theme-id=dark"
+  loading="lazy"
+  allowfullscreen="true">
+</iframe>
+
+#### 2. StackBlitz / Sandpack Embed (React & TypeScript)
 
 <iframe
   src="https://stackblitz.com/edit/vitejs-vite-ts?embed=1&file=src%2Fmain.ts&hideNavigation=1&view=preview"
@@ -68,6 +82,16 @@ You can embed interactive live playgrounds (StackBlitz, CodeSandbox), interactiv
   loading="lazy"
   allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
   sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts">
+</iframe>
+
+#### 3. Embedded Go Playground & Runtime
+
+<iframe
+  src="https://onecompiler.com/embed/go?hideTitle=true&hideStdin=true"
+  title="Interactive Go Playground & Compiler"
+  class="h-96 w-full"
+  loading="lazy"
+  allow="clipboard-write; fullscreen">
 </iframe>
 
 ### Lists & Structured Data
