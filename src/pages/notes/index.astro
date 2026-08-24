@@ -6,6 +6,7 @@ import Separator from '@components/Separator.astro'
 import StartOfContentAnchor from '@components/StartOfContentAnchor.astro'
 import Main from '@layouts/Main.astro'
 import { META, SEPARATOR } from '@utils/data'
+import { getReadingTime } from '@utils/readingTime'
 import { getCollection } from 'astro:content'
 
 const notes = (await getCollection('notes'))
@@ -71,10 +72,12 @@ const title = 'Notes'
                         day: 'numeric',
                       })}
                     </time>
+                    <span class="mx-1.5">{SEPARATOR}</span>
+                    <span>{getReadingTime(note.body)}</span>
                     {note.data.description && (
                       <>
-                        {' '}
-                        {SEPARATOR} {note.data.description}
+                        <span class="mx-1.5">{SEPARATOR}</span>
+                        <span>{note.data.description}</span>
                       </>
                     )}
                   </p>

@@ -41,6 +41,7 @@ const readingTime = getReadingTime(rawBody)
       'prose-pre:border-primary dark:prose-pre:border-primary-dark',
       'prose-pre:rounded-lg prose-pre:border-2',
       'prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:italic dark:prose-blockquote:border-primary-dark',
+      'prose-blockquote:before:content-none prose-blockquote:after:content-none',
       'prose-figcaption:text-center',
       'prose-img:rounded-lg prose-img:shadow-lg prose-img:shadow-gray-300 prose-img:transition-shadow dark:prose-img:shadow-stone-950',
       'prose-headings:font-bold',
@@ -73,16 +74,15 @@ const readingTime = getReadingTime(rawBody)
         {
           readingTime && (
             <span>
-              {' '}
-              {SEPARATOR} {readingTime}
+              <span class="mx-1.5">{SEPARATOR}</span>
+              {readingTime}
             </span>
           )
         }
         {
           (data?.tags ?? []).map((tag: string) => (
             <span key={tag}>
-              {' '}
-              {SEPARATOR} #{tag}
+              <span class="mx-1.5">{SEPARATOR}</span>#{tag}
             </span>
           ))
         }
