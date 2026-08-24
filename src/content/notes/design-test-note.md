@@ -57,18 +57,17 @@ const dolf: Developer = {
   <figcaption>Figure 1: Minimalist desk stationery layout showcasing clean studio ergonomics.</figcaption>
 </figure>
 
-### ⚡ Interactive Live Embeds (CodePen / Iframe)
+### ⚡ Interactive Live Embeds (Playgrounds & Iframes)
 
-You can embed interactive CodePen snippets, Sandboxes, or rich widgets directly in markdown notes:
+You can embed interactive live playgrounds (StackBlitz, CodeSandbox), interactive widgets, or media directly in markdown notes:
 
 <iframe
-  height="360"
-  style="width: 100%; border: none;"
-  scrolling="no"
-  title="CodePen Interactive Demo"
-  src="https://codepen.io/alvarotrigo/embed/preview/dygBxKm?default-tab=result&theme-id=dark"
+  src="https://stackblitz.com/edit/vitejs-vite-ts?embed=1&file=src%2Fmain.ts&hideNavigation=1&view=preview"
+  title="Interactive Vite + TypeScript Live Playground"
+  class="h-96 w-full"
   loading="lazy"
-  allowfullscreen="true">
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts">
 </iframe>
 
 ### Lists & Structured Data
