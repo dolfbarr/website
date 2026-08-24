@@ -24,7 +24,7 @@
     "lint": "pnpm run lint:eslint && pnpm run lint:stylelint",
     "lint:eslint": "eslint --ext .js,.ts,.jsx,.tsx,.astro src",
     "lint:stylelint": "stylelint \"src/**/*.{astro,scss}\"",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "astro sync && tsc --noEmit"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
