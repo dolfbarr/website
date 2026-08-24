@@ -21,6 +21,7 @@ const { Content, remarkPluginFrontmatter } = await entry.render()
 
 <Note
   data={{ ...entry.data, ...remarkPluginFrontmatter }}
+  rawBody={entry.body}
   id={entry.id}
   slug={entry.slug}>
   <StartOfContentAnchor />

@@ -2,19 +2,28 @@
 import Link from '@components/Link.astro'
 import Separator from '@components/Separator.astro'
 import { META, SEPARATOR, URLS } from '@utils/data'
-import { Social } from '@utils/types'
+import { getReadingTime } from '@utils/readingTime'
+import { Social, type Note as NoteType } from '@utils/types'
 import { Image } from 'astro:assets'
 
 import packageJson from '../../package.json'
 
 import Main from './Main.astro'
 
-const { data, id, slug } = Astro.props
+export type Props = {
+  data: NoteType['data']
+  id: string
+  slug: string
+  rawBody?: string
+}
+
+const { data, id, slug, rawBody } = Astro.props
 
 const githubLink =
   packageJson.repository.url + '/edit/main/src/content/notes/' + id
 
 const dateObject = new Date(data.date)
+const readingTime = getReadingTime(rawBody)
 ---
 
 <Main
@@ -31,6 +40,7 @@ const dateObject = new Date(data.date)
       'prose prose-neutral dark:prose-invert lg:prose-lg', // general
       'prose-pre:border-primary dark:prose-pre:border-primary-dark',
       'prose-pre:rounded-lg prose-pre:border-2',
+      'prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:italic dark:prose-blockquote:border-primary-dark',
       'prose-figcaption:text-center',
       'prose-img:rounded-lg prose-img:shadow-lg prose-img:shadow-gray-300 prose-img:transition-shadow dark:prose-img:shadow-stone-950',
       'prose-headings:font-bold',
@@ -60,6 +70,14 @@ const dateObject = new Date(data.date)
             })
           }
         </time>
+        {
+          readingTime && (
+            <span>
+              {' '}
+              {SEPARATOR} {readingTime}
+            </span>
+          )
+        }
         {
           (data?.tags ?? []).map((tag: string) => (
             <span key={tag}>

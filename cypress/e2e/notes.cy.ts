@@ -15,6 +15,7 @@ describe('Notes Section', () => {
     // Note header & article
     cy.get('article h1').should('contain.text', 'Initial note')
     cy.get('article header time').should('exist')
+    cy.get('article header').should('contain.text', 'min read')
     cy.get('article header').should('contain.text', '#')
 
     // Note body & code blocks

@@ -138,10 +138,10 @@ const title = 'About'
     </p>
 
     <p
-      class="mt-6 flex flex-wrap justify-center overflow-hidden text-center text-xl leading-loose">
+      class="mt-6 flex flex-wrap justify-center gap-x-8 gap-y-2 overflow-hidden text-center text-xl leading-loose">
       {
         PERSONAL_DATA.tagLines.map((tagLine) => (
-          <span key={tagLine} data-testid="tagLine" class="tag relative mr-8">
+          <span key={tagLine} data-testid="tagLine" class="tag relative">
             {tagLine}
           </span>
         ))
