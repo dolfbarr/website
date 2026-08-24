@@ -12,6 +12,11 @@ describe('Landing Page', () => {
     cy.url().should('include', '#start-of-content')
   })
 
+  it('renders clock and location lockup aligned and formatted', () => {
+    cy.get('[data-map-button]').should('be.visible')
+    cy.get('[data-clock]').should('exist').and('have.attr', 'data-time-zone')
+  })
+
   it('toggles theme between light and dark modes and persists on reload', () => {
     cy.get('[data-theme-button]').click()
     cy.get('html').should('have.class', 'dark')
@@ -53,7 +58,10 @@ describe('Landing Page', () => {
   it('renders projects, work experience, and skills sections', () => {
     cy.get('[data-testid="projects"]').should('be.visible')
     cy.get('[data-testid="experience"]').should('be.visible')
-    cy.get('[data-testid="skills-section"]').should('be.visible')
+    cy.get('[data-testid="skills-section"]')
+      .should('be.visible')
+      .find('[data-testid="skill"]')
+      .should('have.length.at.least', 5)
   })
 
   it('includes RSS, sitemap, and structured data in head', () => {

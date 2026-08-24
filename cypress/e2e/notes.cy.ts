@@ -37,7 +37,7 @@ describe('Notes Section', () => {
     cy.url().should('match', /\/notes\/?$/)
   })
 
-  it('renders rich typography showcase note with tags and code block', () => {
+  it('renders rich typography showcase note with tags, code block, images, and interactive embeds', () => {
     cy.visit('/notes/design-test-note/')
     cy.get('article h1').should(
       'contain.text',
@@ -46,5 +46,15 @@ describe('Notes Section', () => {
     cy.get('article header').should('contain.text', '#design')
     cy.get('article pre code').should('exist')
     cy.get('article blockquote').should('exist')
+
+    // Images and figures
+    cy.get('article img').should('have.length.at.least', 2)
+    cy.get('article figure figcaption').should('exist')
+
+    // Interactive embeds (CodePen, CodeSandbox, Go Playground)
+    cy.get('article iframe').should('have.length', 3)
+    cy.get('article iframe[src*="codepen.io"]').should('exist')
+    cy.get('article iframe[src*="codesandbox.io"]').should('exist')
+    cy.get('article iframe[src*="onecompiler.com"]').should('exist')
   })
 })
