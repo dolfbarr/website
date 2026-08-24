@@ -89,16 +89,16 @@ const title = 'About'
         )
       }
       with {WORK.totalYearsOfExperience}+&nbsp;YoE based in
-      <span class="align-baseline">
+      <span class="inline-flex items-center gap-1.5 align-middle">
         <Button
           aria-expanded="false"
           aria-controls="map-container"
           analyticsClick="open-map"
           analyticsTitle="Open map"
-          class="group/location mx-1 px-1.5 py-0.5 align-baseline text-lg leading-none"
+          class="group/location inline-flex items-center px-1.5 py-0.5 text-base leading-none sm:text-lg"
           data-map-button
           title={LOCATION.flag + ' ' + LOCATION.title}>
-          <Iconed class="relative">
+          <Iconed class="inline-flex items-center">
             <MapPin slot="icon" data-map-button-icon />
             <span class="inline-grid grid-cols-1 grid-rows-1 text-left">
               <span
@@ -113,21 +113,25 @@ const title = 'About'
           </Iconed>
         </Button>
         <span
-          class="dimmed ml-1 inline-flex items-center gap-1.5 whitespace-nowrap align-baseline text-lg">
-          <span aria-hidden="true" class="leading-none">
-            {SEPARATOR}
-          </span>
-          <Iconed class="not-sr-only font-mono text-lg tabular-nums">
-            <ClockIcon slot="icon" strokeWidth={3} />
-            <time
-              title={LOCATION.timeZoneText}
-              class="inline-block min-w-[3.25rem]"
-              data-clock
-              data-time-zone={LOCATION.timeZone}
-              dateTime="">
-              --:--
-            </time>
-          </Iconed>
+          aria-hidden="true"
+          class="dimmed text-base leading-none sm:text-lg">
+          {SEPARATOR}
+        </span>
+        <span
+          class="dimmed inline-flex items-center gap-1 font-mono text-base tabular-nums leading-none sm:text-lg">
+          <ClockIcon
+            strokeWidth={2.5}
+            size={18}
+            class="inline-block shrink-0"
+          />
+          <time
+            title={LOCATION.timeZoneText}
+            class="inline-block min-w-[3.25rem]"
+            data-clock
+            data-time-zone={LOCATION.timeZone}
+            dateTime="">
+            --:--
+          </time>
         </span>
       </span>. I&rsquo;m
       <em>passionate about web</em>

@@ -67,8 +67,8 @@ Markdown notes support rich interactive widgets, live code playgrounds, and inte
   height="380"
   style="width: 100%; border: none;"
   scrolling="no"
-  title="CodePen Interactive Animation Demo"
-  src="https://codepen.io/hexagoncircle/embed/preview/gOPmvrv?default-tab=result&theme-id=dark"
+  title="CodePen Interactive CSS Animation Demo"
+  src="https://codepen.io/tak-dcxi/embed/01a02292-8f54-7b10-a713-6edd086268d2?default-tab=result&theme-id=dark"
   loading="lazy"
   allowfullscreen="true">
 </iframe>
